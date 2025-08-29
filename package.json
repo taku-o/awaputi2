@@ -1,0 +1,21 @@
+{
+  "name": "bubble-pop-web-game",
+  "version": "1.0.0",
+  "description": "A web-based bubble popping game with various bubble types and special effects",
+  "type": "module",
+  "scripts": {
+  },
+  "devDependencies": {
+  },
+  "keywords": [
+    "game",
+    "bubble",
+    "canvas",
+    "web",
+    "javascript"
+  ],
+  "author": "BubblePop Team",
+  "license": "MIT",
+  "dependencies": {
+  }
+}
