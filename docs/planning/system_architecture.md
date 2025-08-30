@@ -1,94 +1,66 @@
 # BubblePop システム構成
 
-**要修正**
-
 ## 全体アーキテクチャ
 
 ### 技術スタック
-- **フロントエンド**: HTML5 Canvas + JavaScript (ES6 modules)
+- **フロントエンド**: React + TypeScript
+- **ゲームエンジン**: Phaser
 - **ビルドツール**: Vite
-- **状態管理**: 独自のConfigurationManager
-- **PWA**: Service Worker + Manifest
+- **状態管理**: React Context + Hooks
 - **テスト**: Jest (単体) + Playwright (E2E)
 
 ### ディレクトリ構造
-```
-src/
-├── core/                     # コアゲームエンジン
-│   ├── GameEngine.js        # メインゲームエンジン
-│   ├── SceneManager.js      # シーン管理
-│   ├── PlayerData.js        # プレイヤーデータ
-│   ├── SettingsManager.js   # 設定管理
-│   └── achievements/        # 実績システム
-├── scenes/                   # ゲームシーン
-│   ├── MainMenuScene.js     # メインメニュー
-│   ├── GameScene.js         # ゲームプレイ
-│   ├── SettingsScene.js     # 設定画面
-│   └── components/          # シーンコンポーネント
-├── managers/                 # システム管理
-│   ├── BubbleManager.js     # 泡管理
-│   └── ScoreManager.js      # スコア管理
-├── audio/                    # 音響システム
-│   ├── AudioManager.js      # 音響管理
-│   ├── BGMSystem.js         # BGM制御
-│   └── SoundEffectSystem.js # 効果音制御
-├── effects/                  # エフェクトシステム
-│   ├── EffectManager.js     # エフェクト管理
-│   ├── ParticleManager.js   # パーティクル
-│   └── AnimationManager.js  # アニメーション
-├── bubbles/                  # 泡システム
-│   └── Bubble.js            # 泡クラス
-├── utils/                    # ユーティリティ
-│   ├── ErrorHandler.js      # エラー処理
-│   ├── MemoryManager.js     # メモリ管理
-│   └── PerformanceOptimizer.js # パフォーマンス最適化
-├── config/                   # 設定ファイル
-│   ├── GameConfig.js        # ゲーム設定
-│   └── GameBalance.js       # バランス調整
-├── locales/                  # 多言語リソース
-│   ├── ja/                  # 日本語
-│   ├── en/                  # 英語
-│   └── [他言語]/
-└── accessibility/            # アクセシビリティ
-    └── [アクセシビリティ機能]
-```
+- 設計で決定
 
 ## コアシステム
 
-### GameEngine (ゲームエンジン)
-- **役割**: 全システムの統合・制御
+### Phaser (ゲームエンジン)
+- **役割**: 高性能な2Dゲーム描画・物理演算
 - **主要機能**:
-  - シーン管理
-  - ゲームループ制御
+  - スプライト管理
+  - 物理エンジン (Arcade Physics, Matter.js)
+  - アニメーションシステム
+  - 音響管理
+  - 入力処理
+  - パーティクルシステム
+  - カメラ制御
+
+### GameEngine (ゲーム統合)
+- **役割**: PhaserとReactの統合・制御
+- **主要機能**:
+  - Phaserゲームインスタンス管理
+  - React状態との同期
   - システム間連携
   - パフォーマンス監視
 
-### SceneManager (シーン管理)
-- **役割**: 画面遷移とシーン制御
-- **管理シーン**:
-  - MainMenuScene (メインメニュー)
-  - GameScene (ゲームプレイ)
-  - SettingsScene (設定)
-  - HelpScene (ヘルプ)
-  - StageSelectScene (ステージ選択)
+### React Router (画面遷移)
+- **役割**: SPA内での画面遷移制御
+- **管理画面**:
+  - MainMenu (メインメニュー)
+  - Game (ゲームプレイ)
+  - Settings (設定)
+  - Help (ヘルプ)
+  - StageSelect (ステージ選択)
 
-### ConfigurationManager (設定管理)
-- **役割**: 全設定の一元管理
+### React Context (状態管理)
+- **GameContext**: ゲーム状態の一元管理
+- **SettingsContext**: 設定値の一元管理
 - **機能**:
-  - 設定値の保存・読み込み
-  - 設定変更の監視
-  - バリデーション
-  - デフォルト値管理
+  - 状態の保存・読み込み
+  - 状態変更の監視
+  - TypeScriptによる型安全性
+  - React Hooksとの連携
 
 ## ゲームシステム
 
 ### BubbleManager (泡管理)
-- **役割**: 泡の生成・更新・削除
+- **役割**: Phaserスプライトとしての泡の生成・更新・削除
 - **機能**:
-  - 泡の生成ロジック
-  - 衝突判定
+  - Phaserスプライト生成
+  - 物理演算による衝突判定
   - 泡の状態管理
   - 特殊効果処理
+  - アニメーション制御
 
 ### ScoreManager (スコア管理)
 - **役割**: スコア計算とコンボ管理
@@ -109,12 +81,17 @@ src/
 ## 音響・視覚システム
 
 ### AudioManager (音響管理)
-- **役割**: 音響システムの統合制御
+- **役割**: Phaser音響システムの統合制御
 - **サブシステム**:
   - BGMSystem (背景音楽)
   - SoundEffectSystem (効果音)
-  - AudioContextManager (Web Audio API)
-  - ProceduralSoundGenerator (音響生成)
+  - PhaserAudioManager (Phaser音響管理)
+  - SoundFileManager (音響ファイル管理)
+- **主要機能**:
+  - 音響ファイルの読み込み・管理
+  - 音量・ミュート制御
+  - 音響の再生・停止制御
+  - 音響のループ・フェード制御
 
 ### EffectManager (エフェクト管理)
 - **役割**: 視覚効果の制御
@@ -125,12 +102,13 @@ src/
   - 色調変更
 
 ### ParticleManager (パーティクル管理)
-- **役割**: パーティクル効果の制御
+- **役割**: Phaserパーティクルシステムの制御
 - **機能**:
-  - パーティクル生成
+  - Phaserパーティクル生成
   - 物理シミュレーション
   - レンダリング最適化
   - メモリ管理
+  - パーティクルエミッター制御
 
 ## データ管理
 
@@ -144,17 +122,20 @@ src/
   - 設定値
 
 ### LocalStorage構造
-```javascript
+```typescript
+interface PlayerData {
+  username: string;
+  level: number;
+  experience: number;
+  totalScore: number;
+  unlockedStages: string[];
+  achievements: Achievement[];
+  settings: GameSettings;
+}
+
+// LocalStorage保存形式
 {
-  "bubblePopPlayerData": {
-    "username": "プレイヤー名",
-    "level": 1,
-    "experience": 0,
-    "totalScore": 0,
-    "unlockedStages": ["tutorial", "normal"],
-    "achievements": [...],
-    "settings": {...}
-  }
+  "bubblePopPlayerData": PlayerData
 }
 ```
 
@@ -193,13 +174,22 @@ src/
 ## 拡張性・保守性
 
 ### モジュラー設計
-- ES6 modules
+- React コンポーネント設計
+- TypeScript による型安全性
+- カスタムフックによる再利用性
 - 依存関係の明確化
 - インターフェース統一
-- プラグイン対応
 
 ### 設定駆動
 - 外部設定ファイル
 - 動的設定変更
 - A/Bテスト対応
 - 環境別設定
+
+### Phaser採用の利点
+- **高性能**: WebGL/Canvas2Dの自動選択
+- **豊富な機能**: 物理演算、アニメーション、音響など
+- **成熟したエコシステム**: 大量のプラグインとサンプル
+- **TypeScript対応**: 完全な型定義サポート
+- **React統合**: react-phaser等のライブラリで簡単統合
+- **クロスプラットフォーム**: モバイル・デスクトップ対応

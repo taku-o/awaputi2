@@ -1,4 +1,4 @@
-project_renewal_requirements.md - プロジェクト作り直しの要件チェックリスト
+old_project_requirements.md - プロジェクト作り直しの要件チェックリスト
 game_overview.md - ゲーム企画の概要
 system_architecture.md - システム構成
 screen_transitions.md - 画面遷移図
@@ -12,3 +12,4 @@ effects_system.md - エフェクトシステムで表示しているエフェク
 game_mechanics.md - 基本的な泡割りメカニクス
 scoring_system.md - スコアリングシステム
 progression_system.md - 進歩システム: レベル、アンロック要素
+shop_system.md - アイテムショップシステムの詳細
