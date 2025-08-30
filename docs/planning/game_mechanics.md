@@ -37,15 +37,164 @@ const bubblePhysics = {
   airResistance: 0.02,   // 空気抵抗
   bounceCoefficient: 0.7, // 反発係数
   friction: 0.95,        // 摩擦係数
-  maxVelocity: 200       // 最大速度
+  maxVelocity: 200,      // 最大速度
+  
+  // 新規追加: 泡の自然な動きのためのパラメータ
+  naturalMovement: {
+    enabled: true,        // 自然移動の有効化
+    baseSpeed: 0.5,       // 基本移動速度
+    randomFactor: 0.3,    // ランダム要素の強度
+    directionChange: 0.02, // 方向変更の頻度
+    smoothness: 0.8       // 動きの滑らかさ
+  }
 };
 ```
 
 #### 移動システム
 - **重力**: 下向きの重力による自然落下
 - **浮力**: 泡特有の上向きの力
-- **ランダム移動**: 微細なランダム要素
+- **自然移動**: 全ての泡が緩やかにランダムな方向に揺れながら移動
 - **境界反発**: 画面端での反発処理
+- **移動パターン**: 泡の種類に応じた移動特性の違い
+
+#### 泡の自然移動システム
+```javascript
+const naturalMovementSystem = {
+  // 基本移動パラメータ
+  baseMovement: {
+    speed: 0.5,                    // 基本移動速度
+    directionChangeInterval: 2000, // 方向変更間隔 (ms)
+    maxDirectionChange: 45,        // 最大方向変更角度
+    smoothness: 0.8                // 動きの滑らかさ
+  },
+  
+  // 泡タイプ別移動特性
+  bubbleTypeMovement: {
+    normal: {
+      speedMultiplier: 1.0,        // 標準速度
+      randomFactor: 0.3,           // ランダム要素
+      directionStability: 0.7      // 方向の安定性
+    },
+    stone: {
+      speedMultiplier: 0.8,        // やや遅い
+      randomFactor: 0.2,           // 少ないランダム要素
+      directionStability: 0.8      // 方向が安定
+    },
+    iron: {
+      speedMultiplier: 0.6,        // 遅い
+      randomFactor: 0.15,          // 非常に少ないランダム要素
+      directionStability: 0.9      // 方向が非常に安定
+    },
+    escape: {
+      speedMultiplier: 2.5,        // 高速（既存仕様維持）
+      randomFactor: 0.8,           // 高いランダム要素
+      directionStability: 0.3      // 方向が不安定
+    }
+  },
+  
+  // サイズ変化による移動への影響
+  sizeInfluence: {
+    small: { speedMultiplier: 1.2 },    // 小さい泡はやや速く
+    normal: { speedMultiplier: 1.0 },   // 標準サイズ
+    large: { speedMultiplier: 0.8 }     // 大きい泡はやや遅く
+  }
+};
+```
+
+#### 泡の呼吸システム（サイズ変化）
+```javascript
+const bubbleBreathingSystem = {
+  // 呼吸アニメーション
+  breathing: {
+    enabled: true,                  // 呼吸効果の有効化
+    cycleDuration: 3000,            // 呼吸周期 (ms)
+    sizeVariation: 0.05,            // サイズ変化範囲 (±5%)
+    smoothness: 0.9,                // 変化の滑らかさ
+    
+    // 呼吸パターン
+    pattern: {
+      type: 'sine',                 // 正弦波パターン
+      phase: 'random',              // ランダムな開始位相
+      amplitude: 0.05               // 振幅（サイズ変化の強度）
+    }
+  },
+  
+  // 年齢による呼吸の変化
+  ageInfluence: {
+    young: {
+      breathingIntensity: 1.2,      // 若い泡は呼吸が活発
+      cycleVariation: 0.8           // 周期のばらつき
+    },
+    mature: {
+      breathingIntensity: 1.0,      // 成熟泡は標準
+      cycleVariation: 1.0           // 標準的な周期
+    },
+    old: {
+      breathingIntensity: 0.8,      // 老化泡は呼吸が穏やか
+      cycleVariation: 1.2           // 周期のばらつきが大きい
+    }
+  }
+};
+```
+
+#### 境界反発システム
+```javascript
+const boundaryBounceSystem = {
+  // 境界判定パラメータ
+  boundary: {
+    margin: 5,                      // 境界判定の余裕（px）
+    bounceCoefficient: 0.7,         // 反発係数（0.0-1.0）
+    energyLoss: 0.1,                // 境界衝突時のエネルギー損失
+    maxBounces: 10                  // 連続反発の最大回数
+  },
+  
+  // 画面境界の定義
+  screenBoundaries: {
+    left: 0,                        // 左端
+    right: 'canvas.width',          // 右端
+    top: 0,                         // 上端
+    bottom: 'canvas.height'         // 下端
+  },
+  
+  // 反発処理の詳細
+  bounceProcessing: {
+    // 境界到達判定
+    boundaryDetection: {
+      enabled: true,
+      checkInterval: 16,             // 判定間隔（60FPS想定）
+      precision: 'pixel'             // 判定精度
+    },
+    
+    // 反発方向の計算
+    directionCalculation: {
+      method: 'angleReflection',     // 角度反射法
+      normalizeVelocity: true,       // 速度の正規化
+      maintainSpeed: true            // 速度の維持
+    },
+    
+    // 反発後の処理
+    postBounce: {
+      velocityAdjustment: true,      // 速度調整
+      energyConservation: true,      // エネルギー保存
+      visualEffect: 'bounce'         // 視覚効果
+    }
+  }
+};
+```
+
+#### 境界反発の動作詳細
+- **境界到達判定**: 泡が画面端から5px以内に到達した時点で反発判定
+- **反射角度計算**: 入射角と等しい反射角で反対方向に移動
+- **速度調整**: 反発係数（0.7）に応じた速度の調整
+- **エネルギー損失**: 境界衝突時に10%のエネルギー損失
+- **連続反発制限**: 連続10回の反発で泡を消滅（無限ループ防止）
+
+#### 泡タイプ別の境界反発特性
+- **通常泡**: 標準的な反発係数（0.7）
+- **石泡**: やや低い反発係数（0.6）- 重いため
+- **鉄泡**: 低い反発係数（0.5）- 非常に重いため
+- **escape泡**: 高い反発係数（0.8）- 軽いため
+- **特殊泡**: 泡の性質に応じた個別設定
 
 #### 衝突判定
 - **円形判定**: 泡同士の円形衝突判定
@@ -81,12 +230,76 @@ const ageSystem = {
 ```
 
 #### サイズ変化
-- **線形成長**: 時間に比例したサイズ増加
+- **自然な呼吸**: 非常にゆっくりとしたわずかな範囲での膨張・収縮
+- **泡らしい見た目**: かすかな範囲で大きさが変化し続ける
+- **年齢による成長**: 時間経過に伴う全体的なサイズ増加
 - **最大サイズ**: 破裂直前の最大サイズ
 - **視覚的変化**: サイズに応じた色調変化
 - **危険度表示**: 破裂が近い泡の警告表示
 
 ### クリック・タップ処理
+
+#### カーソルシステム
+```javascript
+const cursorSystem = {
+  // ゲームプレイ中のカーソル設定
+  gameCursor: {
+    icon: 'hammer',           // ハンマーアイコン
+    size: { width: 32, height: 32 }, // アイコンサイズ
+    offset: { x: -16, y: -16 },      // クリック位置からのオフセット
+    animation: {
+      idle: 'hammer-idle',    // 待機状態のアニメーション
+      swing: 'hammer-swing',  // 振りかぶりアニメーション
+      hit: 'hammer-hit'       // 叩くアニメーション
+    }
+  },
+  
+  // カーソル状態管理
+  states: {
+    idle: 'idle',             // 通常状態
+    swinging: 'swinging',     // 振りかぶり中
+    hitting: 'hitting'        // 叩き中
+  }
+};
+```
+
+#### クリックアニメーションシステム
+```javascript
+const clickAnimationSystem = {
+  // アニメーションタイミング
+  timing: {
+    swingDuration: 150,       // 振りかぶり時間 (ms)
+    hitDuration: 100,         // 叩く時間 (ms)
+    totalDuration: 250,       // 全体のアニメーション時間 (ms)
+    impactDelay: 200          // クリックから衝撃発生までの遅延 (ms)
+  },
+  
+  // アニメーション詳細
+  animations: {
+    swing: {
+      rotation: { from: 0, to: -45 },    // 振りかぶり角度
+      scale: { from: 1.0, to: 1.2 },    // 振りかぶり時の拡大
+      easing: 'ease-out'                 // イージング関数
+    },
+    hit: {
+      rotation: { from: -45, to: 15 },  // 叩く角度
+      scale: { from: 1.2, to: 0.9 },   // 叩く時の縮小
+      easing: 'ease-in'                 // イージング関数
+    }
+  },
+  
+  // 視覚効果
+  effects: {
+    swingTrail: true,         // 振りかぶり時の軌跡エフェクト
+    hitImpact: true,          // 叩いた時の衝撃波エフェクト
+    screenShake: {            // 画面シェイク効果
+      enabled: true,
+      intensity: 0.3,
+      duration: 100
+    }
+  }
+};
+```
 
 #### 入力検出
 ```javascript
@@ -94,7 +307,8 @@ const inputSystem = {
   clickRadius: 5,        // クリック判定の余裕
   multiTouch: true,      // マルチタッチ対応
   dragThreshold: 10,     // ドラッグ判定の閾値
-  holdTime: 500          // 長押し判定時間
+  holdTime: 500,         // 長押し判定時間
+  animationLock: true    // アニメーション中の入力ロック
 };
 ```
 
@@ -103,22 +317,26 @@ const inputSystem = {
 - **優先順位**: 重なった泡の処理優先順位
 - **精密判定**: 泡の正確な円形判定
 - **フィードバック**: ヒット時の即座な視覚・音響フィードバック
+- **タイミング制御**: アニメーション完了後の衝撃発生
 
 #### 操作の種類
 **基本クリック**
-- **効果**: 泡のHP減少
-- **フィードバック**: クリック音、視覚エフェクト
-- **連続クリック**: 硬い泡への連続攻撃
+- **効果**: 泡のHP減少（アニメーション完了後）
+- **フィードバック**: ハンマーアニメーション、クリック音、視覚エフェクト
+- **連続クリック**: アニメーション完了後のみ有効
+- **タイミング**: クリックから衝撃まで200msの遅延
 
 **ドラッグ操作**
 - **効果**: 泡の位置移動
 - **制限**: 移動可能な距離制限
 - **物理**: ドラッグ中の物理計算停止
+- **カーソル**: ドラッグ中は通常の矢印カーソル
 
 **長押し操作**
 - **効果**: 特殊泡の特殊効果発動
 - **対象**: 一部の特殊泡のみ
 - **フィードバック**: 長押し中の視覚的変化
+- **カーソル**: 長押し中はハンマーアイコンを維持
 
 ### 泡の破壊システム
 
