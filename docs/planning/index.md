@@ -14,3 +14,4 @@ game_mechanics.md - 基本的な泡割りメカニクス
 scoring_system.md - スコアリングシステム
 progression_system.md - 進歩システム: レベル、アンロック要素
 shop_system.md - アイテムショップシステムの詳細
+debug_features.md - デバッグ機能（開発・テスト用）
