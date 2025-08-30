@@ -46,79 +46,195 @@
 
 ## 技術実装
 
+### アプリケーション分離設計
+コードの品質が相当悪い想定、ビルドが通らないのも普通ぐらいの想定のため、**バイナリを極力切り離す**設計を採用します。
+
+#### アプリケーション構成
+```
+本番アプリ: my-react-app (ポート3000)
+├─ デバッグ用ゲームプレイ: my-react-app-debug-game (ポート8001)
+├─ デバッグ用設定画面: my-react-app-debug-settings (ポート8002)
+├─ デバッグ用ヘルプ画面: my-react-app-debug-help (ポート8003)
+├─ デバッグ用アカウント: my-react-app-debug-account (ポート8004)
+└─ デバッグ用ショップ: my-react-app-debug-shop (ポート8005)
+```
+
+#### ポート分離
+- **本番アプリ**: `http://localhost:3000/`
+- **デバッグ用ゲームプレイ**: `http://localhost:8001/`
+- **デバッグ用設定画面**: `http://localhost:8002/`
+- **デバッグ用ヘルプ画面**: `http://localhost:8003/`
+- **デバッグ用アカウント**: `http://localhost:8004/`
+- **デバッグ用ショップ**: `http://localhost:8005/`
+
 ### ビルド構成
-- **通常ビルド**: ゲーム用のメインビルドファイル
-- **デバッグビルド**: デバッグ機能を含む別のビルドファイル
-- **分離管理**: デバッグコードとゲームコードの明確な分離
+- **本番ビルド**: `my-react-app` - ゲーム用のメインビルドファイル
+- **デバッグビルド**: 各デバッグ機能用の独立したビルドファイル
+- **完全分離**: デバッグコードとゲームコードの完全な分離
+
+#### ビルドファイル構成
+```bash
+# 本番アプリ
+my-react-app/
+├─ dist/                    # 本番ビルドファイル
+├─ src/                     # 本番ソースコード
+└─ package.json
+
+# デバッグ用アプリ（各画面）
+my-react-app-debug-game/
+├─ dist/                    # ゲームプレイ画面デバッグビルド
+├─ src/                     # ゲームプレイ画面デバッグコード
+└─ package.json
+
+my-react-app-debug-settings/
+├─ dist/                    # 設定画面デバッグビルド
+├─ src/                     # 設定画面デバッグコード
+└─ package.json
+
+# ... 他のデバッグアプリも同様
+```
 
 ### ルーティング構成
+各デバッグアプリは、本番アプリの画面遷移パターンに合わせて実装します。
+
+#### 本番アプリの画面遷移例
+```
+http://localhost:3000/ -> 
+http://localhost:3000/top -> 
+http://localhost:3000/game
+```
+
+#### デバッグアプリの画面遷移例
+```
+http://localhost:8001/ -> (遷移のための情報をいろいろセットする)
+http://localhost:8001/game
+```
+
+#### デバッグ用ルーティング（各アプリ独立）
 ```typescript
-// デバッグ用ルーティング
-const debugRoutes = [
-  { path: '/debug', component: DebugTopPage },
-  { path: '/debug/game', component: GamePlayScreen },
-  { path: '/debug/settings', component: SettingsScreen },
-  { path: '/debug/help', component: HelpScreen },
-  { path: '/debug/account', component: AccountScreen },
-  { path: '/debug/shop', component: ShopScreen }
+// デバッグ用ゲームプレイアプリ
+const debugGameRoutes = [
+  { path: '/', component: DebugGameTopPage },
+  { path: '/game', component: GamePlayScreen }
 ];
 
-// 通常のゲームルーティング（影響なし）
-const gameRoutes = [
-  { path: '/', component: TitleScreen },
-  { path: '/top', component: GameTopPage },
-  { path: '/game', component: GamePlayScreen },
-  // ... 他のゲームルート
+// デバッグ用設定アプリ
+const debugSettingsRoutes = [
+  { path: '/', component: DebugSettingsTopPage },
+  { path: '/settings', component: SettingsScreen }
+];
+
+// デバッグ用ヘルプアプリ
+const debugHelpRoutes = [
+  { path: '/', component: DebugHelpTopPage },
+  { path: '/help', component: HelpScreen }
+];
+
+// デバッグ用アカウントアプリ
+const debugAccountRoutes = [
+  { path: '/', component: DebugAccountTopPage },
+  { path: '/account', component: AccountScreen }
+];
+
+// デバッグ用ショップアプリ
+const debugShopRoutes = [
+  { path: '/', component: DebugShopTopPage },
+  { path: '/shop', component: ShopScreen }
 ];
 ```
 
-### デバッグ用コンポーネント
-- **DebugTopPage**: デバッグ用のトップページ
-- **DebugNavigation**: デバッグ用のナビゲーション
-- **DebugWrapper**: デバッグ機能をラップするコンポーネント
+### デバッグ用コンポーネント（各アプリ独立）
+各デバッグアプリは独立したコンポーネントセットを持ちます：
+
+- **DebugGameTopPage**: ゲームプレイ画面デバッグ用トップページ
+- **DebugSettingsTopPage**: 設定画面デバッグ用トップページ
+- **DebugHelpTopPage**: ヘルプ画面デバッグ用トップページ
+- **DebugAccountTopPage**: アカウント画面デバッグ用トップページ
+- **DebugShopTopPage**: ショップ画面デバッグ用トップページ
 
 ## 開発環境での利用
 
-### 開発サーバー起動
-```bash
-# 通常の開発サーバー
-npm run dev
+### 開発サーバー起動（各アプリ独立）
+各デバッグアプリは独立したプロジェクトとして起動します：
 
-# デバッグ機能付き開発サーバー
-npm run dev:debug
+```bash
+# 本番アプリ
+cd my-react-app
+npm run dev          # http://localhost:3000/
+
+# デバッグ用ゲームプレイアプリ
+cd my-react-app-debug-game
+npm run dev          # http://localhost:8001/
+
+# デバッグ用設定アプリ
+cd my-react-app-debug-settings
+npm run dev          # http://localhost:8002/
+
+# デバッグ用ヘルプアプリ
+cd my-react-app-debug-help
+npm run dev          # http://localhost:8003/
+
+# デバッグ用アカウントアプリ
+cd my-react-app-debug-account
+npm run dev          # http://localhost:8004/
+
+# デバッグ用ショップアプリ
+cd my-react-app-debug-shop
+npm run dev          # http://localhost:8005/
 ```
 
-### ビルドコマンド
-```bash
-# 通常ビルド
-npm run build
+### ビルドコマンド（各アプリ独立）
+各アプリは独立してビルドされます：
 
-# デバッグビルド
-npm run build:debug
+```bash
+# 本番アプリ
+cd my-react-app
+npm run build        # dist/ に本番ビルドファイル
+
+# デバッグ用ゲームプレイアプリ
+cd my-react-app-debug-game
+npm run build        # dist/ にゲームプレイデバッグビルドファイル
+
+# デバッグ用設定アプリ
+cd my-react-app-debug-settings
+npm run build        # dist/ に設定画面デバッグビルドファイル
+
+# ... 他のデバッグアプリも同様
 ```
 
-### 環境変数
-```bash
-# .env.development
-VITE_ENABLE_DEBUG=true
-VITE_DEBUG_ROUTES=true
+### 環境変数（各アプリ独立）
+各アプリは独立した環境変数ファイルを持ちます：
 
-# .env.production
-VITE_ENABLE_DEBUG=false
-VITE_DEBUG_ROUTES=false
+```bash
+# my-react-app/.env.development
+VITE_APP_TYPE=production
+VITE_API_BASE_URL=http://localhost:3000
+
+# my-react-app-debug-game/.env.development
+VITE_APP_TYPE=debug-game
+VITE_DEBUG_PORT=8001
+VITE_TARGET_SCREEN=game
+
+# my-react-app-debug-settings/.env.development
+VITE_APP_TYPE=debug-settings
+VITE_DEBUG_PORT=8002
+VITE_TARGET_SCREEN=settings
+
+# ... 他のデバッグアプリも同様
 ```
 
 ## セキュリティ・制限事項
 
 ### アクセス制限
 - **開発中**: アクセス制限なし
-- **本番環境**: デバッグ機能は無効化
-- **環境変数**: 環境に応じた自動制御
+- **本番環境**: デバッグアプリは完全に分離されているため、本番環境には存在しない
+- **ポート分離**: 各デバッグアプリは独立したポートで動作
 
 ### 注意事項
 - デバッグ機能は開発・テスト目的でのみ使用
-- 本番環境ではデバッグ機能を有効にしない
+- 本番環境ではデバッグアプリを起動しない
 - デバッグ用URLは公開しない
+- 各デバッグアプリは独立したプロジェクトとして管理
 
 ## デバッグ機能の利点
 
