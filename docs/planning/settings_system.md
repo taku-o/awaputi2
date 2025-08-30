@@ -1,5 +1,7 @@
 # BubblePop 設定システム詳細
 
+**要修正**
+
 ## 設定カテゴリ
 
 ### 音響設定 (Audio Settings)
