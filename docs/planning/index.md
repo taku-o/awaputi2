@@ -2,6 +2,7 @@ old_project_requirements.md - プロジェクト作り直しの要件チェッ�
 game_overview.md - ゲーム企画の概要
 system_architecture.md - システム構成
 screen_transitions.md - 画面遷移図
+page_flow.md - ページフロー図（Mermaidフローチャート）
 bubble_types.md - 18種類以上の泡タイプの詳細
 stage_details.md - 10種類のステージの詳細
 achievement_system.md - 実績システムで用意されている実績
