@@ -51,12 +51,12 @@
 
 #### アプリケーション構成
 ```
-本番アプリ: my-react-app (ポート3000)
-├─ デバッグ用ゲームプレイ: my-react-app-debug-game (ポート8001)
-├─ デバッグ用設定画面: my-react-app-debug-settings (ポート8002)
-├─ デバッグ用ヘルプ画面: my-react-app-debug-help (ポート8003)
-├─ デバッグ用アカウント: my-react-app-debug-account (ポート8004)
-└─ デバッグ用ショップ: my-react-app-debug-shop (ポート8005)
+本番アプリ: bubblepop (ポート3000)
+├─ デバッグ用ゲームプレイ: bubblepop-debug-game (ポート8001)
+├─ デバッグ用設定画面: bubblepop-debug-settings (ポート8002)
+├─ デバッグ用ヘルプ画面: bubblepop-debug-help (ポート8003)
+├─ デバッグ用アカウント: bubblepop-debug-account (ポート8004)
+└─ デバッグ用ショップ: bubblepop-debug-shop (ポート8005)
 ```
 
 #### ポート分離
@@ -75,18 +75,18 @@
 #### ビルドファイル構成
 ```bash
 # 本番アプリ
-my-react-app/
+bubblepop/
 ├─ dist/                    # 本番ビルドファイル
 ├─ src/                     # 本番ソースコード
 └─ package.json
 
 # デバッグ用アプリ（各画面）
-my-react-app-debug-game/
+bubblepop-debug-game/
 ├─ dist/                    # ゲームプレイ画面デバッグビルド
 ├─ src/                     # ゲームプレイ画面デバッグコード
 └─ package.json
 
-my-react-app-debug-settings/
+bubblepop-debug-settings/
 ├─ dist/                    # 設定画面デバッグビルド
 ├─ src/                     # 設定画面デバッグコード
 └─ package.json
@@ -159,27 +159,27 @@ const debugShopRoutes = [
 
 ```bash
 # 本番アプリ
-cd my-react-app
+cd bubblepop
 npm run dev          # http://localhost:3000/
 
 # デバッグ用ゲームプレイアプリ
-cd my-react-app-debug-game
+cd bubblepop-debug-game
 npm run dev          # http://localhost:8001/
 
 # デバッグ用設定アプリ
-cd my-react-app-debug-settings
+cd bubblepop-debug-settings
 npm run dev          # http://localhost:8002/
 
 # デバッグ用ヘルプアプリ
-cd my-react-app-debug-help
+cd bubblepop-debug-help
 npm run dev          # http://localhost:8003/
 
 # デバッグ用アカウントアプリ
-cd my-react-app-debug-account
+cd bubblepop-debug-account
 npm run dev          # http://localhost:8004/
 
 # デバッグ用ショップアプリ
-cd my-react-app-debug-shop
+cd bubblepop-debug-shop
 npm run dev          # http://localhost:8005/
 ```
 
@@ -188,15 +188,15 @@ npm run dev          # http://localhost:8005/
 
 ```bash
 # 本番アプリ
-cd my-react-app
+cd bubblepop
 npm run build        # dist/ に本番ビルドファイル
 
 # デバッグ用ゲームプレイアプリ
-cd my-react-app-debug-game
+cd bubblepop-debug-game
 npm run build        # dist/ にゲームプレイデバッグビルドファイル
 
 # デバッグ用設定アプリ
-cd my-react-app-debug-settings
+cd bubblepop-debug-settings
 npm run build        # dist/ に設定画面デバッグビルドファイル
 
 # ... 他のデバッグアプリも同様
@@ -206,16 +206,16 @@ npm run build        # dist/ に設定画面デバッグビルドファイル
 各アプリは独立した環境変数ファイルを持ちます：
 
 ```bash
-# my-react-app/.env.development
+# bubblepop/.env.development
 VITE_APP_TYPE=production
 VITE_API_BASE_URL=http://localhost:3000
 
-# my-react-app-debug-game/.env.development
+# bubblepop-debug-game/.env.development
 VITE_APP_TYPE=debug-game
 VITE_DEBUG_PORT=8001
 VITE_TARGET_SCREEN=game
 
-# my-react-app-debug-settings/.env.development
+# bubblepop-debug-settings/.env.development
 VITE_APP_TYPE=debug-settings
 VITE_DEBUG_PORT=8002
 VITE_TARGET_SCREEN=settings
