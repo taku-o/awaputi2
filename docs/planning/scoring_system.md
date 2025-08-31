@@ -244,20 +244,7 @@ const scoreMultiplierItem = {
 };
 ```
 
-#### 時間延長
-```javascript
-const timeExtensionItem = {
-  name: "時間延長",
-  baseCost: 50,
-  maxLevel: 3,
-  costMultiplier: 1.5,
-  effects: {
-    level1: { timeBonus: 10000 },  // +10秒
-    level2: { timeBonus: 20000 },  // +20秒
-    level3: { timeBonus: 30000 }   // +30秒
-  }
-};
-```
+
 
 #### 泡速度低下
 ```javascript
@@ -319,7 +306,7 @@ const scoreHistory = {
 };
 ```
 
-## 統計・分析システム
+## 統計システム
 
 ### スコア統計の収集
 ```javascript
@@ -333,12 +320,6 @@ const scoreStatistics = {
   bubbleTypeScores: {}   // 泡タイプ別スコア
 };
 ```
-
-### パフォーマンス分析
-- **スコア効率**: 時間あたりのスコア獲得率
-- **コンボ効率**: コンボの維持率と平均長さ
-- **リスク管理**: 危険泡の処理成功率
-- **アイテム効果**: アイテム使用による効果測定
 
 ## バランス調整システム
 

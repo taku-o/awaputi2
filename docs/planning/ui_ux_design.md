@@ -26,8 +26,7 @@ const hammerCursor = {
   displayConditions: {
     gameActive: true,             // ゲームプレイ中のみ表示
     menuOpen: false,              // メニュー開時は非表示
-    dialogOpen: false,            // ダイアログ開時は非表示
-    pauseMode: false              // 一時停止中は非表示
+    dialogOpen: false             // ダイアログ開時は非表示
   }
 };
 ```
@@ -68,7 +67,6 @@ const cursorStateManager = {
 #### ゲーム状態による切り替え
 - **メインメニュー**: 通常の矢印カーソル
 - **ゲームプレイ**: ハンマーカーソル
-- **ポーズ中**: 通常の矢印カーソル
 - **ゲームオーバー**: 通常の矢印カーソル
 - **設定画面**: 通常の矢印カーソル
 
@@ -408,6 +406,7 @@ const deviceOptimization = {
   }
 };
 ```
+**注意**: これらの設定は品質レベル設定により自動的に制御されます
 
 ## 実装ガイドライン
 
