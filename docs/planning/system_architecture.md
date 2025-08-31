@@ -7,6 +7,9 @@
 - **フロントエンド**: React + TypeScript
 - **ゲームエンジン**: Phaser（ゲームプレイ画面のみ）
 - **UI描画**: HTML + React（ゲームプレイ画面以外）
+- **UIコンポーネント**: MUI (Material-UI)（HTML部分の画面で使用）
+- **コンポーネント管理**: StoryBook（利用するコンポーネントの管理）
+- **モノリポジトリ管理**: Lerna（モノリポジトリの管理ツール）
 - **ビルドツール**: Vite
 - **状態管理**: React Context + Hooks
 - **テスト**: Jest (単体) + Playwright (E2E)

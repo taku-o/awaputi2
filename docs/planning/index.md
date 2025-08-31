@@ -1,4 +1,4 @@
-- old_project_requirements.md - プロジェクト作り直しの要件チェックリスト
+- project_structure.md - モノリポジトリ構造設計
 - game_overview.md - ゲーム企画の概要
 - system_architecture.md - システム構成
 - screen_transitions.md - 画面遷移図
