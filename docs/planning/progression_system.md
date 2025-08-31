@@ -297,12 +297,8 @@ const apSystem = {
       basic: 10,      // 基本実績
       intermediate: 50, // 中級実績
       advanced: 100,   // 上級実績
-      expert: 200,     // エキスパート実績
-      legendary: 500   // レジェンダリー実績
-    },
-    dailyBonus: 25,    // デイリーログインボーナス
-    weeklyBonus: 100,  // ウィークリーボーナス
-    eventReward: 150   // 特別イベント報酬
+      expert: 200      // エキスパート実績
+    }
   },
   
   // AP使用先
@@ -404,19 +400,6 @@ const shopItems = {
       { level: 3, multiplier: 1.9, cost: 127 },
       { level: 4, multiplier: 2.2, cost: 165 },
       { level: 5, multiplier: 2.5, cost: 215 }
-    ]
-  },
-  
-  timeExtension: {
-    name: "時間延長",
-    description: "ゲーム時間が延長されます",
-    baseCost: 50,
-    maxLevel: 3,
-    costMultiplier: 1.5,
-    effects: [
-      { level: 1, timeBonus: 10000, cost: 50 },   // +10秒
-      { level: 2, timeBonus: 20000, cost: 75 },   // +20秒
-      { level: 3, timeBonus: 30000, cost: 113 }   // +30秒
     ]
   },
   
@@ -651,31 +634,7 @@ const progressionBalance = {
 };
 ```
 
-### モチベーション維持システム
-```javascript
-const motivationSystem = {
-  // 短期目標（1-3日）
-  shortTerm: {
-    dailyQuests: "デイリークエスト",
-    levelUp: "次のレベルアップ",
-    achievement: "近い実績の達成"
-  },
-  
-  // 中期目標（1-2週間）
-  mediumTerm: {
-    stageUnlock: "新ステージの解放",
-    itemUpgrade: "アイテムのアップグレード",
-    milestone: "TAPマイルストーン達成"
-  },
-  
-  // 長期目標（1ヶ月以上）
-  longTerm: {
-    maxLevel: "最大レベル到達",
-    allAchievements: "全実績コンプリート",
-    masterRank: "マスターランク到達"
-  }
-};
-```
+
 
 ## 進歩データの管理
 
@@ -722,6 +681,3 @@ const playerProgressData = {
 ### データの永続化
 - **LocalStorage**: ブラウザローカルストレージに保存
 - **自動保存**: 進歩データの自動保存
-- **バックアップ**: 定期的なデータバックアップ
-- **復旧機能**: データ破損時の復旧機能
-- **エクスポート**: 進歩データのエクスポート機能
