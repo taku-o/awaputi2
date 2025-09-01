@@ -135,9 +135,6 @@
 ### ヘルプUI
 - HelpNavigation
 - HelpContent
-- TutorialCard
-- BubbleGuide
-- KeyboardShortcutList
 
 ## アカウントコンポーネント
 

@@ -180,14 +180,8 @@
                 <mxCell id="control-2" value="⌨️ ↑↓: アイテム選択" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#cccccc;" parent="1" vertex="1">
                     <mxGeometry x="910" y="265" width="220" height="25" as="geometry"/>
                 </mxCell>
-                <mxCell id="control-3" value="⌨️ Enter: 購入実行" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#cccccc;" parent="1" vertex="1">
-                    <mxGeometry x="910" y="300" width="220" height="25" as="geometry"/>
-                </mxCell>
-                <mxCell id="control-4" value="⌨️ Esc: メニューに戻る" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#cccccc;" parent="1" vertex="1">
-                    <mxGeometry x="910" y="335" width="220" height="25" as="geometry"/>
-                </mxCell>
                 <mxCell id="control-5" value="🖱️ スクロール: リスト移動" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#cccccc;" parent="1" vertex="1">
-                    <mxGeometry x="910" y="370" width="220" height="25" as="geometry"/>
+                    <mxGeometry x="910" y="300" width="220" height="25" as="geometry"/>
                 </mxCell>
                 <!-- 色説明 -->
                 <mxCell id="color-guide" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a2a3e;strokeColor=#3d3d55;" parent="1" vertex="1">
@@ -204,10 +198,6 @@
                 </mxCell>
                 <mxCell id="color-3" value="⚫ 最大レベル" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#888888;" parent="1" vertex="1">
                     <mxGeometry x="910" y="545" width="220" height="25" as="geometry"/>
-                </mxCell>
-                <!-- ヒントボタン -->
-                <mxCell id="hint-btn" value="💡 ショップのヒント" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9b59b6;strokeColor=#8e44ad;fontSize=14;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="950" y="660" width="140" height="40" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

@@ -91,10 +91,10 @@
                     <mxGeometry x="360" y="640" width="180" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="menu-return-btn" value="メニューに戻る" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5c5c7e;strokeColor=#4c4c6e;fontSize=16;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="570" y="645" width="140" height="40" as="geometry"/>
+                    <mxGeometry x="570" y="640" width="140" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="detail-btn" value="詳細" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5c5c7e;strokeColor=#4c4c6e;fontSize=14;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="740" y="650" width="80" height="30" as="geometry"/>
+                    <mxGeometry x="740" y="640" width="80" height="50" as="geometry"/>
                 </mxCell>
                 <!-- アニメーション要素（購入成功時） -->
                 <mxCell id="success-animation" value="✓" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#2ecc71;strokeWidth=3;fontSize=48;fontColor=#2ecc71;fontStyle=1;" parent="1" vertex="1">

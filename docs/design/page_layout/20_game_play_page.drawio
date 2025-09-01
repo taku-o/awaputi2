@@ -61,8 +61,8 @@
                 <mxCell id="combo-value" value="x15" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=28;fontColor=#ff6b6b;fontStyle=1;" parent="1" vertex="1">
                     <mxGeometry x="820" y="45" width="200" height="30" as="geometry"/>
                 </mxCell>
-                <!-- ポーズボタン -->
-                <mxCell id="pause-btn" value="⏸" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5c5c7e;strokeColor=#4c4c6e;fontSize=24;fontColor=#ffffff;" parent="1" vertex="1">
+                <!-- 終了ボタン -->
+                <mxCell id="stop-btn" value="■" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a2a3e;strokeColor=#3d3d55;fontSize=24;fontColor=#dc3545;fontStyle=1;" parent="1" vertex="1">
                     <mxGeometry x="1100" y="25" width="50" height="50" as="geometry"/>
                 </mxCell>
                 <!-- メインゲームエリア（Phaser描画エリア） -->

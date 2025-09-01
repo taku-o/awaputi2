@@ -1,159 +1,163 @@
 <mxfile host="65bd71144e">
-    <diagram id="play-result-layout" name="PlayResultPage">
-        <mxGraphModel dx="1254" dy="1169" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" background="#1a1a2e" math="0" shadow="0">
+    <diagram id="play-result-page" name="PlayResult">
+        <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" background="#0f0f1e" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <!-- 背景コンテナ -->
-                <mxCell id="bg-container" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0f0f1e;strokeColor=#2d2d44;" parent="1" vertex="1">
+                <!-- Background -->
+                <mxCell id="2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0f0f1e;strokeColor=#2d2d44;" vertex="1" parent="1">
                     <mxGeometry x="0" y="0" width="1200" height="800" as="geometry"/>
                 </mxCell>
-                <!-- 背景装飾（祝賀用泡） -->
-                <mxCell id="celebrate-bubble-1" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffd700;strokeColor=none;opacity=15;" parent="1" vertex="1">
-                    <mxGeometry x="100" y="100" width="100" height="100" as="geometry"/>
+                <!-- Header -->
+                <mxCell id="3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1e1e30;strokeColor=#2d2d44;" vertex="1" parent="1">
+                    <mxGeometry x="0" y="0" width="1200" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="celebrate-bubble-2" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ff69b4;strokeColor=none;opacity=15;" parent="1" vertex="1">
-                    <mxGeometry x="950" y="150" width="80" height="80" as="geometry"/>
+                <mxCell id="4" value="ゲーム結果" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=36;fontColor=#ffd700;fontStyle=1;" vertex="1" parent="1">
+                    <mxGeometry x="450" y="20" width="300" height="40" as="geometry"/>
                 </mxCell>
-                <!-- タイトル -->
-                <mxCell id="result-title" value="RESULT" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=48;fontColor=#ffd700;fontStyle=1;fontFamily=Arial Black;" parent="1" vertex="1">
-                    <mxGeometry x="450" y="30" width="300" height="60" as="geometry"/>
+                <!-- Main Container -->
+                <mxCell id="5" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e1e30;strokeColor=#2d2d44;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="100" width="1000" height="650" as="geometry"/>
                 </mxCell>
-                <!-- メインコンテナ -->
-                <mxCell id="main-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e1e30;strokeColor=#2d2d44;" parent="1" vertex="1">
-                    <mxGeometry x="100" y="110" width="1000" height="600" as="geometry"/>
+                <!-- Score Summary Section -->
+                <mxCell id="6" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a2a3e;strokeColor=#3d3d55;" vertex="1" parent="1">
+                    <mxGeometry x="150" y="130" width="900" height="180" as="geometry"/>
                 </mxCell>
-                <!-- 左側：結果サマリー -->
-                <mxCell id="summary-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a2a3e;strokeColor=#3d3d55;" parent="1" vertex="1">
-                    <mxGeometry x="120" y="130" width="360" height="320" as="geometry"/>
+                <mxCell id="7" value="最終スコア" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontColor=#87ceeb;" vertex="1" parent="1">
+                    <mxGeometry x="500" y="140" width="200" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="summary-title" value="スコアサマリー" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontColor=#ffffff;fontStyle=1;" parent="1" vertex="1">
-                    <mxGeometry x="120" y="140" width="360" height="30" as="geometry"/>
+                <mxCell id="8" value="123,456" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=48;fontColor=#ffd700;fontStyle=1;" vertex="1" parent="1">
+                    <mxGeometry x="450" y="170" width="300" height="60" as="geometry"/>
                 </mxCell>
-                <!-- スコア表示 -->
-                <mxCell id="score-label" value="FINAL SCORE" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#888888;" parent="1" vertex="1">
-                    <mxGeometry x="120" y="180" width="360" height="20" as="geometry"/>
+                <!-- Stats Row -->
+                <mxCell id="9" value="プレイ時間" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#888888;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="240" width="100" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="score-value" value="256,780" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;fontColor=#ffd700;fontStyle=1;fontFamily=Courier New;" parent="1" vertex="1">
-                    <mxGeometry x="120" y="200" width="360" height="50" as="geometry"/>
+                <mxCell id="10" value="03:45" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="260" width="100" height="30" as="geometry"/>
                 </mxCell>
-                <!-- その他統計 -->
-                <mxCell id="stat-time" value="⏱ 生存時間: 1:45" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="140" y="260" width="320" height="25" as="geometry"/>
+                <mxCell id="11" value="最大コンボ" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#888888;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="240" width="100" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="stat-combo" value="🔥 最大コンボ: x32" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="140" y="290" width="320" height="25" as="geometry"/>
+                <mxCell id="12" value="x45" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontColor=#ff6b6b;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="260" width="100" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="stat-bubbles" value="💫 割った泡: 184個" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="140" y="320" width="320" height="25" as="geometry"/>
+                <mxCell id="13" value="泡の総数" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#888888;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="240" width="100" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="stat-exp" value="⭐ 獲得経験値: 1,250 XP" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#90ee90;" parent="1" vertex="1">
-                    <mxGeometry x="140" y="350" width="320" height="25" as="geometry"/>
+                <mxCell id="14" value="523" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontColor=#87ceeb;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="260" width="100" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="stat-ap" value="💰 獲得AP: 450" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#87ceeb;" parent="1" vertex="1">
-                    <mxGeometry x="140" y="380" width="320" height="25" as="geometry"/>
+                <mxCell id="15" value="獲得経験値" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#888888;" vertex="1" parent="1">
+                    <mxGeometry x="800" y="240" width="100" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="stat-rank" value="評価: A+" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontColor=#ff6b6b;fontStyle=1;" parent="1" vertex="1">
-                    <mxGeometry x="120" y="410" width="360" height="30" as="geometry"/>
+                <mxCell id="16" value="+2500" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontColor=#4ade80;" vertex="1" parent="1">
+                    <mxGeometry x="800" y="260" width="100" height="30" as="geometry"/>
                 </mxCell>
-                <!-- 中央：詳細統計 -->
-                <mxCell id="detail-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a2a3e;strokeColor=#3d3d55;" parent="1" vertex="1">
-                    <mxGeometry x="500" y="130" width="280" height="320" as="geometry"/>
+                <!-- Achievement Section -->
+                <mxCell id="17" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a2a3e;strokeColor=#3d3d55;" vertex="1" parent="1">
+                    <mxGeometry x="150" y="330" width="430" height="200" as="geometry"/>
                 </mxCell>
-                <mxCell id="detail-title" value="泡の種類別統計" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#ffffff;fontStyle=1;" parent="1" vertex="1">
-                    <mxGeometry x="500" y="140" width="280" height="30" as="geometry"/>
+                <mxCell id="18" value="新しい実績" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#ffd700;" vertex="1" parent="1">
+                    <mxGeometry x="265" y="340" width="200" height="30" as="geometry"/>
                 </mxCell>
-                <!-- 泡種類別統計（簡略版） -->
-                <mxCell id="bubble-stat-normal" value="通常泡: 85個" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#3498db;" parent="1" vertex="1">
-                    <mxGeometry x="520" y="180" width="240" height="20" as="geometry"/>
+                <!-- Achievement Item 1 -->
+                <mxCell id="19" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3d3d55;strokeColor=#4d4d66;" vertex="1" parent="1">
+                    <mxGeometry x="170" y="380" width="390" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="bubble-stat-stone" value="石泡: 32個" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#95a5a6;" parent="1" vertex="1">
-                    <mxGeometry x="520" y="205" width="240" height="20" as="geometry"/>
+                <mxCell id="20" value="★" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontColor=#ffd700;" vertex="1" parent="1">
+                    <mxGeometry x="180" y="395" width="60" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="bubble-stat-diamond" value="ダイヤモンド泡: 8個" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#e74c3c;" parent="1" vertex="1">
-                    <mxGeometry x="520" y="230" width="240" height="20" as="geometry"/>
+                <mxCell id="21" value="コンボマスター" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#ffffff;fontStyle=1;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="385" width="150" height="25" as="geometry"/>
                 </mxCell>
-                <mxCell id="bubble-stat-rainbow" value="虹色泡: 3個" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#9b59b6;" parent="1" vertex="1">
-                    <mxGeometry x="520" y="255" width="240" height="20" as="geometry"/>
+                <mxCell id="22" value="40コンボ以上を達成" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#888888;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="410" width="200" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="bubble-stat-boss" value="ボス泡: 1個" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#c0392b;" parent="1" vertex="1">
-                    <mxGeometry x="520" y="280" width="240" height="20" as="geometry"/>
+                <mxCell id="23" value="+100 AP" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#4ade80;" vertex="1" parent="1">
+                    <mxGeometry x="470" y="395" width="80" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="bubble-stat-others" value="その他: 55個" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#888888;" parent="1" vertex="1">
-                    <mxGeometry x="520" y="305" width="240" height="20" as="geometry"/>
+                <!-- Achievement Item 2 -->
+                <mxCell id="24" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3d3d55;strokeColor=#4d4d66;" vertex="1" parent="1">
+                    <mxGeometry x="170" y="450" width="390" height="60" as="geometry"/>
                 </mxCell>
-                <!-- グラフ表示エリア（簡略表示） -->
-                <mxCell id="graph-area" value="📊" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=48;fontColor=#555566;" parent="1" vertex="1">
-                    <mxGeometry x="500" y="350" width="280" height="80" as="geometry"/>
+                <mxCell id="25" value="◆" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontColor=#87ceeb;" vertex="1" parent="1">
+                    <mxGeometry x="180" y="465" width="60" height="30" as="geometry"/>
                 </mxCell>
-                <!-- 右側：実績・レベルアップ -->
-                <mxCell id="achievement-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a2a3e;strokeColor=#3d3d55;" parent="1" vertex="1">
-                    <mxGeometry x="800" y="130" width="280" height="320" as="geometry"/>
+                <mxCell id="26" value="サバイバー" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#ffffff;fontStyle=1;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="455" width="150" height="25" as="geometry"/>
                 </mxCell>
-                <mxCell id="achievement-title" value="実績 & 進歩" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#ffffff;fontStyle=1;" parent="1" vertex="1">
-                    <mxGeometry x="800" y="140" width="280" height="30" as="geometry"/>
+                <mxCell id="27" value="3分以上生存" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#888888;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="480" width="200" height="20" as="geometry"/>
                 </mxCell>
-                <!-- レベルアップ表示 -->
-                <mxCell id="levelup-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2ecc71;strokeColor=#27ae60;" parent="1" vertex="1">
-                    <mxGeometry x="820" y="180" width="240" height="60" as="geometry"/>
+                <mxCell id="28" value="+50 AP" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#4ade80;" vertex="1" parent="1">
+                    <mxGeometry x="470" y="465" width="80" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="levelup-text" value="LEVEL UP!" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontColor=#ffffff;fontStyle=1;" parent="1" vertex="1">
-                    <mxGeometry x="820" y="185" width="240" height="25" as="geometry"/>
+                <!-- Level Up Section -->
+                <mxCell id="29" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a2a3e;strokeColor=#3d3d55;" vertex="1" parent="1">
+                    <mxGeometry x="620" y="330" width="430" height="200" as="geometry"/>
                 </mxCell>
-                <mxCell id="levelup-detail" value="Lv.12 → Lv.13" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="820" y="210" width="240" height="25" as="geometry"/>
+                <mxCell id="30" value="レベルアップ！" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontColor=#4ade80;fontStyle=1;" vertex="1" parent="1">
+                    <mxGeometry x="735" y="340" width="200" height="35" as="geometry"/>
                 </mxCell>
-                <!-- 新規実績 -->
-                <mxCell id="new-achievement" value="🏆 新実績解放！" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#ffd700;fontStyle=1;" parent="1" vertex="1">
-                    <mxGeometry x="820" y="250" width="240" height="25" as="geometry"/>
+                <!-- Level Progress -->
+                <mxCell id="31" value="レベル 14 → レベル 15" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="735" y="380" width="200" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="achievement-1" value="「コンボマスター」" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="840" y="280" width="220" height="20" as="geometry"/>
+                <!-- EXP Bar Background -->
+                <mxCell id="32" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3d3d55;strokeColor=#4d4d66;" vertex="1" parent="1">
+                    <mxGeometry x="660" y="420" width="350" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="achievement-1-desc" value="30コンボ達成 (+100 AP)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#888888;" parent="1" vertex="1">
-                    <mxGeometry x="840" y="300" width="220" height="20" as="geometry"/>
+                <!-- EXP Bar Fill -->
+                <mxCell id="33" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4ade80;strokeColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="660" y="420" width="105" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="achievement-2" value="「スピードスター」" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="840" y="330" width="220" height="20" as="geometry"/>
+                <mxCell id="34" value="レベル16まで 500 / 10,000 EXP" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#888888;" vertex="1" parent="1">
+                    <mxGeometry x="735" y="445" width="200" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="achievement-2-desc" value="1分で100個割る (+150 AP)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#888888;" parent="1" vertex="1">
-                    <mxGeometry x="840" y="350" width="220" height="20" as="geometry"/>
+                <!-- Unlock Notice -->
+                <mxCell id="35" value="新機能解放" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#ffd700;" vertex="1" parent="1">
+                    <mxGeometry x="785" y="475" width="100" height="20" as="geometry"/>
                 </mxCell>
-                <!-- 次のレベルまで -->
-                <mxCell id="next-level" value="次のレベルまで: 750 XP" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#888888;" parent="1" vertex="1">
-                    <mxGeometry x="800" y="410" width="280" height="30" as="geometry"/>
+                <mxCell id="36" value="ステージ5が利用可能！" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#87ceeb;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="495" width="150" height="25" as="geometry"/>
                 </mxCell>
-                <!-- 進捗バー -->
-                <mxCell id="exp-bar-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a1a;strokeColor=#333333;" parent="1" vertex="1">
-                    <mxGeometry x="820" y="385" width="240" height="15" as="geometry"/>
+                <!-- Detailed Stats Section -->
+                <mxCell id="37" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a2a3e;strokeColor=#3d3d55;" vertex="1" parent="1">
+                    <mxGeometry x="150" y="550" width="900" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="exp-bar-fill" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f39c12;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="820" y="385" width="160" height="15" as="geometry"/>
+                <mxCell id="38" value="泡の種類別内訳" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#888888;" vertex="1" parent="1">
+                    <mxGeometry x="170" y="560" width="150" height="20" as="geometry"/>
                 </mxCell>
-                <!-- 下部：操作ボタン -->
-                <mxCell id="button-container" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="120" y="480" width="960" height="200" as="geometry"/>
+                <!-- Bubble Type Stats -->
+                <mxCell id="39" value="通常: 380" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#87ceeb;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="590" width="100" height="25" as="geometry"/>
                 </mxCell>
-                <!-- プライマリボタン -->
-                <mxCell id="retry-btn" value="もう一度プレイ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2ecc71;strokeColor=#27ae60;fontSize=20;fontColor=#ffffff;fontStyle=1;shadow=1;arcSize=50;" parent="1" vertex="1">
-                    <mxGeometry x="300" y="520" width="250" height="60" as="geometry"/>
+                <mxCell id="40" value="ゴールデン: 45" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#ffd700;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="590" width="100" height="25" as="geometry"/>
                 </mxCell>
-                <mxCell id="menu-btn" value="メニューに戻る" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3498db;strokeColor=#2980b9;fontSize=20;fontColor=#ffffff;fontStyle=1;shadow=1;arcSize=50;" parent="1" vertex="1">
-                    <mxGeometry x="650" y="520" width="250" height="60" as="geometry"/>
+                <mxCell id="41" value="マルチ: 28" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#ff6b6b;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="590" width="100" height="25" as="geometry"/>
                 </mxCell>
-                <!-- セカンダリボタン -->
-                <mxCell id="achievement-detail-btn" value="実績詳細" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5c5c7e;strokeColor=#4c4c6e;fontSize=16;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="350" y="610" width="150" height="40" as="geometry"/>
+                <mxCell id="42" value="ボム: 15" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#e74c3c;" vertex="1" parent="1">
+                    <mxGeometry x="560" y="590" width="100" height="25" as="geometry"/>
                 </mxCell>
-                <mxCell id="stats-btn" value="統計情報" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5c5c7e;strokeColor=#4c4c6e;fontSize=16;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="525" y="610" width="150" height="40" as="geometry"/>
+                <mxCell id="43" value="回復: 22" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#4ade80;" vertex="1" parent="1">
+                    <mxGeometry x="680" y="590" width="100" height="25" as="geometry"/>
                 </mxCell>
-                <mxCell id="share-btn" value="共有" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5c5c7e;strokeColor=#4c4c6e;fontSize=16;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="700" y="610" width="150" height="40" as="geometry"/>
+                <mxCell id="44" value="特殊: 33" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#9b59b6;" vertex="1" parent="1">
+                    <mxGeometry x="800" y="590" width="100" height="25" as="geometry"/>
                 </mxCell>
-                <!-- 星評価 -->
-                <mxCell id="star-rating" value="⭐⭐⭐⭐☆" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=32;" parent="1" vertex="1">
-                    <mxGeometry x="500" y="470" width="200" height="40" as="geometry"/>
+                <!-- AP Earned -->
+                <mxCell id="45" value="獲得AP: +150" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#4ade80;fontStyle=1;" vertex="1" parent="1">
+                    <mxGeometry x="900" y="590" width="120" height="25" as="geometry"/>
+                </mxCell>
+                <!-- Action Buttons -->
+                <mxCell id="46" value="もう一度プレイ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3498db;strokeColor=#2980b9;fontSize=18;fontColor=#ffffff;fontStyle=1;" vertex="1" parent="1">
+                    <mxGeometry x="420" y="680" width="160" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="メニューに戻る" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5c5c7e;strokeColor=#4c4c6e;fontSize=18;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="620" y="680" width="160" height="50" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

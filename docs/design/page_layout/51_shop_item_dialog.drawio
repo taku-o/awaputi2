@@ -151,11 +151,7 @@
                 </mxCell>
                 <!-- キャンセルボタン -->
                 <mxCell id="cancel-btn" value="キャンセル" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5c5c7e;strokeColor=#4c4c6e;fontSize=16;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="760" y="620" width="120" height="40" as="geometry"/>
-                </mxCell>
-                <!-- ヒント表示 -->
-                <mxCell id="hint-box" value="💡 ヒント: このアイテムはスコア系の実績達成に役立ちます" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#888888;fontStyle=2;" parent="1" vertex="1">
-                    <mxGeometry x="350" y="685" width="500" height="15" as="geometry"/>
+                    <mxGeometry x="760" y="615" width="120" height="50" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
