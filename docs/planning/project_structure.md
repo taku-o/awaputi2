@@ -1,7 +1,7 @@
 # BubblePop プロジェクト構造設計
 
 ## 概要
-BubblePopゲームプロジェクトのモノリポジトリ構造と技術スタックに関する包括的な設計書です。MUI (Material-UI)、StoryBook、Lernaを活用した効率的な開発環境の構築を目指します。
+BubblePopゲームプロジェクトのモノリポジトリ構造と技術スタックに関する包括的な設計書です。MUI (Material-UI)、StoryBook、Lerna、Framer Motion、Zustandを活用した効率的な開発環境の構築を目指します。
 
 ## モノリポジトリ構造
 
@@ -14,6 +14,8 @@ awaputi2/
 │   │   │   ├── components/           # Reactコンポーネント
 │   │   │   ├── pages/                # ページコンポーネント
 │   │   │   ├── hooks/                # カスタムフック
+│   │   │   ├── stores/               # Zustandストア
+│   │   │   ├── animations/           # Framer Motionアニメーション
 │   │   │   ├── utils/                # ユーティリティ関数
 │   │   │   ├── types/                # TypeScript型定義
 │   │   │   ├── assets/               # 静的アセット
@@ -52,6 +54,8 @@ awaputi2/
 │   │   │   │   ├── Card/             # カードコンポーネント
 │   │   │   │   ├── ....
 │   │   │   │   └── index.ts          # 全コンポーネントのエクスポート
+│   │   │   ├── animations/           # Framer Motionアニメーション
+│   │   │   ├── stores/               # Zustandストア
 │   │   │   ├── hooks/                # 共通フック
 │   │   │   ├── utils/                # 共通ユーティリティ
 │   │   │   ├── types/                # 共通型定義

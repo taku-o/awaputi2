@@ -1,7 +1,7 @@
 # BubblePop UI/UX デザイン仕様
 
 ## 概要
-BubblePopゲームのユーザーインターフェースとユーザーエクスペリエンスに関する包括的なデザイン仕様書です。直感的で魅力的なゲーム体験を提供するためのUI/UX要素を定義します。
+BubblePopゲームのユーザーインターフェースとユーザーエクスペリエンスに関する包括的なデザイン仕様書です。Framer MotionによるアニメーションとZustandによる状態管理を活用し、直感的で魅力的なゲーム体験を提供するためのUI/UX要素を定義します。
 
 ## カーソルシステム
 
@@ -75,7 +75,7 @@ const cursorStateManager = {
 - キーボード操作中
 - アクセシビリティ設定で無効化
 
-## クリックアニメーションシステム
+## クリックアニメーションシステム（Framer Motion実装）
 
 ### アニメーションの基本構成
 
@@ -93,6 +93,29 @@ const cursorStateManager = {
 3. **復帰段階** (250ms以降)
    - 元の位置への復帰
    - 次の操作の準備完了
+
+### Framer Motionによる実装
+```typescript
+import { motion, useAnimation } from 'framer-motion';
+
+const hammerAnimation = {
+  swing: {
+    rotate: -45,
+    scale: 1.2,
+    transition: { duration: 0.15, ease: "easeOut" }
+  },
+  hit: {
+    rotate: 15,
+    scale: 0.9,
+    transition: { duration: 0.1, ease: "easeIn" }
+  },
+  idle: {
+    rotate: 0,
+    scale: 1.0,
+    transition: { duration: 0.1, ease: "easeOut" }
+  }
+};
+```
 
 ### アニメーションの詳細仕様
 
@@ -211,12 +234,32 @@ const inputLockSystem = {
 };
 ```
 
-## 視覚効果システム
+## 視覚効果システム（Framer Motion実装）
 
 ### 画面シェイク効果
 
 #### シェイクの基本設定
-```javascript
+```typescript
+import { motion, useAnimation } from 'framer-motion';
+
+const screenShakeVariants = {
+  shake: {
+    x: [0, -10, 10, -10, 10, 0],
+    y: [0, -5, 5, -5, 5, 0],
+    transition: {
+      duration: 0.1,
+      ease: "easeInOut"
+    }
+  },
+  idle: {
+    x: 0,
+    y: 0,
+    transition: {
+      duration: 0.1
+    }
+  }
+};
+
 const screenShakeSystem = {
   // 基本パラメータ
   enabled: true,
@@ -417,12 +460,16 @@ const deviceOptimization = {
 - **エラーハンドリング**: 適切な例外処理の実装
 - **パフォーマンス**: フレームレートの監視と最適化
 - **メモリリーク**: イベントリスナーの適切な管理
+- **Framer Motion最適化**: 不要なアニメーションの無効化
+- **Zustand状態管理**: 適切な状態の分離と更新
 
 #### テスト要件
 - **ユニットテスト**: 各アニメーション関数のテスト
 - **統合テスト**: カーソルシステム全体のテスト
 - **パフォーマンステスト**: フレームレートとメモリ使用量のテスト
 - **アクセシビリティテスト**: 各種設定の動作確認
+- **Framer Motionテスト**: アニメーションの動作確認
+- **Zustandテスト**: 状態管理の動作確認
 
 #### ブラウザ互換性
 - **モダンブラウザ**: Chrome 90+, Firefox 88+, Safari 14+
@@ -433,3 +480,70 @@ const deviceOptimization = {
 #### プラットフォーム対応
 - **デスクトップ**: マウス・キーボード操作
 - **モバイル**: タッチ・ジェスチャー操作
+
+### Framer Motion実装のベストプラクティス
+
+#### アニメーション最適化
+```typescript
+// パフォーマンスを考慮したアニメーション設定
+const optimizedAnimation = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -20 },
+  transition: {
+    duration: 0.3,
+    ease: "easeOut",
+    // レイアウトシフトを防ぐ
+    layout: false
+  }
+};
+```
+
+#### 状態管理との連携
+```typescript
+import { useStore } from '../stores/gameStore';
+
+const GameComponent = () => {
+  const { gameState, updateGameState } = useStore();
+  
+  return (
+    <motion.div
+      animate={gameState.isPlaying ? "playing" : "paused"}
+      variants={gameVariants}
+    >
+      {/* ゲームコンテンツ */}
+    </motion.div>
+  );
+};
+```
+
+### Zustand状態管理のベストプラクティス
+
+#### ストア設計
+```typescript
+import { create } from 'zustand';
+import { devtools } from 'zustand/middleware';
+
+interface GameState {
+  score: number;
+  level: number;
+  isPlaying: boolean;
+  updateScore: (score: number) => void;
+  startGame: () => void;
+  pauseGame: () => void;
+}
+
+export const useGameStore = create<GameState>()(
+  devtools(
+    (set) => ({
+      score: 0,
+      level: 1,
+      isPlaying: false,
+      updateScore: (score) => set({ score }),
+      startGame: () => set({ isPlaying: true }),
+      pauseGame: () => set({ isPlaying: false }),
+    }),
+    { name: 'game-store' }
+  )
+);
+```
