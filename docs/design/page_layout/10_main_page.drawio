@@ -1,11 +1,153 @@
 <mxfile host="65bd71144e">
-    <diagram id="oAgHExZp4LiMz652ojp8" name="Page-1">
-        <mxGraphModel dx="449" dy="535" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <diagram id="main-page-layout" name="MainPage">
+        <mxGraphModel dx="1254" dy="1169" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" background="#1a1a2e" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="2" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="20" y="20" width="210" height="160" as="geometry"/>
+                <!-- 背景コンテナ -->
+                <mxCell id="bg-container" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0f0f1e;strokeColor=#2d2d44;" parent="1" vertex="1">
+                    <mxGeometry x="0" y="0" width="1200" height="800" as="geometry"/>
+                </mxCell>
+                <!-- ヘッダーエリア -->
+                <mxCell id="header-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1e1e30;strokeColor=#2d2d44;" parent="1" vertex="1">
+                    <mxGeometry x="0" y="0" width="1200" height="80" as="geometry"/>
+                </mxCell>
+                <!-- ユーザー情報エリア -->
+                <mxCell id="user-info-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a2a3e;strokeColor=#3d3d55;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="15" width="350" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="user-name" value="ユーザー名: Player123" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="20" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="user-level" value="Lv.12" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#ffd700;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="20" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="user-ap" value="AP: 2,450" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#90ee90;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="40" width="100" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="user-tap" value="TAP: 15,678" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#87ceeb;" parent="1" vertex="1">
+                    <mxGeometry x="130" y="40" width="100" height="20" as="geometry"/>
+                </mxCell>
+                <!-- メインメニューボタンエリア -->
+                <mxCell id="menu-container" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="10" width="480" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="account-btn" value="アカウント" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5c5c7e;strokeColor=#4c4c6e;fontSize=12;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="720" y="20" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="help-btn" value="ヘルプ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5c5c7e;strokeColor=#4c4c6e;fontSize=12;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="810" y="20" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="shop-btn" value="ショップ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4af37;strokeColor=#b4941f;fontSize=12;fontColor=#ffffff;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="900" y="20" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="settings-btn" value="設定" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5c5c7e;strokeColor=#4c4c6e;fontSize=12;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="990" y="20" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="exit-btn" value="終了" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dc3545;strokeColor=#b02a37;fontSize=12;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="20" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <!-- メインタイトル -->
+                <mxCell id="main-title" value="ステージ選択" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=36;fontColor=#ffffff;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="450" y="100" width="300" height="50" as="geometry"/>
+                </mxCell>
+                <!-- ステージ選択グリッドエリア -->
+                <mxCell id="stage-grid-container" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="180" width="1000" height="540" as="geometry"/>
+                </mxCell>
+                <!-- ステージカード：チュートリアル -->
+                <mxCell id="stage-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2ecc71;strokeColor=#27ae60;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="200" width="180" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-1-title" value="チュートリアル" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#ffffff;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="210" width="180" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-1-icon" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;opacity=30;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="250" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-1-time" value="⏱ 30秒" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="320" width="180" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-1-difficulty" value="難易度：★☆☆☆☆" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="345" width="180" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-1-desc" value="基本操作を学ぼう" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="370" width="180" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-1-status" value="解放済み" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#27ae60;strokeColor=none;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="400" width="80" height="25" as="geometry"/>
+                </mxCell>
+                <!-- ステージカード：普通のアワアワ -->
+                <mxCell id="stage-2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3498db;strokeColor=#2980b9;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="200" width="180" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-2-title" value="普通のアワアワ" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#ffffff;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="210" width="180" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-2-icon" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;opacity=30;" parent="1" vertex="1">
+                    <mxGeometry x="410" y="250" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-2-time" value="⏱ 2分" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="320" width="180" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-2-difficulty" value="難易度：★★☆☆☆" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="345" width="180" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-2-desc" value="通常の泡を割ろう" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="370" width="180" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-2-status" value="解放済み" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2980b9;strokeColor=none;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="400" width="80" height="25" as="geometry"/>
+                </mxCell>
+                <!-- ステージカード：ちょっと硬いアワアワ -->
+                <mxCell id="stage-3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9b59b6;strokeColor=#8e44ad;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="550" y="200" width="180" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-3-title" value="ちょっと硬い" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#ffffff;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="550" y="210" width="180" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-3-icon" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;opacity=30;" parent="1" vertex="1">
+                    <mxGeometry x="610" y="250" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-3-unlock" value="Lv.5で解放" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#ffcccc;" parent="1" vertex="1">
+                    <mxGeometry x="550" y="400" width="180" height="25" as="geometry"/>
+                </mxCell>
+                <!-- ステージカード：かなり硬いアワアワ -->
+                <mxCell id="stage-4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e74c3c;strokeColor=#c0392b;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="750" y="200" width="180" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-4-title" value="かなり硬い" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#ffffff;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="750" y="210" width="180" height="30" as="geometry"/>
+                </mxCell>
+                <!-- ボスアワアワ（下段） -->
+                <mxCell id="stage-10" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c0392b;strokeColor=#a02622;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="750" y="460" width="180" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-10-title" value="ボスアワアワ" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#ffffff;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="750" y="470" width="180" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-10-icon" value="BOSS" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=28;fontColor=#ffd700;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="750" y="520" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-10-lock" value="🔒 Lv.30で解放" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#ffcccc;" parent="1" vertex="1">
+                    <mxGeometry x="750" y="660" width="180" height="25" as="geometry"/>
+                </mxCell>
+                <!-- 他のステージカード（簡略表示） -->
+                <mxCell id="stage-5" value="特殊なアワアワ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#555577;strokeColor=#444466;shadow=1;fontSize=14;fontColor=#ffffff;opacity=70;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="460" width="180" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-6" value="悪夢のアワアワ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#555577;strokeColor=#444466;shadow=1;fontSize=14;fontColor=#ffffff;opacity=70;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="460" width="180" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage-7" value="カオスなアワアワ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#555577;strokeColor=#444466;shadow=1;fontSize=14;fontColor=#ffffff;opacity=70;" parent="1" vertex="1">
+                    <mxGeometry x="550" y="460" width="180" height="240" as="geometry"/>
+                </mxCell>
+                <!-- 背景装飾泡 -->
+                <mxCell id="deco-bubble-1" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4a69bd;strokeColor=none;opacity=10;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="150" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="deco-bubble-2" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f39c12;strokeColor=none;opacity=10;" parent="1" vertex="1">
+                    <mxGeometry x="1050" y="400" width="60" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

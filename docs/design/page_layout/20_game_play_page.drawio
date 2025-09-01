@@ -1,11 +1,113 @@
 <mxfile host="65bd71144e">
-    <diagram id="VrxYlXBwjcmsRBj-Z4ZC" name="Page-1">
-        <mxGraphModel dx="449" dy="535" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <diagram id="game-play-layout" name="GamePlayPage">
+        <mxGraphModel dx="1254" dy="1169" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" background="#0a0a0f" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="2" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="20" y="20" width="220" height="150" as="geometry"/>
+                <!-- 背景コンテナ -->
+                <mxCell id="bg-container" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0a0a0f;strokeColor=#1a1a2e;" parent="1" vertex="1">
+                    <mxGeometry x="0" y="0" width="1200" height="800" as="geometry"/>
+                </mxCell>
+                <!-- ゲーム情報ヘッダーエリア -->
+                <mxCell id="header-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a2e;strokeColor=#2d2d44;" parent="1" vertex="1">
+                    <mxGeometry x="0" y="0" width="1200" height="100" as="geometry"/>
+                </mxCell>
+                <!-- 残り時間表示 -->
+                <mxCell id="time-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a2a3e;strokeColor=#3d3d55;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="20" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="time-label" value="TIME" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#888888;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="25" width="200" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="time-value" value="01:45" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=28;fontColor=#ffffff;fontStyle=1;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="45" width="200" height="30" as="geometry"/>
+                </mxCell>
+                <!-- HP表示 -->
+                <mxCell id="hp-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a2a3e;strokeColor=#3d3d55;" parent="1" vertex="1">
+                    <mxGeometry x="260" y="20" width="240" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="hp-label" value="HP" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#888888;" parent="1" vertex="1">
+                    <mxGeometry x="270" y="25" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="hp-bar-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a1a;strokeColor=#333333;" parent="1" vertex="1">
+                    <mxGeometry x="270" y="45" width="180" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="hp-bar-fill" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e74c3c;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="270" y="45" width="144" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="hp-text" value="80/100" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#ffffff;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="270" y="47" width="180" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="hp-hearts" value="❤️❤️❤️❤️🤍" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="460" y="45" width="30" height="25" as="geometry"/>
+                </mxCell>
+                <!-- スコア表示 -->
+                <mxCell id="score-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a2a3e;strokeColor=#3d3d55;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="20" width="280" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="score-label" value="SCORE" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#888888;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="25" width="280" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="score-value" value="124,560" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=28;fontColor=#ffd700;fontStyle=1;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="45" width="280" height="30" as="geometry"/>
+                </mxCell>
+                <!-- コンボ表示 -->
+                <mxCell id="combo-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a2a3e;strokeColor=#3d3d55;" parent="1" vertex="1">
+                    <mxGeometry x="820" y="20" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="combo-label" value="COMBO" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#888888;" parent="1" vertex="1">
+                    <mxGeometry x="820" y="25" width="200" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="combo-value" value="x15" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=28;fontColor=#ff6b6b;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="820" y="45" width="200" height="30" as="geometry"/>
+                </mxCell>
+                <!-- ポーズボタン -->
+                <mxCell id="pause-btn" value="⏸" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5c5c7e;strokeColor=#4c4c6e;fontSize=24;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="1100" y="25" width="50" height="50" as="geometry"/>
+                </mxCell>
+                <!-- メインゲームエリア（Phaser描画エリア） -->
+                <mxCell id="game-area" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0f0f1e;strokeColor=#2d2d44;dashed=1;dashPattern=5 5;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="120" width="1100" height="640" as="geometry"/>
+                </mxCell>
+                <mxCell id="game-area-label" value="ゲームエリア（Phaser Canvas）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=36;fontColor=#333344;fontStyle=2;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="400" width="400" height="80" as="geometry"/>
+                </mxCell>
+                <!-- サンプル泡表示（実際はPhaserで描画） -->
+                <mxCell id="bubble-sample-1" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#3498db;strokeColor=#2980b9;opacity=60;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="250" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="bubble-sample-2" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e74c3c;strokeColor=#c0392b;opacity=60;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="180" width="100" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="bubble-sample-3" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#2ecc71;strokeColor=#27ae60;opacity=60;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="300" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="bubble-sample-4" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f39c12;strokeColor=#e67e22;opacity=60;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="450" width="120" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="bubble-sample-5" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#9b59b6;strokeColor=#8e44ad;opacity=60;" parent="1" vertex="1">
+                    <mxGeometry x="900" y="500" width="90" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="bubble-sample-6" value="BOSS" style="ellipse;whiteSpace=wrap;html=1;fillColor=#c0392b;strokeColor=#a02622;opacity=80;fontSize=20;fontColor=#ffffff;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="400" width="150" height="150" as="geometry"/>
+                </mxCell>
+                <!-- エフェクトサンプル -->
+                <mxCell id="effect-pop-1" value="POP!" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#ffd700;fontStyle=1;rotation=-15;" parent="1" vertex="1">
+                    <mxGeometry x="170" y="200" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="effect-score-1" value="+500" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#90ee90;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="150" width="60" height="25" as="geometry"/>
+                </mxCell>
+                <!-- ステージ情報表示（オプション） -->
+                <mxCell id="stage-info" value="Stage: 普通のアワアワ" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#666677;fontStyle=2;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="130" width="200" height="25" as="geometry"/>
+                </mxCell>
+                <!-- 警告表示エリア（HP低下時など） -->
+                <mxCell id="warning-overlay" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ff0000;strokeColor=none;opacity=0;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="120" width="1100" height="640" as="geometry"/>
+                </mxCell>
+                <mxCell id="warning-text" value="⚠️ HP低下！" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=48;fontColor=#ff0000;fontStyle=1;opacity=0;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="350" width="400" height="100" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
