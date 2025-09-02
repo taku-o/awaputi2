@@ -279,9 +279,9 @@
   "graphics": {  // グラフィック設定
     "quality": "high",  // 品質 (low/medium/high)
     "particleEffects": true,  // パーティクルエフェクト
-    "screenShake": true,  // 画面振動
+    "screenShake": true,  // 画面シェイク
     "showDamageNumbers": true,  // ダメージ数値表示
-    "reducedMotion": false  // モーション軽減（アクセシビリティ）
+    "reducedMotion": false  // モーション軽減
   },
   "gameplay": {  // ゲームプレイ設定
     "difficulty": "normal",  // 難易度
@@ -290,12 +290,7 @@
     "confirmPurchases": false  // 購入確認ダイアログ
   },
   "language": "ja",  // 言語設定
-  "accessibility": {  // アクセシビリティ設定
-    "colorBlindMode": "none",  // 色覚補助 (none/protanopia/deuteranopia/tritanopia)
-    "largeText": false,  // 大きい文字
-    "highContrast": false,  // ハイコントラスト
-    "keyboardOnly": false  // キーボードのみ操作
-  },
+
   "controls": {  // コントロール設定
     "mouseButton": "left",  // マウスボタン (left/right)
     "keyBindings": {  // キーバインディング
@@ -376,28 +371,7 @@
 }
 ```
 
-## 10. ゲームイベントログ (Game Event Log)
 
-ゲーム内イベントの記録用
-
-```jsonc
-{
-  "eventId": "evt_001",
-  "timestamp": "2025-09-01T14:25:30.500Z",
-  "sessionId": "session_001",
-  "eventType": "bubblePopped",  // イベントタイプ
-  "data": {
-    "bubbleId": "bubble_042",
-    "bubbleType": "rainbow",
-    "position": { "x": 320, "y": 240 },
-    "score": 150,  // 獲得スコア（倍率適用後）
-    "combo": 12,
-    "effects": ["bonusTimeActivated"],
-    "playerHp": 85,
-    "gameTime": 45.5
-  }
-}
-```
 
 ## データ構造の使用例と関連性
 

@@ -7,13 +7,12 @@
 
 ### メイン画面
 - **http://example.com/**
-  - /top/
+  - /
+  - /main/
   - /game/{stage_id}/
   - /settings/
-    - /settings/{category}/
   - /help/
-    - /help/{category}/
-      - /help/{category}/{topic}/
+    - /help/{category}/{topic}/
   - /account/
   - /shop/
     - /shop/{item_id}/

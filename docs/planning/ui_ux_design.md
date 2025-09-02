@@ -73,7 +73,7 @@ const cursorStateManager = {
 #### カーソルの非表示条件
 - モバイルデバイス（タッチ操作）
 - キーボード操作中
-- アクセシビリティ設定で無効化
+
 
 ## クリックアニメーションシステム（Framer Motion実装）
 
@@ -89,6 +89,7 @@ const cursorStateManager = {
    - ハンマーを前方に振り下ろす
    - 衝撃波エフェクトの生成
    - 画面シェイク効果
+
 
 3. **復帰段階** (250ms以降)
    - 元の位置への復帰
@@ -236,6 +237,10 @@ const inputLockSystem = {
 
 ## 視覚効果システム（Framer Motion実装）
 
+
+
+
+
 ### 画面シェイク効果
 
 #### シェイクの基本設定
@@ -341,56 +346,7 @@ const shockwaveEffectSystem = {
 };
 ```
 
-## アクセシビリティ対応
 
-### 視覚的アクセシビリティ
-
-#### カスタマイズ可能な設定
-```javascript
-const accessibilitySettings = {
-  // 視覚効果の調整
-  visualEffects: {
-    screenShake: {
-      enabled: true,
-      intensity: 'adjustable',      // 調整可能
-      range: [0.0, 1.0]            // 調整範囲
-    },
-    cursorSize: {
-      enabled: true,
-      multiplier: 'adjustable',     // 調整可能
-      range: [1.0, 3.0]            // 調整範囲
-    },
-    animationSpeed: {
-      enabled: true,
-      multiplier: 'adjustable',     // 調整可能
-      range: [0.5, 2.0]            // 調整範囲
-    }
-  },
-  
-
-};
-```
-
-### 聴覚的アクセシビリティ
-
-#### 音響フィードバックの調整
-```javascript
-const audioAccessibility = {
-  // 音量調整
-  volume: {
-    master: 'adjustable',           // マスター音量調整可能
-    effects: 'adjustable',          // エフェクト音量調整可能
-    music: 'adjustable'             // 音楽音量調整可能
-  },
-  
-  // 音響フィードバック
-  audioFeedback: {
-    clickSound: true,               // クリック音
-    impactSound: true,              // 衝撃音
-    visualAlternative: true         // 視覚的代替手段
-  }
-};
-```
 
 ## パフォーマンス最適化
 
@@ -467,7 +423,7 @@ const deviceOptimization = {
 - **ユニットテスト**: 各アニメーション関数のテスト
 - **統合テスト**: カーソルシステム全体のテスト
 - **パフォーマンステスト**: フレームレートとメモリ使用量のテスト
-- **アクセシビリティテスト**: 各種設定の動作確認
+
 - **Framer Motionテスト**: アニメーションの動作確認
 - **Zustandテスト**: 状態管理の動作確認
 

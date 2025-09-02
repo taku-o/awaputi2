@@ -228,10 +228,7 @@ const featureUnlockRequirements = {
     requirement: { type: "gamesPlayed", value: 3 },
     message: "3回プレイで解放"
   },
-  socialSharing: {
-    requirement: { type: "gamesPlayed", value: 5 },
-    message: "5回プレイで解放"
-  },
+
   
   // 実績依存の解放
   expertTips: {

@@ -80,29 +80,7 @@
   - **デフォルト**: `['F1']`
   - **説明**: ヘルプ画面を開く
 
-### ソーシャル共有設定 (Social Sharing Settings)
 
-#### 基本設定
-- **autoPromptHighScore** (ハイスコア時自動プロンプト)
-  - **タイプ**: boolean
-  - **デフォルト**: true
-
-- **autoPromptAchievements** (実績解除時自動プロンプト)
-  - **タイプ**: boolean
-  - **デフォルト**: true
-
-#### 共有設定
-- **defaultPlatform** (デフォルトプラットフォーム)
-  - **選択肢**: `auto`, `twitter`, `facebook`, `native`
-  - **デフォルト**: `auto`
-
-- **includeScreenshot** (スクリーンショット含む)
-  - **タイプ**: boolean
-  - **デフォルト**: true
-
-- **screenshotQuality** (スクリーンショット品質)
-  - **選択肢**: `low`, `medium`, `high`
-  - **デフォルト**: `high`
 
 ### 通知設定 (Notification Settings)
 
@@ -159,11 +137,7 @@
 - **JSON形式**: 設定データのJSON出力
 - **選択的エクスポート**: 特定カテゴリのみ出力
 
-### アクセシビリティプロファイル
 
-#### カスタムプロファイル
-- **個人設定**: ユーザー独自の設定組み合わせ
-- **プロファイル保存**: 複数プロファイルの管理
 
 ## 設定の技術実装
 
