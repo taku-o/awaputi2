@@ -167,9 +167,7 @@
 - MobileView
 - DesktopView
 
-### アクセシビリティ
-- SkipLink
-- ScreenReaderOnly
+### フォーカス表示
 - FocusIndicator
 
 ### ローディング

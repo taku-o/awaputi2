@@ -146,7 +146,7 @@
       { "type": "score", "weight": 5 }
     ]
   },
-  "specialEvents": [],  // 特殊イベント（ボスステージ用）
+  "bossEvents": [],  // ボス泡出現イベント（ボスステージ用）
   "bestScore": 32500,  // ベストスコア
   "playCount": 15  // プレイ回数
 }
