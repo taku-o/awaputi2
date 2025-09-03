@@ -16,4 +16,5 @@
 - scoring_system.md - スコアリングシステム
 - progression_system.md - 進歩システム: レベル、アンロック要素
 - shop_system.md - アイテムショップシステムの詳細
+- notification_system.md - 通知システム
 - debug_features.md - デバッグ機能（開発・テスト用）
