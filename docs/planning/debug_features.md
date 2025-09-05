@@ -12,15 +12,26 @@
 ## デバッグ用URL構成
 
 ### 基本構造
-デバッグ用の機能は、ゲームの通常のURLとは別のトップページURLを提供します。
+デバッグアプリはそれぞれ、ゲームの通常のURLとは別のトップページURLを提供します。
 
 ```
-デバッグ用トップページ
-├─ ゲームプレイ画面
-├─ 設定画面
-├─ ヘルプ画面
-├─ アカウント情報画面
+ゲームプレイデバッグ用アプリトップページ
+└─ ゲームプレイ画面
+
+設定画面デバッグ用アプリトップページ
+└─ 設定画面
+
+ヘルプ画面デバッグ用アプリトップページ
+└─ ヘルプ画面
+
+アカウント情報画面デバッグ用アプリトップページ
+└─ アカウント情報画面
+
+ショップ画面デバッグ用アプリトップページ
 └─ ショップ画面
+
+通知機能デバッグ用アプリトップページ
+└─ 通知デバッグ画面
 ```
 
 ### 各画面への直接アクセス
@@ -44,6 +55,10 @@
    - 目的: ショップ機能の動作確認
    - 用途: アイテム表示のテスト、購入フローの確認
 
+6. **仮トップページ → 通知デバッグ画面**
+   - 目的: 通知システムの動作確認
+   - 用途: 通知の発行テスト、通知表示の確認、通知設定のテスト
+
 ## 技術実装
 
 ### アプリケーション分離設計
@@ -56,7 +71,8 @@
 ├─ デバッグ用設定画面: bubblepop-debug-settings (ポート8002)
 ├─ デバッグ用ヘルプ画面: bubblepop-debug-help (ポート8003)
 ├─ デバッグ用アカウント: bubblepop-debug-account (ポート8004)
-└─ デバッグ用ショップ: bubblepop-debug-shop (ポート8005)
+├─ デバッグ用ショップ: bubblepop-debug-shop (ポート8005)
+└─ デバッグ用通知: bubblepop-debug-notification (ポート8006)
 ```
 
 #### ポート分離
@@ -66,6 +82,7 @@
 - **デバッグ用ヘルプ画面**: `http://localhost:8003/`
 - **デバッグ用アカウント**: `http://localhost:8004/`
 - **デバッグ用ショップ**: `http://localhost:8005/`
+- **デバッグ用通知**: `http://localhost:8006/`
 
 ### ビルド構成
 - **本番ビルド**: `my-react-app` - ゲーム用のメインビルドファイル
@@ -141,6 +158,12 @@ const debugShopRoutes = [
   { path: '/', component: DebugShopTopPage },
   { path: '/shop', component: ShopScreen }
 ];
+
+// デバッグ用通知アプリ
+const debugNotificationRoutes = [
+  { path: '/', component: DebugNotificationTopPage },
+  { path: '/notification', component: NotificationScreen }
+];
 ```
 
 ### デバッグ用コンポーネント（各アプリ独立）
@@ -151,6 +174,7 @@ const debugShopRoutes = [
 - **DebugHelpTopPage**: ヘルプ画面デバッグ用トップページ
 - **DebugAccountTopPage**: アカウント画面デバッグ用トップページ
 - **DebugShopTopPage**: ショップ画面デバッグ用トップページ
+- **DebugNotificationTopPage**: 通知システムデバッグ用トップページ
 
 ## 開発環境での利用
 
@@ -181,6 +205,10 @@ npm run dev          # http://localhost:8004/
 # デバッグ用ショップアプリ
 cd bubblepop-debug-shop
 npm run dev          # http://localhost:8005/
+
+# デバッグ用通知アプリ
+cd bubblepop-debug-notification
+npm run dev          # http://localhost:8006/
 ```
 
 ### ビルドコマンド（各アプリ独立）
@@ -198,6 +226,10 @@ npm run build        # dist/ にゲームプレイデバッグビルドファイ
 # デバッグ用設定アプリ
 cd bubblepop-debug-settings
 npm run build        # dist/ に設定画面デバッグビルドファイル
+
+# デバッグ用通知アプリ
+cd bubblepop-debug-notification
+npm run build        # dist/ に通知システムデバッグビルドファイル
 
 # ... 他のデバッグアプリも同様
 ```
