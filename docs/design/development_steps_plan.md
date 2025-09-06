@@ -10,7 +10,7 @@
 1. ui-libraryパッケージの作成
 2. MUIテーマ設定
 
-## Phase 3: 基本コンポーネント作成
+## [done] Phase 3: 基本コンポーネント作成
 1. Buttonコンポーネント実装
 2. Cardコンポーネント実装
 3. Containerコンポーネント実装
