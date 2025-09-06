@@ -35,7 +35,7 @@
   - padding適用とonClickハンドラーのテスト
   - _Requirements: 5.1, 5.2, 5.3, 5.4_
 
-- [ ] 7. Container コンポーネントの単体テスト作成
+- [x] 7. Container コンポーネントの単体テスト作成
   - packages/ui-library/tests/Container.test.tsx でレイアウト、レスポンシブ、中央揃え、子要素のテストを実装
   - maxWidth適用とレスポンシブパディングのテスト
   - center プロパティと子要素描画のテスト
