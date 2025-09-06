@@ -7,6 +7,9 @@ export * from './components';
 export { bubblePopTheme } from './theme';
 export type { BubblePopTheme } from './theme';
 
+// Export theme types
+export type { BubblePopThemeConfig, ExtendedTheme } from './theme/types';
+
 // Export providers
 export { BubblePopThemeProvider } from './providers/ThemeProvider';
 
