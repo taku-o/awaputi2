@@ -29,7 +29,7 @@
   - disabled状態とクリックイベントのテスト
   - _Requirements: 5.1, 5.2, 5.3, 5.4_
 
-- [ ] 6. Card コンポーネントの単体テスト作成
+- [x] 6. Card コンポーネントの単体テスト作成
   - packages/ui-library/tests/Card.test.tsx でレンダリング、インタラクション、レイアウト、イベントのテストを実装
   - elevation レベルとhover効果のテスト
   - padding適用とonClickハンドラーのテスト
