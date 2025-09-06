@@ -1,7 +1,7 @@
 # BubblePop プロジェクト構造設計
 
 ## 概要
-BubblePopゲームプロジェクトのモノリポジトリ構造と技術スタックに関する包括的な設計書です。MUI (Material-UI)、StoryBook、Lerna、Framer Motion、Zustandを活用した効率的な開発環境の構築を目指します。
+BubblePopゲームプロジェクトのモノリポジトリ構造と技術スタックに関する包括的な設計書です。MUI (Material-UI)、StoryBook、Lerna、Framer Motion、Zustand、react-i18nextを活用した効率的な開発環境の構築を目指します。
 
 ## モノリポジトリ構造
 
