@@ -6,7 +6,7 @@
   - ルートpackage.jsonにworkspacesとLernaスクリプトを追加する
   - _要件: 1.1, 1.2, 1.3_
 
-- [ ] 2. TypeScript基本設定の作成
+- [x] 2. TypeScript基本設定の作成
   - ルートディレクトリにtsconfig.jsonを作成し、プロジェクト全体の基本設定を定義する
   - strict、target、module、jsx等の基本オプションを設定する
   - referencesでパッケージ間の参照関係を定義する
