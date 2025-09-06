@@ -74,7 +74,7 @@
   - tests/integration.test.tsxで統合テストを作成
   - _Requirements: 1.1, 2.1, 3.1, 4.1_
 
-- [ ] 12. テストセットアップとパッケージビルド
+- [x] 12. テストセットアップとパッケージビルド
   - package.jsonにテスト関連の依存関係を追加（jest, @testing-library/react等）
   - package.jsonに"test"スクリプトを追加
   - npm installで依存関係をインストール

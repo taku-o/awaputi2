@@ -159,9 +159,11 @@ describe('Theme Integration', () => {
     
     const box = screen.getByTestId('spacing-box');
     expect(box).toHaveStyle('padding: 8px');
-    expect(box).toHaveStyle('margin: 16px');
+    // margin shorthandが適用されており、topとbottomが個別に上書きされている
     expect(box).toHaveStyle('margin-top: 24px');
     expect(box).toHaveStyle('margin-bottom: 32px');
+    expect(box).toHaveStyle('margin-left: 16px');
+    expect(box).toHaveStyle('margin-right: 16px');
   });
 
   test('should integrate with MUI sx prop', () => {

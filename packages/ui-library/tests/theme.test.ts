@@ -71,9 +71,9 @@ describe('BubblePop Theme', () => {
     test('should have responsive breakpoints defined', () => {
       expect(bubblePopTheme.breakpoints.values.xs).toBe(0);
       expect(bubblePopTheme.breakpoints.values.sm).toBe(600);
-      expect(bubblePopTheme.breakpoints.values.md).toBe(960);
-      expect(bubblePopTheme.breakpoints.values.lg).toBe(1280);
-      expect(bubblePopTheme.breakpoints.values.xl).toBe(1920);
+      expect(bubblePopTheme.breakpoints.values.md).toBe(900);
+      expect(bubblePopTheme.breakpoints.values.lg).toBe(1200);
+      expect(bubblePopTheme.breakpoints.values.xl).toBe(1536);
     });
   });
 
