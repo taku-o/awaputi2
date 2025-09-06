@@ -23,7 +23,7 @@
   - packages/ui-library/src/index.ts で全体のエクスポートを確認
   - _Requirements: 4.1, 4.2_
 
-- [ ] 5. Button コンポーネントの単体テスト作成
+- [x] 5. Button コンポーネントの単体テスト作成
   - packages/ui-library/tests/Button.test.tsx でレンダリング、インタラクション、状態、プロパティのテストを実装
   - 各variant（primary、secondary、icon）の描画テスト
   - disabled状態とクリックイベントのテスト
