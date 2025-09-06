@@ -7,7 +7,7 @@ import { readFileSync } from 'fs';
 // package.jsonからバージョンを読み取り
 const packageJson = JSON.parse(readFileSync('./package.json', 'utf-8'));
 
-export default defineConfig(({ mode }) => ({
+export default defineConfig(() => ({
   plugins: [
     react(),
     dts({
@@ -28,7 +28,7 @@ export default defineConfig(({ mode }) => ({
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'UILibrary',
       formats: ['es', 'umd'],
-      fileName: (format) => `ui-library.${format}.js`,
+      fileName: (format): string => `ui-library.${format}.js`,
     },
     rollupOptions: {
       external: ['react', 'react-dom'],

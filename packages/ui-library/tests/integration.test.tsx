@@ -2,7 +2,6 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Button, Card, Typography, Box, Paper } from '@mui/material';
 import { BubblePopThemeProvider } from '../src/providers/ThemeProvider';
-import { bubblePopTheme } from '../src/theme';
 
 // 統合テスト用のサンプルコンポーネント
 const SampleGameUI: React.FC = () => {
@@ -36,11 +35,13 @@ const SampleGameUI: React.FC = () => {
 
 describe('Theme Integration', () => {
   test('should apply consistent styling across all components', () => {
-    const { container } = render(
+    render(
       <BubblePopThemeProvider>
         <SampleGameUI />
       </BubblePopThemeProvider>
     );
+    
+    const container = document.body;
     
     // 各コンポーネントが存在することを確認
     expect(screen.getByText('BubblePop Game')).toBeInTheDocument();
@@ -60,7 +61,7 @@ describe('Theme Integration', () => {
   });
 
   test('should apply dark theme background colors', () => {
-    const { container } = render(
+    render(
       <BubblePopThemeProvider>
         <Paper data-testid="test-paper">
           <Typography>Dark Theme Test</Typography>
@@ -74,7 +75,7 @@ describe('Theme Integration', () => {
   });
 
   test('should apply custom button styles', () => {
-    const { container } = render(
+    render(
       <BubblePopThemeProvider>
         <Button variant="contained" color="primary">
           Custom Button
