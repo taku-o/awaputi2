@@ -18,7 +18,7 @@
   - Container/index.ts でエクスポート設定
   - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5, 4.1, 4.2, 4.3_
 
-- [ ] 4. コンポーネントエクスポートの更新
+- [x] 4. コンポーネントエクスポートの更新
   - packages/ui-library/src/components/index.ts を更新して新しいコンポーネントをエクスポート
   - packages/ui-library/src/index.ts で全体のエクスポートを確認
   - _Requirements: 4.1, 4.2_
