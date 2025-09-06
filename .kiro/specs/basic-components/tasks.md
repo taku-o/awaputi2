@@ -6,7 +6,7 @@
   - Button/index.ts でエクスポート設定
   - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 4.1, 4.2, 4.3_
 
-- [ ] 2. Card コンポーネントの基本実装
+- [x] 2. Card コンポーネントの基本実装
   - Card.types.ts で TypeScript 型定義を作成
   - Card.tsx でメインコンポーネントを実装（elevation対応、hover効果、クリックハンドリング）
   - Card/index.ts でエクスポート設定
