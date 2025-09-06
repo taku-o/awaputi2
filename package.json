@@ -16,7 +16,9 @@
     "type-check": "lerna run type-check"
   },
   "devDependencies": {
-    "lerna": "^8.2.3"
+    "@types/node": "^24.3.1",
+    "lerna": "^8.2.3",
+    "typescript": "^5.9.2"
   },
   "keywords": [
     "game",

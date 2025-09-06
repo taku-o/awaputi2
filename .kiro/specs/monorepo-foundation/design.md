@@ -101,7 +101,7 @@ awaputi2/
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["packages/*/src"],
+  "files": [],
   "references": [
     { "path": "./packages/bubblepop" },
     { "path": "./packages/ui-library" }
@@ -113,6 +113,8 @@ awaputi2/
 - 各パッケージはルート設定を継承
 - bubblepop: DOM型定義を含む
 - ui-library: ライブラリ用設定（declaration: true）
+
+**注意**: ルートtsconfig.jsonではプロジェクト参照を使用するため、`files: []`を指定し、直接ファイルを含めません。各パッケージの型チェックは個別のtsconfig.jsonで行われます。
 
 ### ESLint・Prettier設定
 
