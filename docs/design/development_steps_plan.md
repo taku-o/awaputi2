@@ -3,7 +3,7 @@
 ## Phase 1: 基盤構築
 1. モノリポジトリのセットアップ（lerna設定）
 2. 基本パッケージ構造の作成
-3. TypeScript、ESLint、Prettier設定
+3. TypeScript、ESLint（.eslintrc.cjs）、Prettier設定
 4. Viteビルド設定
 
 ## Phase 2: UIライブラリ構築
