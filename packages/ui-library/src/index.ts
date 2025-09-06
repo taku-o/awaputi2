@@ -3,6 +3,13 @@
 // Export components
 export * from './components';
 
+// Export theme
+export { bubblePopTheme } from './theme';
+export type { BubblePopTheme } from './theme';
+
+// Export providers
+export { BubblePopThemeProvider } from './providers/ThemeProvider';
+
 // Export hooks when they are created
 // export * from './hooks';
 

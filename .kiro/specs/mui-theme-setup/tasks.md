@@ -48,7 +48,7 @@
   - テーマオブジェクトをエクスポート
   - _Requirements: 4.1, 4.4_
 
-- [ ] 8. テーマプロバイダーコンポーネントの実装
+- [x] 8. テーマプロバイダーコンポーネントの実装
   - src/providers/ThemeProvider.tsxファイルを作成
   - MuiThemeProviderとCssBaselineを使用
   - 適切なPropsインターフェースを定義
