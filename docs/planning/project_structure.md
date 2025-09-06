@@ -85,5 +85,6 @@ awaputi2/
 │       └── rollup.config.js
 │
 ├── lerna.json                        # Lerna設定
-└── package.json                      # ルートパッケージ設定
+└── package.json                      # ルートパッケージ設定（npm workspaces使用）
 ```
+
