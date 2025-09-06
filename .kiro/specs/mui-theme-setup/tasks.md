@@ -1,6 +1,6 @@
 # Implementation Plan
 
-- [ ] 1. MUI依存関係の追加とpackage.json更新
+- [x] 1. MUI依存関係の追加とpackage.json更新
   - ui-libraryパッケージのpackage.jsonにMUI関連依存関係を追加
   - @mui/material、@mui/system、@emotion/react、@emotion/styledを追加
   - peerDependenciesを適切に更新
