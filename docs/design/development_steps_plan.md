@@ -1,6 +1,6 @@
 # BubblePop 開発手順
 
-## Phase 1: 基盤構築
+## [done] Phase 1: 基盤構築
 1. モノリポジトリのセットアップ（lerna設定）
 2. 基本パッケージ構造の作成
 3. TypeScript、ESLint（.eslintrc.cjs）、Prettier設定
