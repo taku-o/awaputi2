@@ -29,6 +29,7 @@ export default defineConfig({
   },
   server: {
     port: 3000,
+    strictPort: true,  // ポート3000が使用中なら失敗させる
     // ui-libraryの変更を監視
     watch: {
       ignored: ['!**/node_modules/@bubblepop/ui-library/**'],
@@ -40,5 +41,7 @@ export default defineConfig({
   optimizeDeps: {
     // ui-libraryを事前バンドルから除外（開発時）
     exclude: ['@bubblepop/ui-library'],
+    // MUI依存関係を明示的に含める（警告解消）
+    include: ['@mui/material', '@mui/system', '@emotion/react', '@emotion/styled'],
   },
 });

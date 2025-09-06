@@ -7,7 +7,7 @@ import { readFileSync } from 'fs';
 // package.jsonからバージョンを読み取り
 const packageJson = JSON.parse(readFileSync('./package.json', 'utf-8'));
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     dts({
@@ -16,8 +16,12 @@ export default defineConfig({
     }),
   ],
   define: {
-    // バージョンを自動注入
+    // バージョンを自動注入（開発時・本番時共通）
     __UI_LIBRARY_VERSION__: JSON.stringify(packageJson.version),
+  },
+  // 依存関係事前バンドリングの最適化と警告解消
+  optimizeDeps: {
+    include: ['@mui/material', '@mui/system', '@emotion/react', '@emotion/styled'],
   },
   build: {
     lib: {
@@ -41,4 +45,4 @@ export default defineConfig({
       '@': resolve(__dirname, './src'),
     },
   },
-});
+}));

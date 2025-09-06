@@ -6,7 +6,7 @@
 3. TypeScript、ESLint（.eslintrc.cjs）、Prettier設定
 4. Viteビルド設定
 
-## Phase 2: UIライブラリ構築
+## [done] Phase 2: UIライブラリ構築
 1. ui-libraryパッケージの作成
 2. MUIテーマ設定
 
