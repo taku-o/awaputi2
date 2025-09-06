@@ -144,8 +144,8 @@ describe('Button Component', () => {
   });
 
   test('displays start and end icons', () => {
-    const StartIcon = () => <span data-testid="start-icon">←</span>;
-    const EndIcon = () => <span data-testid="end-icon">→</span>;
+    const StartIcon = (): React.ReactElement => <span data-testid="start-icon">←</span>;
+    const EndIcon = (): React.ReactElement => <span data-testid="end-icon">→</span>;
     
     render(
       <TestWrapper>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { ButtonProps } from './Button.types';
 
@@ -15,13 +15,26 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const theme = useTheme();
+  const [isHovered, setIsHovered] = useState(false);
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
     if (disabled) return;
     onClick?.(event);
   };
 
-  const getSizeStyles = () => {
+  const handleMouseEnter = (): void => {
+    if (!disabled) {
+      setIsHovered(true);
+    }
+  };
+
+  const handleMouseLeave = (): void => {
+    if (!disabled) {
+      setIsHovered(false);
+    }
+  };
+
+  const getSizeStyles = (): { padding: string; borderRadius: string } => {
     switch (size) {
       case 'small':
         return {
@@ -41,32 +54,27 @@ export const Button: React.FC<ButtonProps> = ({
     }
   };
 
-  const getVariantStyles = () => {
+  const getVariantStyles = (): { backgroundColor: string; color: string; minWidth?: string } => {
+    const getHoverColor = (baseColor: string, hoverColor: string): string => {
+      return isHovered ? hoverColor : baseColor;
+    };
+
     switch (variant) {
       case 'secondary':
         return {
-          backgroundColor: theme.palette.secondary.main,
+          backgroundColor: getHoverColor(theme.palette.secondary.main, theme.palette.secondary.dark),
           color: theme.palette.secondary.contrastText,
-          '&:hover': {
-            backgroundColor: theme.palette.secondary.dark,
-          },
         };
       case 'icon':
         return {
-          backgroundColor: 'transparent',
+          backgroundColor: getHoverColor('transparent', 'rgba(255, 255, 255, 0.1)'),
           color: theme.palette.text.primary,
           minWidth: 'auto',
-          '&:hover': {
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
-          },
         };
       default: // primary
         return {
-          backgroundColor: theme.palette.primary.main,
+          backgroundColor: getHoverColor(theme.palette.primary.main, theme.palette.primary.dark),
           color: theme.palette.primary.contrastText,
-          '&:hover': {
-            backgroundColor: theme.palette.primary.dark,
-          },
         };
     }
   };
@@ -79,7 +87,7 @@ export const Button: React.FC<ButtonProps> = ({
     fontSize: theme.typography.button.fontSize,
     fontWeight: theme.typography.button.fontWeight,
     lineHeight: theme.typography.button.lineHeight,
-    textTransform: theme.typography.button.textTransform,
+    textTransform: theme.typography.button.textTransform as React.CSSProperties['textTransform'],
     border: 'none',
     cursor: disabled ? 'not-allowed' : 'pointer',
     display: 'inline-flex',
@@ -89,13 +97,9 @@ export const Button: React.FC<ButtonProps> = ({
     opacity: disabled ? 0.6 : 1,
     transition: 'all 0.2s ease-in-out',
     width: fullWidth ? '100%' : 'auto',
-    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)',
+    boxShadow: isHovered && !disabled ? '0px 4px 8px rgba(0, 0, 0, 0.3)' : '0px 2px 4px rgba(0, 0, 0, 0.2)',
     ...sizeStyles,
     ...variantStyles,
-    '&:hover': disabled ? {} : {
-      ...variantStyles['&:hover'],
-      boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.3)',
-    },
   };
 
   return (
@@ -103,6 +107,8 @@ export const Button: React.FC<ButtonProps> = ({
       {...props}
       type={type}
       onClick={handleClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       disabled={disabled}
       style={buttonStyles as React.CSSProperties}
     >
