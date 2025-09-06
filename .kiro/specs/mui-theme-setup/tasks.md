@@ -54,7 +54,7 @@
   - 適切なPropsインターフェースを定義
   - _Requirements: 4.3_
 
-- [ ] 9. TypeScript型定義の実装
+- [x] 9. TypeScript型定義の実装
   - src/theme/types.tsファイルを作成
   - BubblePopThemeConfig型を定義
   - MUIテーマの型拡張を実装
