@@ -67,7 +67,7 @@
   - 既存のエクスポートを維持
   - _Requirements: 4.2_
 
-- [ ] 11. テストファイルの作成
+- [x] 11. テストファイルの作成
   - tests/ディレクトリを作成
   - tests/theme.test.tsでテーマオブジェクトのユニットテストを作成
   - tests/ThemeProvider.test.tsxでプロバイダーのテストを作成
