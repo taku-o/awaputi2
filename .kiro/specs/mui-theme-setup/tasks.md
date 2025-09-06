@@ -19,7 +19,7 @@
   - エラー、警告、情報、成功カラーを設定
   - _Requirements: 1.2, 1.3, 1.4, 1.5_
 
-- [ ] 4. タイポグラフィ設定の実装
+- [x] 4. タイポグラフィ設定の実装
   - src/theme/typography.tsファイルを作成
   - メインフォント(Helvetica, Arial, sans-serif)を設定
   - 見出しサイズ(h1:72px, h2:48px, h3:36px, h4:24px)を設定
