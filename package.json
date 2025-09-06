@@ -3,9 +3,36 @@
   "version": "1.0.0",
   "description": "A web-based bubble popping game with various bubble types and special effects",
   "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
+    "install-all": "npm install",
+    "clean": "lerna clean",
+    "dev": "lerna run dev --parallel",
+    "build": "lerna run build",
+    "lint": "lerna run lint",
+    "format": "lerna run format",
+    "type-check": "lerna run type-check",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed"
   },
   "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.3.1",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "lerna": "^8.2.3",
+    "playwright": "^1.55.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2",
+    "vite-plugin-dts": "^4.5.4"
   },
   "keywords": [
     "game",
@@ -15,7 +42,5 @@
     "javascript"
   ],
   "author": "BubblePop Team",
-  "license": "MIT",
-  "dependencies": {
-  }
+  "license": "MIT"
 }
