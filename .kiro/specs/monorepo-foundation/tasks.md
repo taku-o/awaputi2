@@ -1,6 +1,6 @@
 # 実装計画
 
-- [x] 1. Lernaモノリポジトリの初期化
+- [ ] 1. Lernaモノリポジトリの初期化
   - Lernaをインストールし、lerna initでモノリポジトリを初期化する
   - lerna.jsonファイルを設定し、packagesディレクトリを指定する
   - ルートpackage.jsonにworkspacesとLernaスクリプトを追加する
