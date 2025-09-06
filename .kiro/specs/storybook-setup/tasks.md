@@ -1,6 +1,6 @@
 # Implementation Plan
 
-- [ ] 1. Storybookパッケージの基本構造作成
+- [x] 1. Storybookパッケージの基本構造作成
   - packages/storybook-docsディレクトリを作成
   - package.jsonファイルを作成（依存関係とスクリプト設定）
   - tsconfig.jsonファイルを作成（TypeScript設定）
