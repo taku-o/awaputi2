@@ -25,7 +25,7 @@
   - src/main.tsxとindex.htmlを作成し、基本的なReactアプリケーションを実装する
   - _要件: 2.1, 2.3, 3.2_
 
-- [ ] 5. ui-libraryパッケージの基本構造作成
+- [x] 5. ui-libraryパッケージの基本構造作成
   - packages/ui-libraryディレクトリとサブディレクトリを作成する
   - package.jsonを作成し、ライブラリ用の設定を定義する
   - tsconfig.jsonを作成し、ライブラリ用の設定を追加する
