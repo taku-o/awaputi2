@@ -86,15 +86,7 @@ npm run typecheck
 
 ## 開発フェーズ（現在の状況）
 
-現在はプロジェクト初期段階で、以下の開発計画に従って実装を進める：
-
-1. **Phase 1-4**: 基盤構築（モノリポジトリ、UIライブラリ、Storybook）
-2. **Phase 5-8**: 基本コンポーネントとルーティング
-3. **Phase 9-12**: タイトル画面実装とテスト
-4. **Phase 13-15**: メイン画面実装とテスト
-5. **Phase 16-**: ゲームプレイ画面と各機能の段階的実装
-
-詳細は `docs/design/development_steps_plan.md` を参照
+- 開発計画はユーザーの作成する開発手順に従って進める。
 
 ## 主要な仕様書
 
@@ -174,7 +166,11 @@ npm run typecheck
 開発時は各種デバッグアプリを使用して個別機能をテスト可能：
 - `bubblepop-debug-game`: ゲーム画面デバッグ
 - `bubblepop-debug-settings`: 設定画面デバッグ
-- その他、必要に応じてデバッグアプリを追加
+- `bubblepop-debug-help`: ヘルプ画面デバッグ
+- `bubblepop-debug-account`: アカウント画面デバッグ
+- `bubblepop-debug-shop`: ショップ画面デバッグ
+- `bubblepop-debug-notification`: 通知画面デバッグ
+- その他、デバッグアプリが必要になったら、ユーザーの許可を得た上で追加する。
 
 ## 注意事項
 
