@@ -1,6 +1,6 @@
 # Implementation Plan
 
-- [ ] 1. Button コンポーネントの基本実装
+- [x] 1. Button コンポーネントの基本実装
   - Button.types.ts で TypeScript 型定義を作成
   - Button.tsx でメインコンポーネントを実装（MUIテーマ統合、variant対応、イベントハンドリング）
   - Button/index.ts でエクスポート設定
