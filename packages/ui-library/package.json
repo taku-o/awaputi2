@@ -1,18 +1,21 @@
 {
   "name": "@bubblepop/ui-library",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "type": "module",
   "main": "./dist/ui-library.umd.js",
   "module": "./dist/ui-library.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
+      "development": "./src/index.ts",
       "import": "./dist/ui-library.es.js",
       "require": "./dist/ui-library.umd.js"
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
     "dev": "vite build --watch",

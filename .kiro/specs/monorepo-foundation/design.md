@@ -75,9 +75,10 @@ awaputi2/
 ```
 
 #### 依存関係管理
-- パッケージ間の依存関係はLernaが自動解決
+- パッケージ間の依存関係はnpm workspacesが自動解決
 - ui-libraryはbubblepopから参照される
 - 外部依存関係は各パッケージのpackage.jsonで管理
+- Lerna v8ではbootstrapコマンドが削除されているため、npm installを使用
 
 ### TypeScript設定
 
@@ -165,13 +166,23 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
+      // 開発時はui-libraryのソースを直接参照
+      '@bubblepop/ui-library': resolve(__dirname, '../ui-library/src'),
     },
   },
   server: {
     port: 3000,
+    // ui-libraryの変更を監視
+    watch: {
+      ignored: ['!**/node_modules/@bubblepop/ui-library/**'],
+    },
   },
   build: {
     outDir: 'dist',
+  },
+  optimizeDeps: {
+    // ui-libraryを事前バンドルから除外（開発時）
+    exclude: ['@bubblepop/ui-library'],
   },
 })
 ```
@@ -181,9 +192,17 @@ export default defineConfig({
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
+import { readFileSync } from 'fs'
+
+// package.jsonからバージョンを読み取り
+const packageJson = JSON.parse(readFileSync('./package.json', 'utf-8'))
 
 export default defineConfig({
   plugins: [react()],
+  define: {
+    // バージョンを自動注入
+    __UI_LIBRARY_VERSION__: JSON.stringify(packageJson.version),
+  },
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
@@ -223,7 +242,7 @@ export default defineConfig({
     "packages/*"
   ],
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "install-all": "npm install",
     "clean": "lerna clean",
     "dev": "lerna run dev --parallel",
     "build": "lerna run build",
@@ -278,19 +297,22 @@ export default defineConfig({
 ```json
 {
   "name": "@bubblepop/ui-library",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "main": "./dist/ui-library.umd.js",
   "module": "./dist/ui-library.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
+      "development": "./src/index.ts",
       "import": "./dist/ui-library.es.js",
       "require": "./dist/ui-library.umd.js"
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
     "dev": "vite build --watch",
@@ -310,6 +332,39 @@ export default defineConfig({
     "vite": "^4.4.5"
   }
 }
+```
+
+## 開発ワークフロー
+
+### ライブラリ開発時の最適化
+
+#### 開発時の動作
+1. **ソース直接参照**: bubblepopは開発時にui-libraryのsrcを直接参照
+2. **ホットリロード**: ui-libraryの変更が即座にbubblepopに反映
+3. **バージョン自動注入**: Viteがpackage.jsonのversionを自動的にコードに注入
+
+#### 本番時の動作
+1. **ビルド済み参照**: bubblepopは本番時にui-libraryのdistを参照
+2. **型定義**: TypeScriptの型定義ファイルを使用
+3. **最適化**: バンドルサイズの最適化
+
+#### バージョン管理
+```typescript
+// ui-library/src/index.ts
+// Viteが自動的にpackage.jsonのversionを注入
+export const UI_LIBRARY_VERSION = __UI_LIBRARY_VERSION__;
+
+// 使用例
+console.log(`UI Library Version: ${UI_LIBRARY_VERSION}`);
+```
+
+#### 開発コマンド
+```bash
+# 開発サーバー起動（並列実行）
+npm run dev
+
+# ui-library: vite build --watch
+# bubblepop: vite dev server (port 3000)
 ```
 
 ## エラーハンドリング

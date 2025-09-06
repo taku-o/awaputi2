@@ -13,4 +13,6 @@ export * from './components';
 // export * from './types';
 
 // Library version
-export const UI_LIBRARY_VERSION = '0.0.0';
+// Viteが自動的にpackage.jsonのversionを注入
+declare const __UI_LIBRARY_VERSION__: string;
+export const UI_LIBRARY_VERSION = __UI_LIBRARY_VERSION__;

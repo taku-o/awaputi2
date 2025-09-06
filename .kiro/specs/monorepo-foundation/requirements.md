@@ -14,7 +14,7 @@ BubblePopゲームプロジェクトの基盤構築として、モノリポジ�
 
 1. WHEN プロジェクトルートでlerna initを実行 THEN lernaの設定ファイルが正しく生成される
 2. WHEN packages/ディレクトリが作成される THEN 各パッケージが適切に配置できる構造になる
-3. WHEN lerna bootstrapを実行 THEN 全パッケージの依存関係が正しく解決される
+3. WHEN npm installを実行 THEN npm workspacesにより全パッケージの依存関係が正しく解決される
 
 ### 要件2: 基本パッケージ構造の作成
 
@@ -160,8 +160,8 @@ BubblePopゲームプロジェクトの基盤構築として、モノリポジ�
 #### 受け入れ基準
 
 1. WHEN bubblepopパッケージがui-libraryを依存関係に追加 THEN ui-libraryのコンポーネントをインポートできる
-2. WHEN lerna linkを実行 THEN パッケージ間のシンボリックリンクが作成される
-3. WHEN 依存関係を変更 THEN lerna bootstrapで依存関係が更新される
+2. WHEN npm installを実行 THEN npm workspacesによりパッケージ間のシンボリックリンクが作成される
+3. WHEN 依存関係を変更 THEN npm installで依存関係が更新される
 
 ### 要件7: 開発スクリプトの設定
 
@@ -170,7 +170,7 @@ BubblePopゲームプロジェクトの基盤構築として、モノリポジ�
 #### 受け入れ基準
 
 1. WHEN ルートpackage.jsonにスクリプトが定義される THEN 全パッケージに対して一括操作ができる
-   - "bootstrap": "lerna bootstrap"が定義されている
+   - "install-all": "npm install"が定義されている
    - "clean": "lerna clean"が定義されている
    - "dev": "lerna run dev --parallel"が定義されている
    - "build": "lerna run build"が定義されている
