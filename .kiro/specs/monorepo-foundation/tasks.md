@@ -12,7 +12,7 @@
   - referencesでパッケージ間の参照関係を定義する
   - _要件: 3.1, 3.4_
 
-- [ ] 3. ESLint・Prettier設定の作成
+- [x] 3. ESLint・Prettier設定の作成
   - ルートディレクトリに.eslintrc.jsを作成し、TypeScript・React用の設定を定義する
   - ルートディレクトリに.prettierrcを作成し、コードフォーマット設定を定義する
   - ESLintとPrettierの競合を回避する設定を追加する
