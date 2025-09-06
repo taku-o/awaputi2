@@ -41,7 +41,7 @@
   - MuiTypographyのカスタムスタイルを実装
   - _Requirements: 1.1_
 
-- [ ] 7. メインテーマオブジェクトの作成
+- [x] 7. メインテーマオブジェクトの作成
   - src/theme/index.tsファイルを作成
   - createTheme関数を使用してテーマオブジェクトを作成
   - 各設定ファイル(palette, typography, spacing, components)をインポートして統合
