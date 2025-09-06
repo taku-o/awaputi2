@@ -6,7 +6,7 @@
   - tsconfig.jsonファイルを作成（TypeScript設定）
   - _Requirements: 1.4, 5.3_
 
-- [ ] 2. Storybook設定ファイルの作成
+- [x] 2. Storybook設定ファイルの作成
   - .storybook/main.jsファイルを作成（ストーリーパターンとアドオン設定）
   - .storybook/preview.jsファイルを作成（MUIテーマプロバイダー設定）
   - _Requirements: 1.4, 3.1, 3.2, 3.3, 3.4, 5.1, 5.2_
