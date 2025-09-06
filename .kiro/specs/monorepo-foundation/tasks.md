@@ -18,7 +18,7 @@
   - ESLintとPrettierの競合を回避する設定を追加する
   - _要件: 4.1, 4.2, 4.5_
 
-- [ ] 4. bubblepopパッケージの基本構造作成
+- [x] 4. bubblepopパッケージの基本構造作成
   - packages/bubblepopディレクトリとサブディレクトリを作成する
   - package.jsonを作成し、React・TypeScript・Viteの依存関係を設定する
   - tsconfig.jsonを作成し、ルート設定を継承する
