@@ -32,7 +32,7 @@
   - src/index.tsを作成し、ライブラリのエクスポートポイントを実装する
   - _要件: 2.2, 2.3, 3.2_
 
-- [ ] 6. Vite設定の作成
+- [x] 6. Vite設定の作成
   - packages/bubblepop/vite.config.tsを作成し、アプリケーション用の設定を定義する
   - packages/ui-library/vite.config.tsを作成し、ライブラリ用の設定を定義する
   - 各設定でReactプラグイン、エイリアス、ビルドオプションを設定する
