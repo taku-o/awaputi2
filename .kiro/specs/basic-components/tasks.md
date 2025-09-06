@@ -12,7 +12,7 @@
   - Card/index.ts でエクスポート設定
   - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 4.1, 4.2, 4.3_
 
-- [ ] 3. Container コンポーネントの基本実装
+- [x] 3. Container コンポーネントの基本実装
   - Container.types.ts で TypeScript 型定義を作成
   - Container.tsx でメインコンポーネントを実装（レスポンシブ対応、中央揃え、パディング管理）
   - Container/index.ts でエクスポート設定
