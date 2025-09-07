@@ -4,23 +4,24 @@
   "private": true,
   "scripts": {
     "storybook": "storybook dev -p 6006 --no-open",
+    "storybook:doctor": "storybook doctor",
     "build-storybook": "storybook build",
     "test:storybook": "playwright test tests/storybook.spec.ts",
     "test:storybook:ui": "playwright test tests/storybook.spec.ts --ui",
-    "test:storybook:headed": "playwright test tests/storybook.spec.ts --headed"
+    "test:storybook:headed": "playwright test tests/storybook.spec.ts --headed",
+    "test:storybook:addons": "playwright test tests/storybook-addons.spec.ts --reporter=list",
+    "test:storybook:addons:ui": "playwright test tests/storybook-addons.spec.ts --ui",
+    "test:storybook:addons:headed": "playwright test tests/storybook-addons.spec.ts --headed",
+    "test:storybook:all": "playwright test tests/*.spec.ts --reporter=list"
   },
   "dependencies": {
     "@bubblepop/ui-library": "*"
   },
   "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@storybook/addon-essentials": "^8.0.0",
     "@storybook/react": "^8.0.0",
     "@storybook/react-vite": "^8.0.0",
-    "@storybook/addon-essentials": "^8.0.0",
-    "@storybook/addon-controls": "^8.0.0",
-    "@storybook/addon-actions": "^8.0.0",
-    "@storybook/addon-docs": "^8.0.0",
-    "@storybook/addon-viewport": "^8.0.0",
-    "storybook": "^8.0.0",
-    "@playwright/test": "^1.40.0"
+    "storybook": "^8.0.0"
   }
 }

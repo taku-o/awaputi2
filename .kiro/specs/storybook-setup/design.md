@@ -42,11 +42,7 @@ packages/
 export default {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
-    '@storybook/addon-essentials',
-    '@storybook/addon-controls',
-    '@storybook/addon-actions',
-    '@storybook/addon-docs',
-    '@storybook/addon-viewport'
+    '@storybook/addon-essentials'
   ],
   framework: {
     name: '@storybook/react-vite',
@@ -170,10 +166,6 @@ export const Disabled: Story = {
     "@storybook/react": "^8.0.0",
     "@storybook/react-vite": "^8.0.0",
     "@storybook/addon-essentials": "^8.0.0",
-    "@storybook/addon-controls": "^8.0.0",
-    "@storybook/addon-actions": "^8.0.0",
-    "@storybook/addon-docs": "^8.0.0",
-    "@storybook/addon-viewport": "^8.0.0",
     "storybook": "^8.0.0"
   }
 }

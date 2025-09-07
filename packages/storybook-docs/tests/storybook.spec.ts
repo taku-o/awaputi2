@@ -1,5 +1,8 @@
 import { test, expect, Page } from '@playwright/test';
 
+// このテストファイルは直列実行が必要（Storybookの状態が共有されるため）
+test.describe.configure({ mode: 'serial' });
+
 interface ConsoleMessage {
   type: string;
   text: string;
@@ -161,8 +164,15 @@ class StorybookErrorCollector {
 test.describe('Storybook Error and Warning Detection', () => {
   let errorCollector: StorybookErrorCollector;
 
-  test.beforeEach(async ({ page }) => {
+  test.beforeEach(async ({ page, context }) => {
+    // 新しいコンテキストとページで開始
+    await context.clearCookies();
     errorCollector = new StorybookErrorCollector(page);
+  });
+
+  test.afterEach(async ({ page }) => {
+    // テスト後にStorybookをリセット（初期画面に戻す）
+    await page.goto('/', { waitUntil: 'networkidle' }).catch(() => {});
   });
 
   test('should load Storybook without errors or warnings', async ({ page }) => {
@@ -184,31 +194,50 @@ test.describe('Storybook Error and Warning Detection', () => {
   });
 
   test('should load Button stories without React act warnings', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/', { waitUntil: 'networkidle' });
     
-    // Buttonストーリーを選択
-    await page.click('text=Button');
-    await page.click('text=Primary');
+    // Storybookが初期化されるまで十分に待つ
+    await page.waitForTimeout(3000);
     
-    // ストーリーの読み込み完了を待つ（iframe内のコンテンツ確認）
+    // ButtonストーリーグループをクリックしてPrimaryストーリーを選択
+    const buttonGroup = page.locator('[data-item-id="components-button"]');
+    await buttonGroup.click({ timeout: 10000 });
+    await page.waitForTimeout(1500);
+    
+    // Primaryストーリーを選択（より具体的なセレクタ）
+    const primaryStory = page.locator('[data-item-id="components-button--primary"]');
+    if (await primaryStory.isVisible({ timeout: 5000 })) {
+      await primaryStory.click();
+    } else {
+      // 代替手段：ツリーが展開されていない場合再クリック
+      await buttonGroup.click();
+      await page.waitForTimeout(1000);
+      await page.locator('[data-item-id="components-button--primary"]').click({ timeout: 10000 });
+    }
+    
+    // ストーリーの読み込み完了を待つ
     const iframe = page.frameLocator('#storybook-preview-iframe');
-    await expect(iframe.locator('body')).toBeVisible();
+    
+    // ストーリー内の実際のButtonコンポーネントが表示されるまで待つ
+    const storyButton = iframe.locator('#storybook-root button, .sb-story button').first();
+    await storyButton.waitFor({ state: 'visible', timeout: 15000 });
     
     // React状態更新が完了するまで待機
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(3000);
     
     // Controls操作でReact状態更新をテスト
     const controlsTab = page.locator('button[role="tab"]:has-text("Controls")');
-    if (await controlsTab.isVisible()) {
+    if (await controlsTab.isVisible({ timeout: 5000 })) {
       await controlsTab.click();
+      await page.waitForTimeout(500);
       
       // disabled プロパティを変更
       const disabledControl = page.locator('input[name="disabled"]');
-      if (await disabledControl.isVisible()) {
+      if (await disabledControl.isVisible({ timeout: 3000 })) {
         await disabledControl.click();
-        await page.waitForTimeout(500);
+        await page.waitForTimeout(800);
         await disabledControl.click();
-        await page.waitForTimeout(500);
+        await page.waitForTimeout(800);
       }
     }
     
@@ -265,35 +294,57 @@ test.describe('Storybook Error and Warning Detection', () => {
   });
 
   test('should validate addon interactions without warnings', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/', { waitUntil: 'networkidle' });
     
-    // Buttonストーリーを選択
-    await page.click('text=Button');
-    await page.click('text=Primary');
+    // Storybookの初期化を十分に待つ
+    await page.waitForTimeout(3000);
+    
+    // ButtonストーリーグループをクリックしてPrimaryストーリーを選択
+    const buttonGroup = page.locator('[data-item-id="components-button"]');
+    await buttonGroup.click({ timeout: 10000 });
+    await page.waitForTimeout(1500);
+    
+    // Primaryストーリーを選択（より具体的なセレクタ）
+    const primaryStory = page.locator('[data-item-id="components-button--primary"]');
+    if (await primaryStory.isVisible({ timeout: 5000 })) {
+      await primaryStory.click();
+    } else {
+      // 代替手段：ツリーが展開されていない場合再クリック
+      await buttonGroup.click();
+      await page.waitForTimeout(1000);
+      await page.locator('[data-item-id="components-button--primary"]').click({ timeout: 10000 });
+    }
+    
+    // ストーリーの読み込み完了を待つ
+    const iframe = page.frameLocator('#storybook-preview-iframe');
+    
+    // ストーリー内の実際のButtonコンポーネントが表示されるまで待つ
+    const storyButton = iframe.locator('#storybook-root button, .sb-story button').first();
+    await storyButton.waitFor({ state: 'visible', timeout: 15000 });
+    await page.waitForTimeout(1000);
     
     // 各アドオンの操作をテスト
     const controlsTab = page.locator('button[role="tab"]:has-text("Controls")');
-    await controlsTab.click();
+    await controlsTab.click({ timeout: 10000 });
+    await page.waitForTimeout(500);
     
     // プロパティを複数回変更してReact状態更新をテスト
     const variantControl = page.locator('select[name="variant"]');
-    if (await variantControl.isVisible()) {
+    if (await variantControl.isVisible({ timeout: 5000 })) {
       await variantControl.selectOption('secondary');
-      await page.waitForTimeout(300);
+      await page.waitForTimeout(800);
       await variantControl.selectOption('primary');
-      await page.waitForTimeout(300);
+      await page.waitForTimeout(800);
     }
     
     // iframe内のボタンをクリックしてActionsをテスト
-    const iframe = page.frameLocator('#storybook-preview-iframe');
-    const storyButton = iframe.locator('button').first();
-    if (await storyButton.isVisible()) {
+    if (await storyButton.isVisible({ timeout: 5000 })) {
       await storyButton.click();
-      await page.waitForTimeout(300);
+      await page.waitForTimeout(800);
     }
     
-    // 最終チェック
-    await page.waitForTimeout(1000);
+    // 最終チェック（非同期処理の完了を十分に待つ）
+    await page.waitForTimeout(2000);
     
     if (errorCollector.hasIssues()) {
       errorCollector.printIssues();
