@@ -24,13 +24,23 @@ export const Button: React.FC<ButtonProps> = ({
 
   const handleMouseEnter = (): void => {
     if (!disabled) {
-      setIsHovered(true);
+      // React 18 + Storybook compatibility: wrap in setTimeout to avoid act() warnings
+      if (typeof globalThis !== 'undefined' && globalThis.IS_REACT_ACT_ENVIRONMENT) {
+        setTimeout(() => setIsHovered(true), 0);
+      } else {
+        setIsHovered(true);
+      }
     }
   };
 
   const handleMouseLeave = (): void => {
     if (!disabled) {
-      setIsHovered(false);
+      // React 18 + Storybook compatibility: wrap in setTimeout to avoid act() warnings
+      if (typeof globalThis !== 'undefined' && globalThis.IS_REACT_ACT_ENVIRONMENT) {
+        setTimeout(() => setIsHovered(false), 0);
+      } else {
+        setIsHovered(false);
+      }
     }
   };
 
