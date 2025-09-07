@@ -3,20 +3,20 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build"
   },
   "dependencies": {
     "@bubblepop/ui-library": "*"
   },
   "devDependencies": {
-    "@storybook/react": "^7.0.0",
-    "@storybook/react-vite": "^7.0.0",
-    "@storybook/addon-essentials": "^7.0.0",
-    "@storybook/addon-controls": "^7.0.0",
-    "@storybook/addon-actions": "^7.0.0",
-    "@storybook/addon-docs": "^7.0.0",
-    "@storybook/addon-viewport": "^7.0.0",
-    "storybook": "^7.0.0"
+    "@storybook/react": "^8.0.0",
+    "@storybook/react-vite": "^8.0.0",
+    "@storybook/addon-essentials": "^8.0.0",
+    "@storybook/addon-controls": "^8.0.0",
+    "@storybook/addon-actions": "^8.0.0",
+    "@storybook/addon-docs": "^8.0.0",
+    "@storybook/addon-viewport": "^8.0.0",
+    "storybook": "^8.0.0"
   }
 }

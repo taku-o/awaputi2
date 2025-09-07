@@ -90,7 +90,7 @@ export const Button: React.FC<ButtonProps> = ({
     textTransform: theme.typography.button.textTransform as React.CSSProperties['textTransform'],
     border: 'none',
     cursor: disabled ? 'not-allowed' : 'pointer',
-    display: 'inline-flex',
+    display: fullWidth ? 'flex' : 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
     gap: startIcon || endIcon ? '8px' : 0,
