@@ -28,7 +28,7 @@
   - Actionsアドオンでクリックイベントを確認可能に設定
   - _Requirements: 2.1, 2.3, 3.2_
 
-- [ ] 6. Containerコンポーネントのストーリー作成
+- [x] 6. Containerコンポーネントのストーリー作成
   - src/stories/Container.stories.tsxファイルを作成
   - 異なるレイアウト設定（maxWidth、center、padding）のストーリーを実装
   - レスポンシブ表示確認用のViewportアドオン設定

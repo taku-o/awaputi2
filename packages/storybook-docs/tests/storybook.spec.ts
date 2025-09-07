@@ -228,10 +228,6 @@ test.describe('Storybook Error and Warning Detection', () => {
     const stories = ['Button', 'Card', 'Container'];
     
     for (const story of stories) {
-      if (story == 'Container') {
-        console.log('currently this test is skipped. '+ story);
-        continue;
-      }
       await page.click(`text=${story}`);
       // iframe内のコンテンツが読み込まれるのを待つ
       const iframe = page.frameLocator('#storybook-preview-iframe');
