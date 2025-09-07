@@ -7,7 +7,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@bubblepop/ui-library": "workspace:*"
+    "@bubblepop/ui-library": "*"
   },
   "devDependencies": {
     "@storybook/react": "^7.0.0",

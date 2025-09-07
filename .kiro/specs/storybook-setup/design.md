@@ -18,7 +18,7 @@ packages/
 └── storybook-docs/               # 新規作成するStorybookパッケージ
     ├── .storybook/               # Storybook設定ディレクトリ
     │   ├── main.js              # メイン設定ファイル
-    │   └── preview.js           # プレビュー設定ファイル
+    │   └── preview.jsx          # プレビュー設定ファイル
     ├── src/
     │   └── stories/             # ストーリーファイル
     │       ├── Button.stories.tsx
@@ -39,7 +39,7 @@ packages/
 
 #### .storybook/main.js
 ```javascript
-module.exports = {
+export default {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-essentials',
@@ -55,16 +55,16 @@ module.exports = {
 };
 ```
 
-#### .storybook/preview.js
+#### .storybook/preview.jsx
 ```javascript
-import { ThemeProvider } from '../../../ui-library/src/providers/ThemeProvider';
-import { theme } from '../../../ui-library/src/theme';
+import React from 'react';
+import { BubblePopThemeProvider } from '@bubblepop/ui-library';
 
 export const decorators = [
   (Story) => (
-    <ThemeProvider theme={theme}>
+    <BubblePopThemeProvider>
       <Story />
-    </ThemeProvider>
+    </BubblePopThemeProvider>
   ),
 ];
 
@@ -84,7 +84,7 @@ export const parameters = {
 #### Button.stories.tsx
 ```typescript
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '../../../../ui-library/src/components/Button';
+import { Button } from '@bubblepop/ui-library';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
@@ -139,6 +139,18 @@ export const Disabled: Story = {
 
 ## Data Models
 
+### ルートパッケージ設定
+
+#### ルートpackage.jsonへのスクリプト追加
+```json
+{
+  "scripts": {
+    "storybook": "npm run storybook --workspace=@bubblepop/storybook-docs",
+    "build-storybook": "npm run build-storybook --workspace=@bubblepop/storybook-docs"
+  }
+}
+```
+
 ### パッケージ設定
 
 #### package.json
@@ -152,7 +164,7 @@ export const Disabled: Story = {
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@bubblepop/ui-library": "workspace:*"
+    "@bubblepop/ui-library": "*"
   },
   "devDependencies": {
     "@storybook/react": "^7.0.0",

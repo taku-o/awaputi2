@@ -1,4 +1,5 @@
-import { BubblePopThemeProvider } from '../../ui-library/src/providers/ThemeProvider';
+import React from 'react';
+import { BubblePopThemeProvider } from '@bubblepop/ui-library';
 
 export const decorators = [
   (Story) => (
