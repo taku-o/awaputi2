@@ -16,7 +16,7 @@
   - ui-libraryパッケージへの依存関係を設定
   - _Requirements: 1.1, 5.3_
 
-- [ ] 4. Buttonコンポーネントのストーリー作成
+- [x] 4. Buttonコンポーネントのストーリー作成
   - src/stories/Button.stories.tsxファイルを作成
   - Primary、Secondary、Icon、Disabledの各バリエーションストーリーを実装
   - Controlsアドオンでプロパティを動的変更可能に設定
