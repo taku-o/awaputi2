@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { ButtonProps } from './Button.types';
 
@@ -22,27 +22,17 @@ export const Button: React.FC<ButtonProps> = ({
     onClick?.(event);
   };
 
-  const handleMouseEnter = (): void => {
+  const handleMouseEnter = useCallback((): void => {
     if (!disabled) {
-      // React 18 + Storybook compatibility: wrap in setTimeout to avoid act() warnings
-      if (typeof globalThis !== 'undefined' && globalThis.IS_REACT_ACT_ENVIRONMENT) {
-        setTimeout(() => setIsHovered(true), 0);
-      } else {
-        setIsHovered(true);
-      }
+      setIsHovered(true);
     }
-  };
+  }, [disabled]);
 
-  const handleMouseLeave = (): void => {
+  const handleMouseLeave = useCallback((): void => {
     if (!disabled) {
-      // React 18 + Storybook compatibility: wrap in setTimeout to avoid act() warnings
-      if (typeof globalThis !== 'undefined' && globalThis.IS_REACT_ACT_ENVIRONMENT) {
-        setTimeout(() => setIsHovered(false), 0);
-      } else {
-        setIsHovered(false);
-      }
+      setIsHovered(false);
     }
-  };
+  }, [disabled]);
 
   const getSizeStyles = (): { padding: string; borderRadius: string } => {
     switch (size) {

@@ -218,6 +218,13 @@ BubblePopアプリケーションで使用する画像、音声、フォント�
 | `IconInProgress` | `packages/bubblepop/src/assets/icons/status/icon-in-progress.png` | png | 進行中状態アイコン |
 | `IconNew` | `packages/bubblepop/src/assets/icons/status/icon-new.png` | png | 新着状態アイコン |
 
+## Storybook用アセット
+
+### プレースホルダー画像
+| 論理名 | ファイルパス | フォーマット | 使用箇所 |
+|--------|-------------|-------------|----------|
+| `PlaceholderCard` | `packages/storybook-docs/public/placeholder-card.svg` | svg | StorybookのCardコンポーネントストーリー用プレースホルダー画像 |
+
 ## アセット管理の注意事項
 
 ### ファイル命名規則
@@ -229,11 +236,13 @@ BubblePopアプリケーションで使用する画像、音声、フォント�
 - アセットは種類別にディレクトリを分けて管理
 - 各パッケージ内の`src/assets/`ディレクトリに配置
 - 静的ファイルは`public/`ディレクトリに配置
+- Storybook用アセットは`packages/storybook-docs/public/`ディレクトリに配置
 
 ### フォーマット選択
 - 画像: PNG（透明度が必要な場合）、JPEG（写真系）
 - 音声: MP3（互換性重視）、OGG（高品質）
 - フォント: WOFF2（最新ブラウザ対応）、WOFF（フォールバック）
+- プレースホルダー: SVG（スケーラブル、軽量）
 
 ### 品質設定
 - 高品質: 高解像度、高ビットレート

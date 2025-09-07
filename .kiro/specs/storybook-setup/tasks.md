@@ -22,7 +22,7 @@
   - Controlsアドオンでプロパティを動的変更可能に設定
   - _Requirements: 2.1, 2.2, 3.1_
 
-- [ ] 5. Cardコンポーネントのストーリー作成
+- [x] 5. Cardコンポーネントのストーリー作成
   - src/stories/Card.stories.tsxファイルを作成
   - 異なるelevationとhover効果のストーリーを実装
   - Actionsアドオンでクリックイベントを確認可能に設定

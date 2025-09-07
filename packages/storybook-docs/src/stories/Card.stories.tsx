@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import { Card } from '@bubblepop/ui-library';
 
 const meta: Meta<typeof Card> = {
@@ -122,7 +123,7 @@ export const HoverableWithClick: Story = {
     elevation: 2,
     hoverable: true,
     padding: 'medium',
-    onClick: () => {},
+    onClick: action('hoverable-card-clicked'),
   },
 };
 
@@ -152,7 +153,7 @@ export const OutlinedHoverable: Story = {
     elevation: 0,
     hoverable: true,
     padding: 'medium',
-    onClick: () => {},
+    onClick: action('outlined-hoverable-card-clicked'),
   },
 };
 
@@ -200,7 +201,7 @@ export const ComplexContent: Story = {
     children: (
       <div>
         <img 
-          src="https://via.placeholder.com/350x150/4CAF50/FFFFFF?text=Card+Image" 
+          src="/placeholder-card.svg" 
           alt="Placeholder" 
           style={{ 
             width: '100%', 
@@ -225,6 +226,6 @@ export const ComplexContent: Story = {
     elevation: 2,
     hoverable: true,
     padding: 'medium',
-    onClick: () => {},
+    onClick: action('complex-card-clicked'),
   },
 };

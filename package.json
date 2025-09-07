@@ -19,7 +19,17 @@
     "pretest:e2e": "npm run build --workspace=@bubblepop/ui-library",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "test:e2e:headed": "playwright test --headed"
+    "test:e2e:headed": "playwright test --headed",
+    "test:storybook": "npm run test:storybook --workspace=@bubblepop/storybook-docs",
+    "test:storybook:ui": "npm run test:storybook:ui --workspace=@bubblepop/storybook-docs",
+    "ci:install": "npm ci",
+    "ci:build": "npm run build",
+    "ci:lint": "npm run lint",
+    "ci:type-check": "npm run type-check",
+    "ci:test:unit": "lerna run test",
+    "ci:test:e2e": "npm run pretest:e2e && npm run test:e2e",
+    "ci:test:storybook": "npm run test:storybook",
+    "ci:test:all": "npm run ci:test:unit && npm run ci:test:e2e && npm run ci:test:storybook"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.0",

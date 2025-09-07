@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { CardProps } from './Card.types';
 
@@ -18,27 +18,17 @@ export const Card: React.FC<CardProps> = ({
     onClick?.(event);
   };
 
-  const handleMouseEnter = (): void => {
+  const handleMouseEnter = useCallback((): void => {
     if (hoverable) {
-      // React 18 + Storybook compatibility: wrap in setTimeout to avoid act() warnings
-      if (typeof globalThis !== 'undefined' && globalThis.IS_REACT_ACT_ENVIRONMENT) {
-        setTimeout(() => setIsHovered(true), 0);
-      } else {
-        setIsHovered(true);
-      }
+      setIsHovered(true);
     }
-  };
+  }, [hoverable]);
 
-  const handleMouseLeave = (): void => {
+  const handleMouseLeave = useCallback((): void => {
     if (hoverable) {
-      // React 18 + Storybook compatibility: wrap in setTimeout to avoid act() warnings
-      if (typeof globalThis !== 'undefined' && globalThis.IS_REACT_ACT_ENVIRONMENT) {
-        setTimeout(() => setIsHovered(false), 0);
-      } else {
-        setIsHovered(false);
-      }
+      setIsHovered(false);
     }
-  };
+  }, [hoverable]);
 
   const getPaddingStyles = (): { padding: string } => {
     switch (padding) {
