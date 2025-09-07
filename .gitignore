@@ -98,11 +98,15 @@ jspm_packages/
 
 # Gatsby files
 .cache/
-public
+# public - Commented out to allow storybook-docs/public
+# public
 
 # Storybook build outputs
 .out
 .storybook-out
+storybook-static/
+# Allow storybook-docs public assets
+!packages/storybook-docs/public/
 
 # Temporary folders
 tmp/
