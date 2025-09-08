@@ -47,6 +47,23 @@ export default {
   framework: {
     name: '@storybook/react-vite',
     options: {}
+  },
+  async viteFinal(config) {
+    // MUI v5の"use client"ディレクティブによる警告を抑制
+    config.build = {
+      ...config.build,
+      rollupOptions: {
+        ...config.build?.rollupOptions,
+        onwarn: (warning, warn) => {
+          // MODULE_LEVEL_DIRECTIVE警告を抑制（MUIの"use client"対応）
+          if (warning.code === 'MODULE_LEVEL_DIRECTIVE') {
+            return;
+          }
+          warn(warning);
+        }
+      }
+    };
+    return config;
   }
 };
 ```
@@ -202,6 +219,11 @@ export const Disabled: Story = {
 - TypeScriptコンパイルエラーの適切な表示とビルド停止
 - 不正なストーリーファイルの検出とエラー表示
 - 依存関係の不整合に対するエラー表示とビルド停止
+
+### ビルド警告対応
+- MUI v5の"use client"ディレクティブによるMODULE_LEVEL_DIRECTIVE警告の抑制
+- Next.js App Router対応ディレクティブがVite/Rollupビルド時に発生する警告を無害化
+- ビルド成功を維持しながらログの可読性を向上
 
 ## Testing Strategy
 

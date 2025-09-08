@@ -15,11 +15,26 @@ export default {
     name: '@storybook/react-vite',
     options: {}
   },
-  viteFinal: async (config) => {
+  async viteFinal(config) {
     // __UI_LIBRARY_VERSION__を定義
     config.define = {
       ...config.define,
       __UI_LIBRARY_VERSION__: JSON.stringify(uiLibraryPackageJson.version)
+    };
+    
+    // MUI v5の"use client"ディレクティブによる警告を抑制
+    config.build = {
+      ...config.build,
+      rollupOptions: {
+        ...config.build?.rollupOptions,
+        onwarn: (warning, warn) => {
+          // MODULE_LEVEL_DIRECTIVE警告を抑制（MUIの"use client"対応）
+          if (warning.code === 'MODULE_LEVEL_DIRECTIVE') {
+            return;
+          }
+          warn(warning);
+        }
+      }
     };
     return config;
   }

@@ -15,6 +15,19 @@ console.error = (...args) => {
   originalConsoleError(...args);
 };
 
+// "Accessing the Story Store is deprecated and will be removed in 9.0"警告を無視する
+const originalWarn = console.warn;
+console.warn = (...args) => {
+  if (
+    typeof args[0] === 'string' &&
+    /Accessing the Story Store is deprecated and will be removed in 9.0/i.test(args[0])
+  ) {
+    return; // 何もしない
+  }
+  // その他の警告はそのまま表示
+  originalWarn(...args);
+};
+
 export const decorators = [
   (Story) => (
     <BubblePopThemeProvider>

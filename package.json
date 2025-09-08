@@ -10,6 +10,7 @@
     "install-all": "npm install",
     "clean": "lerna clean",
     "dev": "lerna run dev --parallel",
+    "dev:e2e": "npm run dev --workspace=@bubblepop/app",
     "build": "lerna run build",
     "lint": "lerna run lint",
     "format": "lerna run format",
