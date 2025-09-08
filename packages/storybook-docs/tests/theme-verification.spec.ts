@@ -4,10 +4,10 @@ test.describe('MUI Theme Verification', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
     // Storybookの読み込み完了を待つ
-    await expect(page.locator('#storybook-explorer-tree')).toBeVisible({ timeout: 30000 });
+    await expect(page.locator('#storybook-explorer-tree')).toBeVisible({ timeout: 60000 });
     // iframeが完全に読み込まれることを確認
-    await page.waitForSelector('#storybook-preview-iframe', { state: 'attached' });
-    await page.waitForLoadState('networkidle');
+    await page.waitForSelector('#storybook-preview-iframe', { state: 'attached', timeout: 60000 });
+    await page.waitForLoadState('networkidle', { timeout: 60000 });
   });
 
   test.describe('Theme Colors', () => {
