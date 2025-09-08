@@ -1,6 +1,32 @@
-import React, { useState, useCallback } from 'react';
-import { useTheme } from '@mui/material/styles';
+import React from 'react';
+import { Button as MuiButton, styled } from '@mui/material';
 import { ButtonProps } from './Button.types';
+
+const StyledButton = styled(MuiButton, {
+  shouldForwardProp: (prop) => prop !== 'fullWidth',
+})<{ fullWidth?: boolean }>(({ theme, fullWidth }) => ({
+  textTransform: 'none',
+  borderRadius: theme.spacing(1.5),
+  width: fullWidth ? '100%' : 'auto',
+  '&.MuiButton-sizeSmall': {
+    padding: '8px 16px',
+    borderRadius: '8px',
+  },
+  '&.MuiButton-sizeMedium': {
+    padding: '12px 24px',
+    borderRadius: '12px',
+  },
+  '&.MuiButton-sizeLarge': {
+    padding: '16px 32px',
+    borderRadius: '16px',
+  },
+  '&.MuiButton-text': {
+    minWidth: 'auto',
+    '&:hover': {
+      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    },
+  },
+}));
 
 export const Button: React.FC<ButtonProps> = ({
   children,
@@ -14,107 +40,42 @@ export const Button: React.FC<ButtonProps> = ({
   endIcon,
   ...props
 }) => {
-  const theme = useTheme();
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    if (disabled) return;
-    onClick?.(event);
-  };
-
-  const handleMouseEnter = useCallback((): void => {
-    if (!disabled) {
-      setIsHovered(true);
-    }
-  }, [disabled]);
-
-  const handleMouseLeave = useCallback((): void => {
-    if (!disabled) {
-      setIsHovered(false);
-    }
-  }, [disabled]);
-
-  const getSizeStyles = (): { padding: string; borderRadius: string } => {
-    switch (size) {
-      case 'small':
-        return {
-          padding: '8px 16px',
-          borderRadius: '8px',
-        };
-      case 'large':
-        return {
-          padding: '16px 32px',
-          borderRadius: '16px',
-        };
-      default: // medium
-        return {
-          padding: '12px 24px',
-          borderRadius: '12px',
-        };
+  const getMuiVariant = (): 'contained' | 'outlined' | 'text' => {
+    switch (variant) {
+      case 'primary':
+        return 'contained';
+      case 'secondary':
+        return 'outlined';
+      case 'icon':
+        return 'text';
+      default:
+        return 'contained';
     }
   };
 
-  const getVariantStyles = (): { backgroundColor: string; color: string; minWidth?: string } => {
-    const getHoverColor = (baseColor: string, hoverColor: string): string => {
-      return isHovered ? hoverColor : baseColor;
-    };
-
+  const getMuiColor = (): 'primary' | 'secondary' => {
     switch (variant) {
       case 'secondary':
-        return {
-          backgroundColor: getHoverColor(theme.palette.secondary.main, theme.palette.secondary.dark),
-          color: theme.palette.secondary.contrastText,
-        };
-      case 'icon':
-        return {
-          backgroundColor: getHoverColor('transparent', 'rgba(255, 255, 255, 0.1)'),
-          color: theme.palette.text.primary,
-          minWidth: 'auto',
-        };
-      default: // primary
-        return {
-          backgroundColor: getHoverColor(theme.palette.primary.main, theme.palette.primary.dark),
-          color: theme.palette.primary.contrastText,
-        };
+        return 'secondary';
+      default:
+        return 'primary';
     }
-  };
-
-  const sizeStyles = getSizeStyles();
-  const variantStyles = getVariantStyles();
-
-  const buttonStyles = {
-    fontFamily: theme.typography.fontFamily,
-    fontSize: theme.typography.button.fontSize,
-    fontWeight: theme.typography.button.fontWeight,
-    lineHeight: theme.typography.button.lineHeight,
-    textTransform: theme.typography.button.textTransform as React.CSSProperties['textTransform'],
-    border: 'none',
-    cursor: disabled ? 'not-allowed' : 'pointer',
-    display: fullWidth ? 'flex' : 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: startIcon || endIcon ? '8px' : 0,
-    opacity: disabled ? 0.6 : 1,
-    transition: 'all 0.2s ease-in-out',
-    width: fullWidth ? '100%' : 'auto',
-    boxShadow: isHovered && !disabled ? '0px 4px 8px rgba(0, 0, 0, 0.3)' : '0px 2px 4px rgba(0, 0, 0, 0.2)',
-    ...sizeStyles,
-    ...variantStyles,
   };
 
   return (
-    <button
+    <StyledButton
       {...props}
-      type={type}
-      onClick={handleClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      variant={getMuiVariant()}
+      color={getMuiColor()}
+      size={size}
       disabled={disabled}
-      style={buttonStyles as React.CSSProperties}
+      onClick={onClick}
+      type={type}
+      fullWidth={fullWidth}
+      startIcon={startIcon}
+      endIcon={endIcon}
     >
-      {startIcon && <span>{startIcon}</span>}
       {children}
-      {endIcon && <span>{endIcon}</span>}
-    </button>
+    </StyledButton>
   );
 };

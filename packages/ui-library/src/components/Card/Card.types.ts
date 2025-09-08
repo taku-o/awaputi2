@@ -1,10 +1,7 @@
-import React from 'react';
+import { CardProps as MuiCardProps } from '@mui/material';
 
-export interface CardProps {
-  children: React.ReactNode;
-  elevation?: 0 | 1 | 2 | 3 | 4;
+export interface CardProps extends Omit<MuiCardProps, 'variant'> {
   hoverable?: boolean;
-  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
   padding?: 'none' | 'small' | 'medium' | 'large';
   variant?: 'default' | 'outlined';
 }

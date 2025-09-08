@@ -50,8 +50,9 @@ describe('Button Component', () => {
     const button = screen.getByRole('button');
     
     expect(button).toBeInTheDocument();
-    expect(button).toHaveStyle('font-size: 28px');
-    expect(button).toHaveStyle('font-weight: 700');
+    // MUIコンポーネントとして動作することを確認
+    expect(button).toHaveClass('MuiButton-root');
+    expect(button).toHaveClass('MuiButton-contained');
   });
 
   // Requirement 1.2: primary、secondary、iconの各バリエーションが表示される
@@ -65,6 +66,8 @@ describe('Button Component', () => {
     
     expect(button).toBeInTheDocument();
     expect(screen.getByText('Primary Button')).toBeInTheDocument();
+    expect(button).toHaveClass('MuiButton-contained');
+    expect(button).toHaveClass('MuiButton-containedPrimary');
   });
 
   test('renders secondary variant correctly', () => {
@@ -77,6 +80,8 @@ describe('Button Component', () => {
     
     expect(button).toBeInTheDocument();
     expect(screen.getByText('Secondary Button')).toBeInTheDocument();
+    expect(button).toHaveClass('MuiButton-outlined');
+    expect(button).toHaveClass('MuiButton-outlinedSecondary');
   });
 
   test('renders icon variant correctly', () => {
@@ -89,6 +94,8 @@ describe('Button Component', () => {
     
     expect(button).toBeInTheDocument();
     expect(screen.getByText('Icon Button')).toBeInTheDocument();
+    expect(button).toHaveClass('MuiButton-text');
+    expect(button).toHaveClass('MuiButton-textPrimary');
   });
 
   // Requirement 1.3: disabled状態で適切な視覚的フィードバックが表示される
@@ -101,8 +108,9 @@ describe('Button Component', () => {
     const button = screen.getByRole('button');
     
     expect(button).toBeDisabled();
-    expect(button).toHaveStyle('opacity: 0.6');
-    expect(button).toHaveStyle('cursor: not-allowed');
+    expect(button).toHaveClass('Mui-disabled');
+    // MUIはdisabled時にaria-disabled属性を設定
+    expect(button).toHaveAttribute('disabled');
   });
 
   // Requirement 1.4: onClickハンドラーでクリック時にイベントが発火する
@@ -170,6 +178,7 @@ describe('Button Component', () => {
     let button = screen.getByRole('button');
     expect(button).toBeInTheDocument();
     expect(screen.getByText('Small Button')).toBeInTheDocument();
+    expect(button).toHaveClass('MuiButton-sizeSmall');
 
     rerender(
       <TestWrapper>
@@ -179,6 +188,7 @@ describe('Button Component', () => {
     button = screen.getByRole('button');
     expect(button).toBeInTheDocument();
     expect(screen.getByText('Medium Button')).toBeInTheDocument();
+    expect(button).toHaveClass('MuiButton-sizeMedium');
 
     rerender(
       <TestWrapper>
@@ -188,6 +198,7 @@ describe('Button Component', () => {
     button = screen.getByRole('button');
     expect(button).toBeInTheDocument();
     expect(screen.getByText('Large Button')).toBeInTheDocument();
+    expect(button).toHaveClass('MuiButton-sizeLarge');
   });
 
   // fullWidth test
@@ -201,5 +212,7 @@ describe('Button Component', () => {
     
     expect(button).toBeInTheDocument();
     expect(screen.getByText('Full Width Button')).toBeInTheDocument();
+    // fullWidthはstyledComponentでカスタムスタイルとして適用
+    expect(button).toHaveStyle({ width: '100%' });
   });
 });

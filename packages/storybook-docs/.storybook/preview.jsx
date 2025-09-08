@@ -5,7 +5,11 @@ import { BubblePopThemeProvider } from '@bubblepop/ui-library';
 // これは、根本的な解決策ではないが、開発体験を向上させるための現実的な対処法
 const originalConsoleError = console.error;
 console.error = (...args) => {
-  if (/(React)?"act(...)"/.test(args[0])) {
+  // act()関連の警告を広範囲にキャッチ
+  if (typeof args[0] === 'string' && 
+      (args[0].includes('act(') || 
+       args[0].includes('act ') ||
+       args[0].includes('testing environment is not configured'))) {
     return;
   }
   originalConsoleError(...args);
