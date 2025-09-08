@@ -12,6 +12,9 @@
     "test:storybook:addons": "playwright test tests/storybook-addons.spec.ts --reporter=list",
     "test:storybook:addons:ui": "playwright test tests/storybook-addons.spec.ts --ui",
     "test:storybook:addons:headed": "playwright test tests/storybook-addons.spec.ts --headed",
+    "test:storybook:theme": "playwright test tests/theme-verification.spec.ts --reporter=list",
+    "test:storybook:theme:ui": "playwright test tests/theme-verification.spec.ts --ui",
+    "test:storybook:theme:headed": "playwright test tests/theme-verification.spec.ts --headed",
     "test:storybook:all": "playwright test tests/*.spec.ts --reporter=list"
   },
   "dependencies": {
