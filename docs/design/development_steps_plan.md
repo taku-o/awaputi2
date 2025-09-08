@@ -15,7 +15,7 @@
 2. Cardコンポーネント実装
 3. Containerコンポーネント実装
 
-## Phase 4: Storybookセットアップ
+## [done] Phase 4: Storybookセットアップ
 1. Storybook初期設定
 2. アドオン設定
 3. ビルド設定
