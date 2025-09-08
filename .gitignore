@@ -1,6 +1,5 @@
 # Personal files
 TODO.md
-CLAUDE.local.md
 .claude/settings.local.json
 
 # Kiro IDE settings (exclude personal settings, include specs)
