@@ -1,6 +1,6 @@
 # Personal files
 TODO.md
-CLAUDE.local.md
+TODO-*.md
 .claude/settings.local.json
 
 # Kiro IDE settings (exclude personal settings, include specs)
@@ -62,6 +62,11 @@ jspm_packages/
 # TypeScript cache
 *.tsbuildinfo
 
+# Vite temporary files
+vite.config.ts.timestamp-*
+vite.config.js.timestamp-*
+vite.config.mjs.timestamp-*
+
 # Optional npm cache directory
 .npm
 
@@ -98,11 +103,15 @@ jspm_packages/
 
 # Gatsby files
 .cache/
-public
+# public - Commented out to allow storybook-docs/public
+# public
 
 # Storybook build outputs
 .out
 .storybook-out
+storybook-static/
+# Allow storybook-docs public assets
+!packages/storybook-docs/public/
 
 # Temporary folders
 tmp/

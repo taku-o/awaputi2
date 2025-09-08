@@ -1,8 +1,6 @@
-import React from 'react';
+import { ContainerProps as MuiContainerProps } from '@mui/material';
 
-export interface ContainerProps {
-  children: React.ReactNode;
-  maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | false;
+export interface ContainerProps extends MuiContainerProps {
   center?: boolean;
   padding?: 'none' | 'small' | 'medium' | 'large';
   responsive?: boolean;

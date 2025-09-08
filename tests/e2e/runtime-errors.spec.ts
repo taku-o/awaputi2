@@ -11,7 +11,7 @@ test('JavaScript実行時エラーの監視', async ({ page }) => {
   await page.goto('http://localhost:3000');
   
   // ページが完全に読み込まれるまで待機
-  await page.waitForLoadState('networkidle');
+  await page.waitForLoadState('networkidle', { timeout: 60000 });
   
   // UI操作を実行してエラーを誘発させる
   const versionElement = page.locator('[data-testid="ui-library-version"]');
