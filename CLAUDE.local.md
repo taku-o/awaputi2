@@ -34,10 +34,13 @@
 * 目視で確認できる修正に関しては、ユーザーがその修正内容を確認出来るようにする。
 
 * タスクの最後に各種テストを実行してエラーがおきないことを確認してください。
+    * test:e2e, test:storybook:allは、Claude Codeで実行時、しばしばタイムアウトエラーする。**タイムアウト**原因の失敗ならそれほど気にしないで。
 ```
+cd {project_root}
 npm run test:e2e
 npm run test:storybook:all -- --reporter=line
 cd packages/ui-library && npm run type-check && npm run lint && npm run build && npm test
+cd {project_root}
 npm run lint
 npm run build --workspace=@bubblepop/ui-library && npm run build-storybook
 ```
