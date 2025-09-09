@@ -21,13 +21,13 @@ test.describe('Storybook Stories Display Verification', () => {
   test('Card component stories should display correctly', async ({ page }) => {
     await page.goto('http://localhost:6006/?path=/story/components-card--default');
     const iframe = page.frameLocator('#storybook-preview-iframe');
-    await expect(iframe.locator('text=Card Title')).toBeVisible();
+    await expect(iframe.locator('text=カードタイトル')).toBeVisible();
     
     await page.goto('http://localhost:6006/?path=/story/components-card--hoverable');
-    await expect(iframe.locator('text=Hoverable Card')).toBeVisible();
+    await expect(iframe.locator('text=ホバー可能なカード')).toBeVisible();
     
     await page.goto('http://localhost:6006/?path=/story/components-card--outlined');
-    await expect(iframe.locator('text=Outlined Card')).toBeVisible();
+    await expect(iframe.locator('text=アウトラインカード')).toBeVisible();
   });
 
   test('Container component stories should display correctly', async ({ page }) => {

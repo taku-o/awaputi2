@@ -41,13 +41,13 @@ test.describe('Component Stories Acceptance Criteria', () => {
     // 各ストーリーをクリックして表示確認
     await page.click('[data-item-id="components-card--default"]');
     const iframe = page.frameLocator('#storybook-preview-iframe');
-    await expect(iframe.locator('h3:has-text("Card Title")').first()).toBeVisible();
+    await expect(iframe.locator('h3:has-text("カードタイトル")').first()).toBeVisible();
     
     await page.click('[data-item-id="components-card--hoverable"]');
-    await expect(iframe.locator('h3:has-text("Hoverable Card")').first()).toBeVisible();
+    await expect(iframe.locator('h3:has-text("ホバー可能なカード")').first()).toBeVisible();
     
     await page.click('[data-item-id="components-card--outlined"]');
-    await expect(iframe.locator('h3:has-text("Outlined Card")').first()).toBeVisible();
+    await expect(iframe.locator('h3:has-text("アウトラインカード")').first()).toBeVisible();
   });
 
   test('Container component should display all required story variations', async ({ page }) => {
