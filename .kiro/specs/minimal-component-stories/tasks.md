@@ -1,6 +1,6 @@
 # 実装計画
 
-- [ ] 1. 既存ストーリーファイルの確認と分析
+- [x] 1. 既存ストーリーファイルの確認と分析
   - 現在のButton.stories.tsx、Card.stories.tsx、Container.stories.tsxの内容を詳細に確認
   - 各ストーリーの構造と実装状況を分析
   - 改善が必要な箇所を特定

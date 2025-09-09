@@ -15,6 +15,12 @@
     "test:storybook:theme": "playwright test tests/theme-verification.spec.ts --reporter=list",
     "test:storybook:theme:ui": "playwright test tests/theme-verification.spec.ts --ui",
     "test:storybook:theme:headed": "playwright test tests/theme-verification.spec.ts --headed",
+    "test:storybook:stories-display": "playwright test tests/storybook-stories-display.spec.ts --reporter=list",
+    "test:storybook:stories-display:ui": "playwright test tests/storybook-stories-display.spec.ts --ui",
+    "test:storybook:stories-display:headed": "playwright test tests/storybook-stories-display.spec.ts --headed",
+    "test:storybook:acceptance": "playwright test tests/component-stories-acceptance.spec.ts --reporter=list",
+    "test:storybook:acceptance:ui": "playwright test tests/component-stories-acceptance.spec.ts --ui",
+    "test:storybook:acceptance:headed": "playwright test tests/component-stories-acceptance.spec.ts --headed",
     "test:storybook:all": "playwright test tests/*.spec.ts --reporter=list"
   },
   "dependencies": {

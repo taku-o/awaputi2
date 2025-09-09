@@ -1,11 +1,9 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Container } from '@bubblepop/ui-library';
 import { Card } from '@bubblepop/ui-library';
 import { Typography } from '@mui/material';
 
-// @ts-ignore
-const meta = {
+const meta: Meta<typeof Container> = {
   title: 'Components/Container',
   component: Container,
   tags: ['autodocs'],
@@ -55,23 +53,23 @@ const meta = {
     maxWidth: {
       control: 'select',
       options: ['xs', 'sm', 'md', 'lg', 'xl', false],
-      description: 'Maximum width of the container',
+      description: 'Maximum width of the container. Determines the maximum width at each breakpoint.',
     },
     center: {
       control: 'boolean',
-      description: 'Center the container horizontally',
+      description: 'Center the container horizontally within its parent.',
     },
     padding: {
       control: 'select',
       options: ['none', 'small', 'medium', 'large'],
-      description: 'Padding inside the container',
+      description: 'Padding inside the container. Controls the inner spacing.',
     },
     responsive: {
       control: 'boolean',
-      description: 'Enable responsive padding',
+      description: 'Enable responsive padding that adjusts based on viewport size.',
     },
   },
-} satisfies Meta<typeof Container>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
