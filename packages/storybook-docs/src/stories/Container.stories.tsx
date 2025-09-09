@@ -1,16 +1,19 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Container } from '@bubblepop/ui-library';
 import { Card } from '@bubblepop/ui-library';
 import { Typography } from '@mui/material';
 
-// @ts-ignore
-const meta = {
+const meta: Meta<typeof Container> = {
   title: 'Components/Container',
   component: Container,
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
+    docs: {
+      description: {
+        component: 'Containerコンポーネントは、レイアウト制御とレスポンシブデザインを提供します。最大幅の制限、中央寄せ、パディング制御などの機能を持ち、様々な画面サイズに対応したレイアウトを実現します。ビューポートセレクターを使用して、各ブレークポイントでの表示を確認できます。',
+      },
+    },
     viewport: {
       viewports: {
         xs: {
@@ -55,23 +58,23 @@ const meta = {
     maxWidth: {
       control: 'select',
       options: ['xs', 'sm', 'md', 'lg', 'xl', false],
-      description: 'Maximum width of the container',
+      description: 'コンテナの最大幅を設定します。各ブレークポイント（xs: 444px, sm: 600px, md: 900px, lg: 1200px, xl: 1536px）に対応し、falseで全幅表示になります。',
     },
     center: {
       control: 'boolean',
-      description: 'Center the container horizontally',
+      description: '親要素内でコンテナを水平方向に中央寄せします。maxWidthと組み合わせて使用すると効果的です。',
     },
     padding: {
       control: 'select',
       options: ['none', 'small', 'medium', 'large'],
-      description: 'Padding inside the container',
+      description: 'コンテナ内部のパディングを制御します（none: 0, small: 8px, medium: 16px, large: 24px）。',
     },
     responsive: {
       control: 'boolean',
-      description: 'Enable responsive padding',
+      description: 'レスポンシブパディングを有効にします。ビューポートサイズに応じてパディングが自動調整され、モバイルでは小さく、デスクトップでは大きくなります。',
     },
   },
-} satisfies Meta<typeof Container>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -99,6 +102,13 @@ export const Default: Story = {
     responsive: false,
     children: <DemoContent />,
   },
+  parameters: {
+    docs: {
+      description: {
+        story: 'デフォルトのContainerコンポーネントです。最大幅lgで通常のパディングを持ちます。',
+      },
+    },
+  },
 };
 
 export const MaxWidthXS: Story = {
@@ -108,6 +118,13 @@ export const MaxWidthXS: Story = {
     padding: 'medium',
     responsive: false,
     children: <DemoContent />,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: '最大幅を444px（XSサイズ）に制限したコンテナです。モバイル向けの狭いレイアウトに適しています。',
+      },
+    },
   },
 };
 
@@ -119,6 +136,13 @@ export const MaxWidthSM: Story = {
     responsive: false,
     children: <DemoContent />,
   },
+  parameters: {
+    docs: {
+      description: {
+        story: '最大幅を600px（SMサイズ）に制限したコンテナです。小型タブレット向けのレイアウトに適しています。',
+      },
+    },
+  },
 };
 
 export const MaxWidthMD: Story = {
@@ -128,6 +152,13 @@ export const MaxWidthMD: Story = {
     padding: 'medium',
     responsive: false,
     children: <DemoContent />,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: '最大幅を900px（MDサイズ）に制限したコンテナです。タブレットや小型デスクトップ向けのレイアウトに適しています。',
+      },
+    },
   },
 };
 
@@ -139,6 +170,13 @@ export const MaxWidthLG: Story = {
     responsive: false,
     children: <DemoContent />,
   },
+  parameters: {
+    docs: {
+      description: {
+        story: '最大幅を1200px（LGサイズ）に制限したコンテナです。標準的なデスクトップ向けのレイアウトに適しています。',
+      },
+    },
+  },
 };
 
 export const MaxWidthXL: Story = {
@@ -148,6 +186,13 @@ export const MaxWidthXL: Story = {
     padding: 'medium',
     responsive: false,
     children: <DemoContent />,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: '最大幅を1536px（XLサイズ）に制限したコンテナです。大型デスクトップやワイドスクリーン向けのレイアウトに適しています。',
+      },
+    },
   },
 };
 
@@ -159,6 +204,13 @@ export const FullWidth: Story = {
     responsive: false,
     children: <DemoContent />,
   },
+  parameters: {
+    docs: {
+      description: {
+        story: '最大幅の制限を解除し、親要素の全幅を使用するコンテナです。フルスクリーンレイアウトに適しています。',
+      },
+    },
+  },
 };
 
 export const Centered: Story = {
@@ -168,6 +220,13 @@ export const Centered: Story = {
     padding: 'medium',
     responsive: false,
     children: <DemoContent />,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: '親要素内で水平方向に中央寄せされたコンテナです。コンテンツを画面中央に配置する際に使用します。',
+      },
+    },
   },
 };
 
@@ -179,6 +238,13 @@ export const NoPadding: Story = {
     responsive: false,
     children: <DemoContent />,
   },
+  parameters: {
+    docs: {
+      description: {
+        story: 'パディングを持たないコンテナです。コンテンツを端まで配置したい場合に使用します。',
+      },
+    },
+  },
 };
 
 export const SmallPadding: Story = {
@@ -188,6 +254,13 @@ export const SmallPadding: Story = {
     padding: 'small',
     responsive: false,
     children: <DemoContent />,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: '小さなパディング（8px）を持つコンテナです。コンパクトなレイアウトに適しています。',
+      },
+    },
   },
 };
 
@@ -199,6 +272,13 @@ export const MediumPadding: Story = {
     responsive: false,
     children: <DemoContent />,
   },
+  parameters: {
+    docs: {
+      description: {
+        story: '標準的なパディング（16px）を持つコンテナです。一般的なコンテンツレイアウトに適しています。',
+      },
+    },
+  },
 };
 
 export const LargePadding: Story = {
@@ -208,6 +288,13 @@ export const LargePadding: Story = {
     padding: 'large',
     responsive: false,
     children: <DemoContent />,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: '大きなパディング（24px）を持つコンテナです。余白を多く取りたいレイアウトに適しています。',
+      },
+    },
   },
 };
 
@@ -222,7 +309,7 @@ export const ResponsivePadding: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Responsive padding adjusts based on viewport size. Try changing the viewport using the toolbar.',
+        story: 'レスポンシブパディングを有効にしたコンテナです。ビューポートサイズに応じてパディングが自動調整されます。モバイルデバイスでは小さく、デスクトップでは大きくなります。ツールバーのビューポートセレクターで異なる画面サイズでの表示を確認できます。',
       },
     },
   },
@@ -250,5 +337,12 @@ export const MultipleCards: Story = {
         </Card>
       </div>
     ),
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: '複数のカードコンポーネントを含むコンテナの例です。コンテナ内でのコンポーネントレイアウトと間隔の管理を示しています。',
+      },
+    },
   },
 };

@@ -7,31 +7,55 @@ const meta: Meta<typeof Card> = {
   component: Card,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: 'カードコンポーネントは、関連するコンテンツをグループ化して表示するためのコンテナです。elevation、padding、variant などのプロパティをカスタマイズできます。',
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {
     elevation: {
       control: { type: 'select' },
       options: [0, 1, 2, 3, 4],
-      description: 'Shadow depth of the card',
+      description: 'カードの影の深さを設定します（0: 影なし、4: 最大の影）',
+      table: {
+        type: { summary: '0 | 1 | 2 | 3 | 4' },
+        defaultValue: { summary: '1' },
+      },
     },
     hoverable: {
       control: { type: 'boolean' },
-      description: 'Enable hover effects',
+      description: 'ホバー時の視覚効果を有効にします',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
     },
     padding: {
       control: { type: 'select' },
       options: ['none', 'small', 'medium', 'large'],
-      description: 'Card padding size',
+      description: 'カード内部のパディングサイズを設定します',
+      table: {
+        type: { summary: '"none" | "small" | "medium" | "large"' },
+        defaultValue: { summary: '"medium"' },
+      },
     },
     variant: {
       control: { type: 'select' },
       options: ['default', 'outlined'],
-      description: 'Card style variant',
+      description: 'カードのスタイルバリエーションを設定します',
+      table: {
+        type: { summary: '"default" | "outlined"' },
+        defaultValue: { summary: '"default"' },
+      },
     },
     onClick: { 
       action: 'clicked',
-      description: 'Click event handler',
+      description: 'カードクリック時のイベントハンドラー',
+      table: {
+        type: { summary: '() => void' },
+      },
     },
   },
   decorators: [
@@ -47,11 +71,18 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: '基本的なカードコンポーネントです。デフォルトの elevation (1) と padding (medium) を使用しています。',
+      },
+    },
+  },
   args: {
     children: (
       <div>
-        <h3 style={{ margin: '0 0 8px 0' }}>Card Title</h3>
-        <p style={{ margin: 0 }}>This is a default card component with medium padding and elevation 1.</p>
+        <h3 style={{ margin: '0 0 8px 0' }}>カードタイトル</h3>
+        <p style={{ margin: 0 }}>デフォルトのカードコンポーネントです。標準的なパディング（medium）と影（elevation=1）を使用しています。</p>
       </div>
     ),
     elevation: 1,
@@ -60,11 +91,18 @@ export const Default: Story = {
 };
 
 export const NoElevation: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: '影なしのフラットなカードです。elevation を 0 に設定することで、完全にフラットな外観を実現します。',
+      },
+    },
+  },
   args: {
     children: (
       <div>
-        <h3 style={{ margin: '0 0 8px 0' }}>Flat Card</h3>
-        <p style={{ margin: 0 }}>This card has no elevation (elevation=0) for a flat appearance.</p>
+        <h3 style={{ margin: '0 0 8px 0' }}>フラットカード</h3>
+        <p style={{ margin: 0 }}>影なしのフラットなカードです。elevation=0により完全に平面的な外観になります。</p>
       </div>
     ),
     elevation: 0,
@@ -73,11 +111,18 @@ export const NoElevation: Story = {
 };
 
 export const MediumElevation: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: '中程度の影を持つカードです。elevation を 2 に設定し、適度な立体感を演出します。',
+      },
+    },
+  },
   args: {
     children: (
       <div>
-        <h3 style={{ margin: '0 0 8px 0' }}>Medium Shadow</h3>
-        <p style={{ margin: 0 }}>This card has medium elevation (elevation=2) for a moderate shadow effect.</p>
+        <h3 style={{ margin: '0 0 8px 0' }}>中程度の影</h3>
+        <p style={{ margin: 0 }}>中程度の影（elevation=2）を持つカードです。適度な立体感を表現します。</p>
       </div>
     ),
     elevation: 2,
@@ -86,11 +131,18 @@ export const MediumElevation: Story = {
 };
 
 export const HighElevation: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: '最大の影を持つカードです。elevation を 4 に設定し、強い立体感と視覚的な階層を表現します。',
+      },
+    },
+  },
   args: {
     children: (
       <div>
-        <h3 style={{ margin: '0 0 8px 0' }}>High Shadow</h3>
-        <p style={{ margin: 0 }}>This card has high elevation (elevation=4) for a prominent shadow effect.</p>
+        <h3 style={{ margin: '0 0 8px 0' }}>強い影</h3>
+        <p style={{ margin: 0 }}>最大の影（elevation=4）を持つカードです。強い立体感と階層性を表現します。</p>
       </div>
     ),
     elevation: 4,
@@ -99,11 +151,18 @@ export const HighElevation: Story = {
 };
 
 export const Hoverable: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'ホバー効果を持つインタラクティブなカードです。マウスオーバー時に背景色が変化し、ユーザーへの視覚的フィードバックを提供します。',
+      },
+    },
+  },
   args: {
     children: (
       <div>
-        <h3 style={{ margin: '0 0 8px 0' }}>Hoverable Card</h3>
-        <p style={{ margin: 0 }}>Hover over this card to see the hover effect. The background color changes when hoverable is true.</p>
+        <h3 style={{ margin: '0 0 8px 0' }}>ホバー可能なカード</h3>
+        <p style={{ margin: 0 }}>このカードにマウスを重ねるとホバー効果が表示されます。hoverable=trueの時、背景色が変化します。</p>
       </div>
     ),
     elevation: 2,
@@ -113,11 +172,18 @@ export const Hoverable: Story = {
 };
 
 export const HoverableWithClick: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'ホバー効果とクリックイベントを持つ完全にインタラクティブなカードです。カーソルがポインターに変わり、クリック可能であることを示します。',
+      },
+    },
+  },
   args: {
     children: (
       <div>
-        <h3 style={{ margin: '0 0 8px 0' }}>Interactive Card</h3>
-        <p style={{ margin: 0 }}>This card is hoverable and clickable. The cursor changes to pointer when both hoverable and onClick are set.</p>
+        <h3 style={{ margin: '0 0 8px 0' }}>インタラクティブカード</h3>
+        <p style={{ margin: 0 }}>ホバー効果とクリック可能な機能を持つカードです。hoverableとonClickの両方が設定されている時、カーソルがポインターに変わります。</p>
       </div>
     ),
     elevation: 2,
@@ -128,11 +194,18 @@ export const HoverableWithClick: Story = {
 };
 
 export const Outlined: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'アウトラインスタイルのカードです。影の代わりにボーダーを使用して、より軽い表現を実現します。',
+      },
+    },
+  },
   args: {
     children: (
       <div>
-        <h3 style={{ margin: '0 0 8px 0' }}>Outlined Card</h3>
-        <p style={{ margin: 0 }}>This card uses the outlined variant with a border instead of shadow.</p>
+        <h3 style={{ margin: '0 0 8px 0' }}>アウトラインカード</h3>
+        <p style={{ margin: 0 }}>影の代わりにボーダーを使用するoutlinedバリアントのカードです。</p>
       </div>
     ),
     variant: 'outlined',
@@ -142,11 +215,18 @@ export const Outlined: Story = {
 };
 
 export const OutlinedHoverable: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'ホバー効果を持つアウトラインカードです。マウスオーバー時にボーダーの色が変化し、インタラクティブな要素であることを表現します。',
+      },
+    },
+  },
   args: {
     children: (
       <div>
-        <h3 style={{ margin: '0 0 8px 0' }}>Outlined Hoverable</h3>
-        <p style={{ margin: 0 }}>Hover over this outlined card to see the border color change.</p>
+        <h3 style={{ margin: '0 0 8px 0' }}>ホバー可能なアウトラインカード</h3>
+        <p style={{ margin: 0 }}>このアウトラインカードにマウスを重ねるとボーダーの色が変化します。</p>
       </div>
     ),
     variant: 'outlined',
@@ -158,11 +238,18 @@ export const OutlinedHoverable: Story = {
 };
 
 export const SmallPadding: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: '小さいパディング（16px）を持つカードです。コンパクトなレイアウトや省スペースデザインに適しています。',
+      },
+    },
+  },
   args: {
     children: (
       <div>
-        <h3 style={{ margin: '0 0 8px 0' }}>Small Padding</h3>
-        <p style={{ margin: 0 }}>This card has small padding (16px).</p>
+        <h3 style={{ margin: '0 0 8px 0' }}>小さいパディング</h3>
+        <p style={{ margin: 0 }}>小さいパディング（16px）を持つカードです。</p>
       </div>
     ),
     elevation: 1,
@@ -171,11 +258,18 @@ export const SmallPadding: Story = {
 };
 
 export const LargePadding: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: '大きいパディング（32px）を持つカードです。余裕のあるレイアウトや読みやすさを重視したデザインに適しています。',
+      },
+    },
+  },
   args: {
     children: (
       <div>
-        <h3 style={{ margin: '0 0 8px 0' }}>Large Padding</h3>
-        <p style={{ margin: 0 }}>This card has large padding (32px) for more spacious content.</p>
+        <h3 style={{ margin: '0 0 8px 0' }}>大きいパディング</h3>
+        <p style={{ margin: 0 }}>大きいパディング（32px）を持つカードです。より余裕のあるコンテンツ表示に適しています。</p>
       </div>
     ),
     elevation: 1,
@@ -184,11 +278,18 @@ export const LargePadding: Story = {
 };
 
 export const NoPadding: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'パディングなしのカードです。コンテンツ側で独自のスペーシングを完全にコントロールしたい場合に使用します。',
+      },
+    },
+  },
   args: {
     children: (
       <div style={{ padding: '20px' }}>
-        <h3 style={{ margin: '0 0 8px 0' }}>No Card Padding</h3>
-        <p style={{ margin: 0 }}>This card has no padding, but the content has its own padding for demonstration.</p>
+        <h3 style={{ margin: '0 0 8px 0' }}>パディングなし</h3>
+        <p style={{ margin: 0 }}>カード自体にパディングはありませんが、デモ用にコンテンツ側でパディングを設定しています。</p>
       </div>
     ),
     elevation: 1,
@@ -197,6 +298,13 @@ export const NoPadding: Story = {
 };
 
 export const ComplexContent: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: '複雑なコンテンツを含むカードの例です。画像、タイトル、テキスト、ボタンなど、複数の要素を組み合わせた実用的なカードレイアウトを示しています。',
+      },
+    },
+  },
   args: {
     children: (
       <div>
@@ -211,14 +319,14 @@ export const ComplexContent: Story = {
             marginBottom: '16px'
           }} 
         />
-        <h3 style={{ margin: '0 0 8px 0' }}>Complex Card</h3>
-        <p style={{ margin: '0 0 16px 0' }}>This card contains multiple elements including an image, title, text, and buttons.</p>
+        <h3 style={{ margin: '0 0 8px 0' }}>複雑なカード</h3>
+        <p style={{ margin: '0 0 16px 0' }}>画像、タイトル、テキスト、ボタンなど複数の要素を含むカードです。</p>
         <div style={{ display: 'flex', gap: '8px' }}>
           <button style={{ padding: '8px 16px', borderRadius: '4px', border: 'none', backgroundColor: '#4CAF50', color: 'white', cursor: 'pointer' }}>
-            Action 1
+            アクション1
           </button>
           <button style={{ padding: '8px 16px', borderRadius: '4px', border: '1px solid #4CAF50', backgroundColor: 'transparent', color: '#4CAF50', cursor: 'pointer' }}>
-            Action 2
+            アクション2
           </button>
         </div>
       </div>
