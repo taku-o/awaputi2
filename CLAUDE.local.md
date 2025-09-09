@@ -37,14 +37,10 @@
 ```
 npm run test:e2e
 npm run test:storybook:all -- --reporter=line
-cd ui-library && npm run type-check && npm run lint && npm run build && npm test
+cd packages/ui-library && npm run type-check && npm run lint && npm run build && npm test
+npm run lint
+npm run build --workspace=@bubblepop/ui-library && npm run build-storybook
 ```
-
-## e2eテスト時のルール
-1. 開発開始時：既存の3000番ポートをチェック&クリーンアップ
-2. 単一bubblepopサーバーをport 3000で起動
-3. ui-libraryは別途ビルドモードで動作
-4. E2Eテストは常にlocalhost:3000を使用
 
 # その他
 * ドキュメントは日本語で書いてください。
