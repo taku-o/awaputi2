@@ -22,14 +22,14 @@ packages/storybook-docs/src/stories/
 ## コンポーネントと設計
 
 ### Button.stories.tsx
-現在の実装は要件を満たしていますが、以下の改善を行います：
+現在の実装は要件を満たしており、既存のストーリーを維持します：
 
 **改善点:**
 - ドキュメント記述の統一
 - argTypesの説明文の充実
 - ストーリーの説明文追加
 
-**ストーリー構成:**
+**既存ストーリー構成（維持）:**
 - Primary: プライマリボタンの基本形
 - Secondary: セカンダリボタンの基本形
 - Icon: アイコンボタンの基本形
@@ -37,31 +37,48 @@ packages/storybook-docs/src/stories/
 - FullWidth: 全幅表示の確認
 
 ### Card.stories.tsx
-現在の実装は充実していますが、以下の改善を行います：
+現在の実装は充実しており、既存のストーリーを維持します：
 
 **改善点:**
-- ストーリーの整理と最小限への絞り込み
 - 説明文の統一
-- 不要なストーリーの削除
+- ドキュメント記述の改善
 
-**ストーリー構成（最小限）:**
+**既存ストーリー構成（維持）:**
 - Default: 基本的なカード
+- NoElevation: フラットなカード
+- MediumElevation: 中程度の影付きカード
+- HighElevation: 高い影付きカード
 - Hoverable: ホバー効果付きカード
+- HoverableWithClick: クリック可能なホバーカード
 - Outlined: アウトライン形式のカード
-- NoPadding: パディングなしのカード
+- OutlinedHoverable: アウトライン形式のホバーカード
+- SmallPadding: 小さなパディング
+- LargePadding: 大きなパディング
+- NoPadding: パディングなし
+- ComplexContent: 複雑なコンテンツ
 
 ### Container.stories.tsx
-現在の実装は適切ですが、以下の改善を行います：
+現在の実装は適切であり、既存のストーリーを維持します：
 
 **改善点:**
-- ストーリーの整理と最小限への絞り込み
 - レスポンシブ対応の説明強化
+- ドキュメント記述の改善
 
-**ストーリー構成（最小限）:**
+**既存ストーリー構成（維持）:**
 - Default: 基本的なコンテナ
-- Centered: 中央寄せコンテナ
+- MaxWidthXS: 極小幅制限
+- MaxWidthSM: 小幅制限
+- MaxWidthMD: 中幅制限
+- MaxWidthLG: 大幅制限
+- MaxWidthXL: 特大幅制限
 - FullWidth: 全幅コンテナ
+- Centered: 中央寄せコンテナ
+- NoPadding: パディングなし
+- SmallPadding: 小さなパディング
+- MediumPadding: 中程度のパディング
+- LargePadding: 大きなパディング
 - ResponsivePadding: レスポンシブパディング
+- MultipleCards: 複数カードの表示
 
 ## データモデル
 
