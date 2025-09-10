@@ -1,6 +1,6 @@
 # Implementation Plan
 
-- [x] 1. Zustandライブラリの導入とプロジェクト設定
+- [ ] 1. Zustandライブラリの導入とプロジェクト設定
   - package.jsonにzustandの依存関係を追加
   - TypeScript設定でストア関連の型チェックを有効化
   - _Requirements: 2.1_
