@@ -6,7 +6,7 @@
   - _Requirements: 2.1_
 
 - [ ] 2. 基本型定義ファイルの作成
-  - [ ] 2.1 型定義ディレクトリ構造の作成
+  - [x] 2.1 型定義ディレクトリ構造の作成
     - packages/bubblepop/src/types/ディレクトリを作成
     - index.tsファイルでエクスポートを統一
     - _Requirements: 1.1_
