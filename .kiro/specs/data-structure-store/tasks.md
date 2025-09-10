@@ -5,7 +5,7 @@
   - TypeScript設定でストア関連の型チェックを有効化
   - _Requirements: 2.1_
 
-- [ ] 2. 基本型定義ファイルの作成
+- [x] 2. 基本型定義ファイルの作成
   - [x] 2.1 型定義ディレクトリ構造の作成
     - packages/bubblepop/src/types/ディレクトリを作成
     - index.tsファイルでエクスポートを統一
@@ -16,7 +16,7 @@
     - PlayerState、SettingsState、UIStateインターフェースを定義
     - _Requirements: 1.2, 1.3, 1.4, 1.5_
 
-  - [ ] 2.3 ゲーム関連の型定義を実装
+  - [x] 2.3 ゲーム関連の型定義を実装
     - GameTypes.tsファイルを作成
     - 基本的なゲームデータ型を定義
     - _Requirements: 1.1_

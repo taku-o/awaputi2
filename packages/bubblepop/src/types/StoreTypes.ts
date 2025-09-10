@@ -1,3 +1,5 @@
+import type { Notification, LoadingState, FocusState } from './UITypes';
+
 export interface PlayerState {
   userId: string;
   username: string;
@@ -54,23 +56,6 @@ export interface ModalState {
   isSettingsOpen: boolean;
   isShopOpen: boolean;
   isAccountOpen: boolean;
-}
-
-export interface Notification {
-  id: string;
-  type: 'info' | 'success' | 'warning' | 'error';
-  message: string;
-  timestamp: number;
-}
-
-export interface LoadingState {
-  isGameLoading: boolean;
-  isDataLoading: boolean;
-}
-
-export interface FocusState {
-  currentElement: string | null;
-  focusHistory: string[];
 }
 
 export interface UIState {
