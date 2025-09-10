@@ -11,7 +11,7 @@
     - index.tsファイルでエクスポートを統一
     - _Requirements: 1.1_
 
-  - [ ] 2.2 ストア関連の型定義を実装
+  - [x] 2.2 ストア関連の型定義を実装
     - StoreTypes.tsファイルを作成
     - PlayerState、SettingsState、UIStateインターフェースを定義
     - _Requirements: 1.2, 1.3, 1.4, 1.5_
