@@ -38,7 +38,7 @@
     - Zustandストアの基本設定を実装
     - _Requirements: 2.3, 3.1_
 
-  - [ ] 4.2 PlayerStoreの基本テストを作成
+  - [x] 4.2 PlayerStoreの基本テストを作成
     - PlayerStore.test.tsファイルを作成
     - 基本的なストア動作のテストを実装
     - _Requirements: 3.1_
