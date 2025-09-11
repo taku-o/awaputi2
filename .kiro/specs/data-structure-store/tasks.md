@@ -33,7 +33,7 @@
     - _Requirements: 4.1, 4.2, 4.3_
 
 - [ ] 4. PlayerStoreの実装
-  - [ ] 4.1 PlayerStoreの基本構造を作成
+  - [x] 4.1 PlayerStoreの基本構造を作成
     - PlayerStore.tsファイルを作成
     - Zustandストアの基本設定を実装
     - _Requirements: 2.3, 3.1_

@@ -1,11 +1,8 @@
 import { create } from 'zustand';
 import { PlayerState } from '../types/StoreTypes';
+import { StorageManager } from '../utils/StorageUtils';
 
-/**
- * プレイヤーデータストア
- */
 export interface PlayerStore extends PlayerState {
-  // Actions
   updateUsername: (username: string) => void;
   updateLevel: (level: number, experience: number) => void;
   updateAP: (ap: number) => void;
@@ -20,50 +17,145 @@ export interface PlayerStore extends PlayerState {
   resetPlayerData: () => void;
 }
 
-// デフォルト値
-const defaultPlayerState: PlayerState = {
-  userId: '',
-  username: '',
-  level: 1,
-  experience: 0,
-  experienceToNextLevel: 100,
-  ap: 0,
-  tap: 0,
-  totalScore: 0,
-  highScore: 0,
-  gamesPlayed: 0,
-  totalBubblesPopped: 0,
-  createdAt: new Date().toISOString(),
-  lastPlayedAt: new Date().toISOString(),
+const calculateExperienceToNextLevel = (level: number): number => {
+  return level * 100 + (level - 1) * 50;
 };
 
-/**
- * プレイヤーデータストア
- */
+const generateUserId = (): string => {
+  return `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+};
+
+const getDefaultPlayerState = (): PlayerState => {
+  const now = new Date().toISOString();
+  return {
+    userId: generateUserId(),
+    username: 'Player',
+    level: 1,
+    experience: 0,
+    experienceToNextLevel: calculateExperienceToNextLevel(1),
+    ap: 0,
+    tap: 0,
+    totalScore: 0,
+    highScore: 0,
+    gamesPlayed: 0,
+    totalBubblesPopped: 0,
+    createdAt: now,
+    lastPlayedAt: now,
+  };
+};
+
 const usePlayerStore = create<PlayerStore>((set) => ({
-  ...defaultPlayerState,
-  
-  updateUsername: (username): void => set({ username }),
-  
-  updateLevel: (level, experience): void => set({
-    level,
-    experience,
-    // TODO: 次のレベルまでの必要経験値を計算
-    experienceToNextLevel: 100 * level,
-  }),
-  
-  updateAP: (ap): void => set({ ap }),
-  
-  updateTAP: (tap): void => set({ tap }),
-  
-  updateStatistics: (stats): void => set((state) => ({
-    ...state,
-    ...stats,
-  })),
-  
-  loadPlayerData: (data): void => set(data),
-  
-  resetPlayerData: (): void => set(defaultPlayerState),
+  ...getDefaultPlayerState(),
+
+  updateUsername: (username: string): void => {
+    if (!username || username.trim().length === 0) {
+      throw new Error('Username cannot be empty');
+    }
+    if (username.length > 20) {
+      throw new Error('Username cannot exceed 20 characters');
+    }
+    set((state) => {
+      const newState = { ...state, username: username.trim() };
+      StorageManager.savePlayerData(newState);
+      return newState;
+    });
+  },
+
+  updateLevel: (level: number, experience: number): void => {
+    if (level < 1 || level > 100) {
+      throw new Error('Level must be between 1 and 100');
+    }
+    if (experience < 0) {
+      throw new Error('Experience cannot be negative');
+    }
+    set((state) => {
+      const newState = {
+        ...state,
+        level,
+        experience,
+        experienceToNextLevel: calculateExperienceToNextLevel(level),
+      };
+      StorageManager.savePlayerData(newState);
+      return newState;
+    });
+  },
+
+  updateAP: (ap: number): void => {
+    if (ap < 0) {
+      throw new Error('AP cannot be negative');
+    }
+    set((state) => {
+      const newState = { ...state, ap };
+      StorageManager.savePlayerData(newState);
+      return newState;
+    });
+  },
+
+  updateTAP: (tap: number): void => {
+    if (tap < 0) {
+      throw new Error('TAP cannot be negative');
+    }
+    set((state) => {
+      const newState = { ...state, tap };
+      StorageManager.savePlayerData(newState);
+      return newState;
+    });
+  },
+
+  updateStatistics: (stats): void => {
+    set((state) => {
+      const newState = {
+        ...state,
+        totalScore: stats.totalScore !== undefined ? stats.totalScore : state.totalScore,
+        highScore: stats.highScore !== undefined ? 
+          Math.max(stats.highScore, state.highScore) : state.highScore,
+        gamesPlayed: stats.gamesPlayed !== undefined ? stats.gamesPlayed : state.gamesPlayed,
+        totalBubblesPopped: stats.totalBubblesPopped !== undefined ? 
+          stats.totalBubblesPopped : state.totalBubblesPopped,
+        lastPlayedAt: new Date().toISOString(),
+      };
+      
+      if (newState.totalScore < 0) {
+        throw new Error('Total score cannot be negative');
+      }
+      if (newState.gamesPlayed < 0) {
+        throw new Error('Games played cannot be negative');
+      }
+      if (newState.totalBubblesPopped < 0) {
+        throw new Error('Total bubbles popped cannot be negative');
+      }
+      
+      StorageManager.savePlayerData(newState);
+      return newState;
+    });
+  },
+
+  loadPlayerData: (data: PlayerState): void => {
+    set(() => {
+      StorageManager.savePlayerData(data);
+      return data;
+    });
+  },
+
+  resetPlayerData: (): void => {
+    set(() => {
+      const newState = getDefaultPlayerState();
+      StorageManager.savePlayerData(newState);
+      return newState;
+    });
+  },
 }));
 
+const initializePlayerStore = (): void => {
+  const savedData = StorageManager.loadPlayerData();
+  if (savedData) {
+    usePlayerStore.getState().loadPlayerData(savedData);
+  }
+};
+
+if (typeof window !== 'undefined') {
+  initializePlayerStore();
+}
+
+export { usePlayerStore };
 export default usePlayerStore;
