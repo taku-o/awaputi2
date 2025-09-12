@@ -358,3 +358,67 @@ describe('PlayerStore', () => {
     });
   });
 });
+
+describe('PlayerStore初期化', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    localStorageMock.clear();
+  });
+
+  test('ローカルストレージに保存されたデータを初期化時に読み込む', () => {
+    const savedData = {
+      userId: 'saved_user_123',
+      username: 'SavedUser',
+      level: 15,
+      experience: 7500,
+      experienceToNextLevel: 2200,
+      ap: 500,
+      tap: 250,
+      totalScore: 50000,
+      highScore: 5000,
+      gamesPlayed: 50,
+      totalBubblesPopped: 1500,
+      createdAt: '2024-01-01T00:00:00.000Z',
+      lastPlayedAt: '2024-01-05T00:00:00.000Z',
+    };
+
+    // StorageManagerのモックを設定して保存されたデータを返すようにする
+    (StorageManager.loadPlayerData as jest.Mock).mockReturnValueOnce(savedData);
+
+    // モジュールをリロードして初期化処理を実行
+    jest.isolateModules(() => {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const { usePlayerStore: newStore } = require('../PlayerStore');
+      const state = newStore.getState();
+      
+      expect(state.userId).toBe('saved_user_123');
+      expect(state.username).toBe('SavedUser');
+      expect(state.level).toBe(15);
+      expect(state.experience).toBe(7500);
+      expect(state.ap).toBe(500);
+      expect(state.tap).toBe(250);
+      expect(state.totalScore).toBe(50000);
+      expect(state.highScore).toBe(5000);
+      expect(state.gamesPlayed).toBe(50);
+      expect(state.totalBubblesPopped).toBe(1500);
+    });
+  });
+
+  test('ローカルストレージにデータがない場合はデフォルト値で初期化される', () => {
+    // StorageManagerのモックを設定してnullを返すようにする
+    (StorageManager.loadPlayerData as jest.Mock).mockReturnValueOnce(null);
+
+    // モジュールをリロードして初期化処理を実行
+    jest.isolateModules(() => {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const { usePlayerStore: newStore } = require('../PlayerStore');
+      const state = newStore.getState();
+      
+      expect(state.username).toBe('Player');
+      expect(state.level).toBe(1);
+      expect(state.experience).toBe(0);
+      expect(state.ap).toBe(0);
+      expect(state.tap).toBe(0);
+    });
+  });
+});
