@@ -13,6 +13,11 @@ export interface PlayerStore extends PlayerState {
     gamesPlayed: number;
     totalBubblesPopped: number;
   }>) => void;
+  addToStatistics: (stats: Partial<{
+    totalScore: number;
+    gamesPlayed: number;
+    totalBubblesPopped: number;
+  }>) => void;
   loadPlayerData: (data: PlayerState) => void;
   resetPlayerData: () => void;
 }
@@ -114,6 +119,41 @@ const usePlayerStore = create<PlayerStore>((set) => ({
           stats.totalBubblesPopped : state.totalBubblesPopped,
         lastPlayedAt: new Date().toISOString(),
       };
+      
+      if (newState.totalScore < 0) {
+        throw new Error('Total score cannot be negative');
+      }
+      if (newState.gamesPlayed < 0) {
+        throw new Error('Games played cannot be negative');
+      }
+      if (newState.totalBubblesPopped < 0) {
+        throw new Error('Total bubbles popped cannot be negative');
+      }
+      
+      StorageManager.savePlayerData(newState);
+      return newState;
+    });
+  },
+
+  addToStatistics: (stats): void => {
+    set((state) => {
+      const newState = {
+        ...state,
+        totalScore: state.totalScore + (stats.totalScore ?? 0),
+        gamesPlayed: state.gamesPlayed + (stats.gamesPlayed ?? 0),
+        totalBubblesPopped: state.totalBubblesPopped + (stats.totalBubblesPopped ?? 0),
+        lastPlayedAt: new Date().toISOString(),
+      };
+      
+      if (stats.totalScore !== undefined && stats.totalScore < 0) {
+        throw new Error('Score increment cannot be negative');
+      }
+      if (stats.gamesPlayed !== undefined && stats.gamesPlayed < 0) {
+        throw new Error('Games played increment cannot be negative');
+      }
+      if (stats.totalBubblesPopped !== undefined && stats.totalBubblesPopped < 0) {
+        throw new Error('Bubbles popped increment cannot be negative');
+      }
       
       if (newState.totalScore < 0) {
         throw new Error('Total score cannot be negative');
