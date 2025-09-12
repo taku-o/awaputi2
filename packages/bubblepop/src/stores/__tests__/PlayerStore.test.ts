@@ -287,6 +287,145 @@ describe('PlayerStore', () => {
     });
   });
 
+  describe('addToStatistics', () => {
+    test('統計データを累計加算できる', () => {
+      const { result } = renderHook(() => usePlayerStore());
+      
+      // 初期状態を設定
+      act(() => {
+        result.current.updateStatistics({
+          totalScore: 1000,
+          gamesPlayed: 5,
+          totalBubblesPopped: 100,
+        });
+      });
+      
+      // 累計加算
+      act(() => {
+        result.current.addToStatistics({
+          totalScore: 500,
+          gamesPlayed: 2,
+          totalBubblesPopped: 50,
+        });
+      });
+      
+      expect(result.current.totalScore).toBe(1500);
+      expect(result.current.gamesPlayed).toBe(7);
+      expect(result.current.totalBubblesPopped).toBe(150);
+      expect(StorageManager.savePlayerData).toHaveBeenCalled();
+    });
+
+    test('一部の統計データのみを累計加算できる', () => {
+      const { result } = renderHook(() => usePlayerStore());
+      
+      // 初期状態を設定
+      act(() => {
+        result.current.updateStatistics({
+          totalScore: 1000,
+          gamesPlayed: 5,
+          totalBubblesPopped: 100,
+        });
+      });
+      
+      // totalScoreのみ加算
+      act(() => {
+        result.current.addToStatistics({
+          totalScore: 300,
+        });
+      });
+      
+      expect(result.current.totalScore).toBe(1300);
+      expect(result.current.gamesPlayed).toBe(5); // 変更されない
+      expect(result.current.totalBubblesPopped).toBe(100); // 変更されない
+    });
+
+    test('ゼロの値で加算しても変化しない', () => {
+      const { result } = renderHook(() => usePlayerStore());
+      
+      // 初期状態を設定
+      act(() => {
+        result.current.updateStatistics({
+          totalScore: 1000,
+          gamesPlayed: 5,
+          totalBubblesPopped: 100,
+        });
+      });
+      
+      // ゼロで加算
+      act(() => {
+        result.current.addToStatistics({
+          totalScore: 0,
+          gamesPlayed: 0,
+          totalBubblesPopped: 0,
+        });
+      });
+      
+      expect(result.current.totalScore).toBe(1000);
+      expect(result.current.gamesPlayed).toBe(5);
+      expect(result.current.totalBubblesPopped).toBe(100);
+    });
+
+    test('負の値の増分でエラーを投げる（totalScore）', () => {
+      const { result } = renderHook(() => usePlayerStore());
+      
+      expect(() => {
+        act(() => {
+          result.current.addToStatistics({ totalScore: -100 });
+        });
+      }).toThrow('Score increment cannot be negative');
+    });
+
+    test('負の値の増分でエラーを投げる（gamesPlayed）', () => {
+      const { result } = renderHook(() => usePlayerStore());
+      
+      expect(() => {
+        act(() => {
+          result.current.addToStatistics({ gamesPlayed: -1 });
+        });
+      }).toThrow('Games played increment cannot be negative');
+    });
+
+    test('負の値の増分でエラーを投げる（totalBubblesPopped）', () => {
+      const { result } = renderHook(() => usePlayerStore());
+      
+      expect(() => {
+        act(() => {
+          result.current.addToStatistics({ totalBubblesPopped: -10 });
+        });
+      }).toThrow('Bubbles popped increment cannot be negative');
+    });
+
+    test('lastPlayedAtが更新される', async () => {
+      const { result } = renderHook(() => usePlayerStore());
+      const beforeUpdate = result.current.lastPlayedAt;
+      
+      // 少し待機して時間を進める
+      await new Promise(resolve => setTimeout(resolve, 10));
+      
+      act(() => {
+        result.current.addToStatistics({ totalScore: 100 });
+      });
+      
+      expect(result.current.lastPlayedAt).not.toBe(beforeUpdate);
+    });
+
+    test('空のオブジェクトで呼び出しても安全に動作する', () => {
+      const { result } = renderHook(() => usePlayerStore());
+      
+      const initialScore = result.current.totalScore;
+      const initialGames = result.current.gamesPlayed;
+      const initialBubbles = result.current.totalBubblesPopped;
+      
+      act(() => {
+        result.current.addToStatistics({});
+      });
+      
+      expect(result.current.totalScore).toBe(initialScore);
+      expect(result.current.gamesPlayed).toBe(initialGames);
+      expect(result.current.totalBubblesPopped).toBe(initialBubbles);
+    });
+  });
+
   describe('loadPlayerData', () => {
     test('外部データを読み込んでストアを更新できる', () => {
       const { result } = renderHook(() => usePlayerStore());
