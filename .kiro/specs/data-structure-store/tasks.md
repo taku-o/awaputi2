@@ -32,7 +32,7 @@
     - ローカルストレージの保存・読み込み機能を実装
     - _Requirements: 4.1, 4.2, 4.3_
 
-- [ ] 4. PlayerStoreの実装
+- [x] 4. PlayerStoreの実装
   - [x] 4.1 PlayerStoreの基本構造を作成
     - PlayerStore.tsファイルを作成
     - Zustandストアの基本設定を実装
@@ -64,7 +64,7 @@
     - リセット機能のテストを作成
     - _Requirements: 3.5_
 
-- [ ] 5. SettingsStoreの実装
+- [x] 5. SettingsStoreの実装
   - [x] 5.1 SettingsStoreの基本構造を作成
     - SettingsStore.tsファイルを作成
     - 設定データの初期値を定義
@@ -86,7 +86,7 @@
     - 永続化機能のテストを作成
     - _Requirements: 4.4_
 
-- [ ] 6. UIStoreの実装
+- [x] 6. UIStoreの実装
   - [x] 6.1 UIStoreの基本構造を作成
     - UIStore.tsファイルを作成
     - UI状態の初期値を定義
@@ -109,7 +109,7 @@
     - _Requirements: 1.5_
 
 - [ ] 7. データ永続化機能の統合
-  - [ ] 7.1 StorageUtilsのテストを作成
+  - [x] 7.1 StorageUtilsのテストを作成
     - StorageUtils.test.tsファイルを作成
     - ローカルストレージ保存・読み込みのテストを作成
     - _Requirements: 4.1, 4.2, 4.3_
