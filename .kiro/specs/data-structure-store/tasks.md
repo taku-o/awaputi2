@@ -92,7 +92,7 @@
     - UI状態の初期値を定義
     - _Requirements: 2.5_
 
-  - [ ] 6.2 UIStoreの基本テストを作成
+  - [x] 6.2 UIStoreの基本テストを作成
     - UIStore.test.tsファイルを作成
     - 基本的なUI状態管理のテストを実装
     - _Requirements: 2.5_
