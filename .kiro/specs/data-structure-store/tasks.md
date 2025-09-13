@@ -87,7 +87,7 @@
     - _Requirements: 4.4_
 
 - [ ] 6. UIStoreの実装
-  - [ ] 6.1 UIStoreの基本構造を作成
+  - [x] 6.1 UIStoreの基本構造を作成
     - UIStore.tsファイルを作成
     - UI状態の初期値を定義
     - _Requirements: 2.5_
