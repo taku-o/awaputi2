@@ -70,7 +70,7 @@
     - 設定データの初期値を定義
     - _Requirements: 2.4_
 
-  - [ ] 5.2 SettingsStoreの基本テストを作成
+  - [x] 5.2 SettingsStoreの基本テストを作成
     - SettingsStore.test.tsファイルを作成
     - 基本的な設定管理のテストを実装
     - _Requirements: 2.4_
