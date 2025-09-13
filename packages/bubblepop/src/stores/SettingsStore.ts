@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import type { SettingsState } from '../types/StoreTypes';
+import { StorageManager } from '../utils/StorageUtils';
 
 /**
  * 設定ストア
@@ -49,25 +50,66 @@ export const defaultSettings: SettingsState = {
 export const useSettingsStore = create<SettingsStore>((set) => ({
   ...defaultSettings,
   
-  updateAudioSettings: (audio): void => set((state) => ({
-    audio: { ...state.audio, ...audio },
-  })),
+  updateAudioSettings: (audio): void => set((state) => {
+    const newState = {
+      ...state,
+      audio: { ...state.audio, ...audio },
+    };
+    // 設定を永続化
+    StorageManager.saveSettings(newState);
+    return { audio: newState.audio };
+  }),
   
-  updateGraphicsSettings: (graphics): void => set((state) => ({
-    graphics: { ...state.graphics, ...graphics },
-  })),
+  updateGraphicsSettings: (graphics): void => set((state) => {
+    const newState = {
+      ...state,
+      graphics: { ...state.graphics, ...graphics },
+    };
+    // 設定を永続化
+    StorageManager.saveSettings(newState);
+    return { graphics: newState.graphics };
+  }),
   
-  updateGameplaySettings: (gameplay): void => set((state) => ({
-    gameplay: { ...state.gameplay, ...gameplay },
-  })),
+  updateGameplaySettings: (gameplay): void => set((state) => {
+    const newState = {
+      ...state,
+      gameplay: { ...state.gameplay, ...gameplay },
+    };
+    // 設定を永続化
+    StorageManager.saveSettings(newState);
+    return { gameplay: newState.gameplay };
+  }),
   
-  updateLanguage: (language): void => set({ language }),
+  updateLanguage: (language): void => set((state) => {
+    const newState = { ...state, language };
+    // 設定を永続化
+    StorageManager.saveSettings(newState);
+    return { language };
+  }),
   
-  updateControlSettings: (controls): void => set((state) => ({
-    controls: { ...state.controls, ...controls },
-  })),
+  updateControlSettings: (controls): void => set((state) => {
+    const newState = {
+      ...state,
+      controls: { ...state.controls, ...controls },
+    };
+    // 設定を永続化
+    StorageManager.saveSettings(newState);
+    return { controls: newState.controls };
+  }),
   
   loadSettings: (settings): void => set(settings),
   
-  resetSettings: (): void => set(defaultSettings),
+  resetSettings: (): void => {
+    // デフォルト設定を永続化
+    StorageManager.saveSettings(defaultSettings);
+    set(defaultSettings);
+  },
 }));
+
+// ストア初期化時に設定を読み込み
+((): void => {
+  const savedSettings = StorageManager.loadSettings();
+  if (savedSettings) {
+    useSettingsStore.getState().loadSettings(savedSettings);
+  }
+})();

@@ -46,16 +46,11 @@ export class StorageManager {
    * プレイヤーデータを読み込み
    */
   static loadPlayerData(): PlayerState | null {
-    try {
-      const serialized = localStorage.getItem(STORAGE_KEYS.PLAYER_DATA);
-      if (!serialized) {
-        return null;
-      }
-      return JSON.parse(serialized) as PlayerState;
-    } catch (error) {
-      console.error('Failed to load player data:', error);
+    const serialized = localStorage.getItem(STORAGE_KEYS.PLAYER_DATA);
+    if (!serialized) {
       return null;
     }
+    return JSON.parse(serialized) as PlayerState;
   }
 
   /**
@@ -76,16 +71,11 @@ export class StorageManager {
    * 設定データを読み込み
    */
   static loadSettings(): SettingsState | null {
-    try {
-      const serialized = localStorage.getItem(STORAGE_KEYS.SETTINGS);
-      if (!serialized) {
-        return null;
-      }
-      return JSON.parse(serialized) as SettingsState;
-    } catch (error) {
-      console.error('Failed to load settings:', error);
+    const serialized = localStorage.getItem(STORAGE_KEYS.SETTINGS);
+    if (!serialized) {
       return null;
     }
+    return JSON.parse(serialized) as SettingsState;
   }
 
   /**
@@ -106,12 +96,7 @@ export class StorageManager {
    * 保存されたデータのバージョンを取得
    */
   static getVersion(): string | null {
-    try {
-      return localStorage.getItem(STORAGE_KEYS.VERSION);
-    } catch (error) {
-      console.error('Failed to get version:', error);
-      return null;
-    }
+    return localStorage.getItem(STORAGE_KEYS.VERSION);
   }
 
   /**
@@ -131,25 +116,20 @@ export class StorageManager {
    * すべてのデータを一括で読み込み
    */
   static loadAll(): PersistentData | null {
-    try {
-      const playerData = StorageManager.loadPlayerData();
-      const settings = StorageManager.loadSettings();
-      const version = StorageManager.getVersion() || CURRENT_VERSION;
+    const playerData = StorageManager.loadPlayerData();
+    const settings = StorageManager.loadSettings();
+    const version = StorageManager.getVersion() || CURRENT_VERSION;
 
-      if (!playerData || !settings) {
-        return null;
-      }
-
-      return {
-        version,
-        playerData,
-        settings,
-        lastSaved: new Date().toISOString(),
-      };
-    } catch (error) {
-      console.error('Failed to load all data:', error);
+    if (!playerData || !settings) {
       return null;
     }
+
+    return {
+      version,
+      playerData,
+      settings,
+      lastSaved: new Date().toISOString(),
+    };
   }
 
   /**
