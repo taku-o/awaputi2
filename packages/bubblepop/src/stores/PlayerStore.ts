@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 import { PlayerState } from '../types/StoreTypes';
-import { StorageManager } from '../utils/StorageUtils';
 
 export interface PlayerStore extends PlayerState {
   updateUsername: (username: string) => void;
@@ -59,11 +58,7 @@ const usePlayerStore = create<PlayerStore>((set) => ({
     if (username.length > 20) {
       throw new Error('Username cannot exceed 20 characters');
     }
-    set((state) => {
-      const newState = { ...state, username: username.trim() };
-      StorageManager.savePlayerData(newState);
-      return newState;
-    });
+    set((state) => ({ ...state, username: username.trim() }));
   },
 
   updateLevel: (level: number, experience: number): void => {
@@ -73,38 +68,26 @@ const usePlayerStore = create<PlayerStore>((set) => ({
     if (experience < 0) {
       throw new Error('Experience cannot be negative');
     }
-    set((state) => {
-      const newState = {
-        ...state,
-        level,
-        experience,
-        experienceToNextLevel: calculateExperienceToNextLevel(level),
-      };
-      StorageManager.savePlayerData(newState);
-      return newState;
-    });
+    set((state) => ({
+      ...state,
+      level,
+      experience,
+      experienceToNextLevel: calculateExperienceToNextLevel(level),
+    }));
   },
 
   updateAP: (ap: number): void => {
     if (ap < 0) {
       throw new Error('AP cannot be negative');
     }
-    set((state) => {
-      const newState = { ...state, ap };
-      StorageManager.savePlayerData(newState);
-      return newState;
-    });
+    set((state) => ({ ...state, ap }));
   },
 
   updateTAP: (tap: number): void => {
     if (tap < 0) {
       throw new Error('TAP cannot be negative');
     }
-    set((state) => {
-      const newState = { ...state, tap };
-      StorageManager.savePlayerData(newState);
-      return newState;
-    });
+    set((state) => ({ ...state, tap }));
   },
 
   updateStatistics: (stats): void => {
@@ -112,14 +95,14 @@ const usePlayerStore = create<PlayerStore>((set) => ({
       const newState = {
         ...state,
         totalScore: stats.totalScore !== undefined ? stats.totalScore : state.totalScore,
-        highScore: stats.highScore !== undefined ? 
+        highScore: stats.highScore !== undefined ?
           Math.max(stats.highScore, state.highScore) : state.highScore,
         gamesPlayed: stats.gamesPlayed !== undefined ? stats.gamesPlayed : state.gamesPlayed,
-        totalBubblesPopped: stats.totalBubblesPopped !== undefined ? 
+        totalBubblesPopped: stats.totalBubblesPopped !== undefined ?
           stats.totalBubblesPopped : state.totalBubblesPopped,
         lastPlayedAt: new Date().toISOString(),
       };
-      
+
       if (newState.totalScore < 0) {
         throw new Error('Total score cannot be negative');
       }
@@ -129,8 +112,7 @@ const usePlayerStore = create<PlayerStore>((set) => ({
       if (newState.totalBubblesPopped < 0) {
         throw new Error('Total bubbles popped cannot be negative');
       }
-      
-      StorageManager.savePlayerData(newState);
+
       return newState;
     });
   },
@@ -144,7 +126,7 @@ const usePlayerStore = create<PlayerStore>((set) => ({
         totalBubblesPopped: state.totalBubblesPopped + (stats.totalBubblesPopped ?? 0),
         lastPlayedAt: new Date().toISOString(),
       };
-      
+
       if (stats.totalScore !== undefined && stats.totalScore < 0) {
         throw new Error('Score increment cannot be negative');
       }
@@ -154,7 +136,7 @@ const usePlayerStore = create<PlayerStore>((set) => ({
       if (stats.totalBubblesPopped !== undefined && stats.totalBubblesPopped < 0) {
         throw new Error('Bubbles popped increment cannot be negative');
       }
-      
+
       if (newState.totalScore < 0) {
         throw new Error('Total score cannot be negative');
       }
@@ -164,38 +146,20 @@ const usePlayerStore = create<PlayerStore>((set) => ({
       if (newState.totalBubblesPopped < 0) {
         throw new Error('Total bubbles popped cannot be negative');
       }
-      
-      StorageManager.savePlayerData(newState);
+
       return newState;
     });
   },
 
   loadPlayerData: (data: PlayerState): void => {
-    set(() => {
-      StorageManager.savePlayerData(data);
-      return data;
-    });
+    set(() => data);
   },
 
   resetPlayerData: (): void => {
-    set(() => {
-      const newState = getDefaultPlayerState();
-      StorageManager.savePlayerData(newState);
-      return newState;
-    });
+    set(() => getDefaultPlayerState());
   },
 }));
 
-const initializePlayerStore = (): void => {
-  const savedData = StorageManager.loadPlayerData();
-  if (savedData) {
-    usePlayerStore.getState().loadPlayerData(savedData);
-  }
-};
-
-if (typeof window !== 'undefined') {
-  initializePlayerStore();
-}
 
 export { usePlayerStore };
 export default usePlayerStore;

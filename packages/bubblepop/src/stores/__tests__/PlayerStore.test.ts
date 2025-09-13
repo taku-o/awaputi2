@@ -1,6 +1,5 @@
 import { renderHook, act } from '@testing-library/react';
 import { usePlayerStore } from '../PlayerStore';
-import { StorageManager } from '../../utils/StorageUtils';
 
 // ローカルストレージのモック
 const localStorageMock = ((): Pick<Storage, 'getItem' | 'setItem' | 'removeItem' | 'clear'> => {
@@ -76,7 +75,6 @@ describe('PlayerStore', () => {
       });
       
       expect(result.current.username).toBe('TestUser');
-      expect(StorageManager.savePlayerData).toHaveBeenCalled();
     });
 
     test('ユーザー名の前後の空白を削除する', () => {
@@ -122,7 +120,6 @@ describe('PlayerStore', () => {
       expect(result.current.experience).toBe(1000);
       // レベル5の場合: 5 * 100 + 4 * 50 = 700
       expect(result.current.experienceToNextLevel).toBe(700);
-      expect(StorageManager.savePlayerData).toHaveBeenCalled();
     });
 
     test('レベルが1未満でエラーを投げる', () => {
@@ -165,7 +162,6 @@ describe('PlayerStore', () => {
       });
       
       expect(result.current.ap).toBe(100);
-      expect(StorageManager.savePlayerData).toHaveBeenCalled();
     });
 
     test('APが負の値でエラーを投げる', () => {
@@ -188,7 +184,6 @@ describe('PlayerStore', () => {
       });
       
       expect(result.current.tap).toBe(50);
-      expect(StorageManager.savePlayerData).toHaveBeenCalled();
     });
 
     test('TAPが負の値でエラーを投げる', () => {
@@ -217,7 +212,6 @@ describe('PlayerStore', () => {
       expect(result.current.gamesPlayed).toBe(5);
       expect(result.current.highScore).toBe(0); // 変更されない
       expect(result.current.totalBubblesPopped).toBe(0); // 変更されない
-      expect(StorageManager.savePlayerData).toHaveBeenCalled();
     });
 
     test('highScoreを更新するとき、既存の値より大きい場合のみ更新される', () => {
@@ -312,7 +306,6 @@ describe('PlayerStore', () => {
       expect(result.current.totalScore).toBe(1500);
       expect(result.current.gamesPlayed).toBe(7);
       expect(result.current.totalBubblesPopped).toBe(150);
-      expect(StorageManager.savePlayerData).toHaveBeenCalled();
     });
 
     test('一部の統計データのみを累計加算できる', () => {
@@ -456,7 +449,6 @@ describe('PlayerStore', () => {
       expect(result.current.experience).toBe(5000);
       expect(result.current.ap).toBe(200);
       expect(result.current.tap).toBe(100);
-      expect(StorageManager.savePlayerData).toHaveBeenCalledWith(testData);
     });
   });
 
@@ -480,7 +472,6 @@ describe('PlayerStore', () => {
       expect(result.current.level).toBe(1);
       expect(result.current.experience).toBe(0);
       expect(result.current.ap).toBe(0);
-      expect(StorageManager.savePlayerData).toHaveBeenCalled();
     });
 
     test('リセット時に新しいuserIdが生成される', () => {
@@ -498,66 +489,3 @@ describe('PlayerStore', () => {
   });
 });
 
-describe('PlayerStore初期化', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-    localStorageMock.clear();
-  });
-
-  test('ローカルストレージに保存されたデータを初期化時に読み込む', () => {
-    const savedData = {
-      userId: 'saved_user_123',
-      username: 'SavedUser',
-      level: 15,
-      experience: 7500,
-      experienceToNextLevel: 2200,
-      ap: 500,
-      tap: 250,
-      totalScore: 50000,
-      highScore: 5000,
-      gamesPlayed: 50,
-      totalBubblesPopped: 1500,
-      createdAt: '2024-01-01T00:00:00.000Z',
-      lastPlayedAt: '2024-01-05T00:00:00.000Z',
-    };
-
-    // StorageManagerのモックを設定して保存されたデータを返すようにする
-    (StorageManager.loadPlayerData as jest.Mock).mockReturnValueOnce(savedData);
-
-    // モジュールをリロードして初期化処理を実行
-    jest.isolateModules(() => {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const { usePlayerStore: newStore } = require('../PlayerStore');
-      const state = newStore.getState();
-      
-      expect(state.userId).toBe('saved_user_123');
-      expect(state.username).toBe('SavedUser');
-      expect(state.level).toBe(15);
-      expect(state.experience).toBe(7500);
-      expect(state.ap).toBe(500);
-      expect(state.tap).toBe(250);
-      expect(state.totalScore).toBe(50000);
-      expect(state.highScore).toBe(5000);
-      expect(state.gamesPlayed).toBe(50);
-      expect(state.totalBubblesPopped).toBe(1500);
-    });
-  });
-
-  test('ローカルストレージにデータがない場合はデフォルト値で初期化される', () => {
-    // StorageManagerのモックを設定してnullを返すようにする
-    (StorageManager.loadPlayerData as jest.Mock).mockReturnValueOnce(null);
-
-    // モジュールをリロードして初期化処理を実行
-    jest.isolateModules(() => {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const { usePlayerStore: newStore } = require('../PlayerStore');
-      const state = newStore.getState();
-      
-      expect(state.username).toBe('Player');
-      expect(state.level).toBe(1);
-      expect(state.experience).toBe(0);
-      expect(state.ap).toBe(0);
-      expect(state.tap).toBe(0);
-    });
-  });
-});
