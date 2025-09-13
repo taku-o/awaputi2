@@ -1,4 +1,6 @@
-export type BubbleType = 
+import type { PlayerStatistics } from './StoreTypes';
+
+export type BubbleType =
   | 'normal'     // 通常泡
   | 'stone'      // 石泡
   | 'iron'       // 鉄泡
@@ -115,4 +117,45 @@ export interface ComboData {
   multiplier: number;
   lastPopTime: number;
   comboTimeout: number;
+}
+
+/**
+ * ステージ進行状況
+ */
+export interface StageProgress {
+  unlocked: boolean;
+  bestScore: number;
+  playCount: number;
+  completedAt?: string;
+}
+
+/**
+ * 実績進行状況
+ */
+export interface AchievementProgress {
+  completed: boolean;
+  progress: number;
+  completedAt?: string;
+}
+
+/**
+ * 所持アイテム
+ */
+export interface OwnedItem {
+  itemId: string;
+  itemType: string;
+  quantity: number;
+  obtainedAt: string;
+  expiresAt?: string;
+}
+
+/**
+ * アプリケーション全体のゲーム状態（永続的）
+ */
+export interface GameState {
+  currentSession: GameSession | null;
+  stageProgress: Record<string, StageProgress>;
+  achievements: Record<string, AchievementProgress>;
+  ownedItems: OwnedItem[];
+  statistics: PlayerStatistics;
 }
