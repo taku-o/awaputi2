@@ -26,6 +26,7 @@
     "ci:build": "npm run build",
     "ci:lint": "npm run lint",
     "ci:type-check": "npm run type-check",
+    "test:bubblepop": "npm test --workspace=@bubblepop/app",
     "ci:test:unit": "lerna run test",
     "ci:test:e2e": "npm run pretest:e2e && npm run test:e2e",
     "ci:test:storybook": "npm run test:storybook:all",
