@@ -65,7 +65,7 @@
     - _Requirements: 3.5_
 
 - [ ] 5. SettingsStoreの実装
-  - [ ] 5.1 SettingsStoreの基本構造を作成
+  - [x] 5.1 SettingsStoreの基本構造を作成
     - SettingsStore.tsファイルを作成
     - 設定データの初期値を定義
     - _Requirements: 2.4_

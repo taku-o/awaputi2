@@ -7,7 +7,7 @@ export { default as usePlayerStore } from './PlayerStore';
 export type { PlayerStore } from './PlayerStore';
 
 // 設定ストア
-export { default as useSettingsStore } from './SettingsStore';
+export { useSettingsStore, defaultSettings } from './SettingsStore';
 export type { SettingsStore } from './SettingsStore';
 
 // UI状態ストア

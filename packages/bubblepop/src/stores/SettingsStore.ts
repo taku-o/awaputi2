@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { SettingsState } from '../types/StoreTypes';
+import type { SettingsState } from '../types/StoreTypes';
 
 /**
  * 設定ストア
@@ -16,7 +16,7 @@ export interface SettingsStore extends SettingsState {
 }
 
 // デフォルト値
-const defaultSettingsState: SettingsState = {
+export const defaultSettings: SettingsState = {
   audio: {
     masterVolume: 100,
     bgmVolume: 80,
@@ -46,8 +46,8 @@ const defaultSettingsState: SettingsState = {
 /**
  * 設定ストア
  */
-const useSettingsStore = create<SettingsStore>((set) => ({
-  ...defaultSettingsState,
+export const useSettingsStore = create<SettingsStore>((set) => ({
+  ...defaultSettings,
   
   updateAudioSettings: (audio): void => set((state) => ({
     audio: { ...state.audio, ...audio },
@@ -69,7 +69,5 @@ const useSettingsStore = create<SettingsStore>((set) => ({
   
   loadSettings: (settings): void => set(settings),
   
-  resetSettings: (): void => set(defaultSettingsState),
+  resetSettings: (): void => set(defaultSettings),
 }));
-
-export default useSettingsStore;
