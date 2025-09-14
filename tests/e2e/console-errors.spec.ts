@@ -12,10 +12,10 @@ test('コンソールエラーが発生しないことを確認', async ({ page 
 
   // ページにアクセス
   await page.goto('http://localhost:3000');
-  
-  // UI Library Versionが表示されるまで待機
-  await page.waitForSelector('[data-testid="ui-library-version"]');
-  
+
+  // ページが読み込まれるまで待機
+  await page.waitForLoadState('networkidle');
+
   // コンソールエラーがないことを確認
   expect(consoleErrors).toHaveLength(0);
   

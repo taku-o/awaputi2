@@ -1,4 +1,5 @@
-import React from 'react';
+/// <reference types="@testing-library/jest-dom" />
+
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { Navigation } from '../Navigation';
@@ -7,7 +8,7 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme();
 
-const renderWithRouter = (initialRoute = '/') => {
+const renderWithRouter = (initialRoute = '/'): ReturnType<typeof render> => {
   return render(
     <ThemeProvider theme={theme}>
       <MemoryRouter initialEntries={[initialRoute]}>
@@ -46,7 +47,7 @@ describe('Navigation', () => {
   });
 
   test('異なるページでアクティブリンクが変わる（Requirement 5.3）', () => {
-    const { rerender } = renderWithRouter('/account');
+    renderWithRouter('/account');
 
     const accountLink = screen.getByText('アカウント').closest('a');
     expect(accountLink).toHaveAttribute('aria-current', 'page');

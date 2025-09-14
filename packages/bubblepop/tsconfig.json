@@ -5,9 +5,14 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "outDir": "./dist",
-    "rootDir": "./src",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"]
+    "rootDir": "../../",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "baseUrl": ".",
+    "paths": {
+      "@bubblepop/ui-library": ["../ui-library/src"],
+      "@bubblepop/ui-library/*": ["../ui-library/src/*"]
+    }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "../ui-library/src/**/*"],
   "exclude": ["node_modules", "dist"]
 }
