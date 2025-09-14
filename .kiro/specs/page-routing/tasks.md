@@ -1,6 +1,6 @@
 # Implementation Plan
 
-- [ ] 1. React Router v6の依存関係追加
+- [x] 1. React Router v6の依存関係追加
   - package.jsonにreact-router-domを追加
   - TypeScript型定義を追加
   - _Requirements: 1.1_
