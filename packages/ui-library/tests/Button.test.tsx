@@ -40,7 +40,7 @@ const TestWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 );
 
 describe('Button Component', () => {
-  // Requirement 1.1: MUIテーマに基づいたスタイリングが適用される
+  // MUIテーマに基づいたスタイリングが適用される
   test('applies MUI theme-based styling', () => {
     render(
       <TestWrapper>
@@ -55,7 +55,7 @@ describe('Button Component', () => {
     expect(button).toHaveClass('MuiButton-contained');
   });
 
-  // Requirement 1.2: primary、secondary、iconの各バリエーションが表示される
+  // primary、secondary、iconの各バリエーションが表示される
   test('renders primary variant correctly', () => {
     render(
       <TestWrapper>
@@ -98,7 +98,7 @@ describe('Button Component', () => {
     expect(button).toHaveClass('MuiButton-textPrimary');
   });
 
-  // Requirement 1.3: disabled状態で適切な視覚的フィードバックが表示される
+  // disabled状態で適切な視覚的フィードバックが表示される
   test('applies disabled styling and behavior', () => {
     render(
       <TestWrapper>
@@ -113,7 +113,7 @@ describe('Button Component', () => {
     expect(button).toHaveAttribute('disabled');
   });
 
-  // Requirement 1.4: onClickハンドラーでクリック時にイベントが発火する
+  // onClickハンドラーでクリック時にイベントが発火する
   test('fires onClick event when clicked', () => {
     const handleClick = jest.fn();
     render(
@@ -140,7 +140,7 @@ describe('Button Component', () => {
     expect(handleClick).not.toHaveBeenCalled();
   });
 
-  // Requirement 1.5: childrenでボタン内にテキストやアイコンが表示される
+  // childrenでボタン内にテキストやアイコンが表示される
   test('displays children content', () => {
     render(
       <TestWrapper>

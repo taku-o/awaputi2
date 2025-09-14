@@ -42,7 +42,7 @@
   - パラメータエラーの処理
   - _Requirements: 3.2_
 
-- [ ] 7. 単体テストの作成
+- [x] 7. 単体テストの作成
   - Router.test.tsxの作成
   - 各ページコンポーネントのテスト作成
   - Navigation.test.tsxの作成

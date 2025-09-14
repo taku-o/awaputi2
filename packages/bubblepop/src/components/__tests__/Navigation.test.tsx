@@ -19,14 +19,14 @@ const renderWithRouter = (initialRoute = '/'): ReturnType<typeof render> => {
 };
 
 describe('Navigation', () => {
-  test('ナビゲーションコンポーネントが表示される（Requirement 5.1）', () => {
+  test('ナビゲーションコンポーネントが表示される', () => {
     renderWithRouter();
 
     expect(screen.getByRole('navigation')).toBeInTheDocument();
     expect(screen.getByLabelText('メインナビゲーション')).toBeInTheDocument();
   });
 
-  test('各画面へのリンクが表示される（Requirement 5.1）', () => {
+  test('各画面へのリンクが表示される', () => {
     renderWithRouter();
 
     expect(screen.getByText('メイン')).toBeInTheDocument();
@@ -36,7 +36,7 @@ describe('Navigation', () => {
     expect(screen.getByText('設定')).toBeInTheDocument();
   });
 
-  test('現在の画面がアクティブリンクとして表示される（Requirement 5.3）', () => {
+  test('現在の画面がアクティブリンクとして表示される', () => {
     renderWithRouter('/main');
 
     const mainLink = screen.getByText('メイン').closest('a');
@@ -46,7 +46,7 @@ describe('Navigation', () => {
     expect(accountLink).not.toHaveAttribute('aria-current');
   });
 
-  test('異なるページでアクティブリンクが変わる（Requirement 5.3）', () => {
+  test('異なるページでアクティブリンクが変わる', () => {
     renderWithRouter('/account');
 
     const accountLink = screen.getByText('アカウント').closest('a');
@@ -56,7 +56,7 @@ describe('Navigation', () => {
     expect(mainLink).not.toHaveAttribute('aria-current');
   });
 
-  test('各リンクが正しいパスを持っている（Requirement 5.2）', () => {
+  test('各リンクが正しいパスを持っている', () => {
     renderWithRouter();
 
     expect(screen.getByText('メイン').closest('a')).toHaveAttribute('href', '/main');
@@ -66,7 +66,7 @@ describe('Navigation', () => {
     expect(screen.getByText('設定').closest('a')).toHaveAttribute('href', '/settings');
   });
 
-  test('キーボードナビゲーションが可能（Requirement 5.4）', () => {
+  test('キーボードナビゲーションが可能', () => {
     renderWithRouter();
 
     const links = screen.getAllByRole('link');
@@ -75,7 +75,7 @@ describe('Navigation', () => {
     });
   });
 
-  test('アクセシビリティ属性が設定されている（Requirement 5.4）', () => {
+  test('アクセシビリティ属性が設定されている', () => {
     renderWithRouter('/help');
 
     const nav = screen.getByRole('navigation');
