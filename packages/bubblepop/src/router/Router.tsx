@@ -1,17 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-// 一時的な仮ページコンポーネント（タスク3で正式実装予定）
-const TitlePage = () => <div>タイトル画面</div>;
-const MainPage = () => <div>メイン画面</div>;
-const GamePage = () => <div>ゲームプレイ画面</div>;
-const ResultPage = () => <div>プレイ結果画面</div>;
-const AccountPage = () => <div>アカウント情報画面</div>;
-const HelpPage = () => <div>ヘルプ画面</div>;
-const HelpDetailPage = () => <div>ヘルプ詳細画面</div>;
-const ShopPage = () => <div>ショップ画面</div>;
-const ItemDetailPage = () => <div>アイテム詳細画面</div>;
-const SettingsPage = () => <div>設定画面</div>;
-const NotFoundPage = () => <div>404 - ページが見つかりません</div>;
+import { TitlePage } from '../pages/TitlePage';
+import { MainPage } from '../pages/MainPage';
+import { GamePage } from '../pages/GamePage';
+import { ResultPage } from '../pages/ResultPage';
+import { AccountPage } from '../pages/AccountPage';
+import { HelpPage } from '../pages/HelpPage';
+import { HelpDetailPage } from '../pages/HelpDetailPage';
+import { ShopPage } from '../pages/ShopPage';
+import { ItemDetailPage } from '../pages/ItemDetailPage';
+import { SettingsPage } from '../pages/SettingsPage';
+import { NotFoundPage } from '../pages/NotFoundPage';
 
 export const AppRouter: React.FC = () => {
   return (
