@@ -152,7 +152,7 @@ describe('AppRouter', () => {
   });
 
   test('ブラウザの戻るボタンをシミュレート', () => {
-    const { container } = renderRouter('/main');
+    renderRouter('/main');
     expect(screen.getByText('メイン画面')).toBeInTheDocument();
 
     window.history.pushState({}, '', '/help');
