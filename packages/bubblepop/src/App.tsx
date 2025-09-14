@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { TestImport } from './components/TestImport';
+import { AppRouter } from './router/Router';
 import { loadPersistedData, setupAutoPersistence } from './stores/persistence';
 
 function App(): React.ReactElement {
@@ -28,13 +28,7 @@ function App(): React.ReactElement {
     return cleanup;
   }, []);
 
-  return (
-    <div className="App">
-      <h1>BubblePop - 泡々ぷちぷち</h1>
-      <p>ゲームアプリケーションの基盤が構築されました。</p>
-      <TestImport />
-    </div>
-  );
+  return <AppRouter />;
 }
 
 export default App;

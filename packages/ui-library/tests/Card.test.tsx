@@ -36,7 +36,7 @@ const TestWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 );
 
 describe('Card Component', () => {
-  // Requirement 2.1: MUIテーマに基づいた背景色とボーダーが適用される
+  // MUIテーマに基づいた背景色とボーダーが適用される
   test('applies MUI theme-based styling', () => {
     render(
       <TestWrapper>
@@ -51,7 +51,7 @@ describe('Card Component', () => {
     expect(card).toHaveClass('MuiPaper-elevation1');
   });
 
-  // Requirement 2.2: childrenでカード内にコンテンツが表示される
+  // childrenでカード内にコンテンツが表示される
   test('displays children content', () => {
     render(
       <TestWrapper>
@@ -66,7 +66,7 @@ describe('Card Component', () => {
     expect(screen.getByText('Card content goes here.')).toBeInTheDocument();
   });
 
-  // Requirement 2.3: elevationプロパティで指定されたレベルの影効果が適用される
+  // elevationプロパティで指定されたレベルの影効果が適用される
   test('applies elevation levels correctly', () => {
     const { rerender } = render(
       <TestWrapper>
@@ -109,7 +109,7 @@ describe('Card Component', () => {
     expect(card).toHaveClass('MuiPaper-elevation4');
   });
 
-  // Requirement 2.4: hoverableプロパティでホバー時に視覚的フィードバックが表示される
+  // hoverableプロパティでホバー時に視覚的フィードバックが表示される
   test('applies hover effects when hoverable is true', () => {
     render(
       <TestWrapper>
@@ -138,7 +138,7 @@ describe('Card Component', () => {
     expect(card).toHaveStyle({ cursor: 'default' });
   });
 
-  // Requirement 2.5: onClickハンドラーでカードクリック時にイベントが発火する
+  // onClickハンドラーでカードクリック時にイベントが発火する
   test('fires onClick event when clicked', () => {
     const handleClick = jest.fn();
     render(

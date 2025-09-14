@@ -4,8 +4,8 @@ import { ThemeProvider } from '@mui/material/styles';
 import { bubblePopTheme } from '../src/theme';
 import { Container } from '../src/components/Container';
 
-// Requirement 3.1: maxWidth制限機能のテスト
-describe('Container - maxWidth制限機能 (Requirement 3.1)', () => {
+// maxWidth制限機能のテスト
+describe('Container - maxWidth制限機能', () => {
   it('maxWidth="xs"を指定すると制限される', () => {
     const { container } = render(
       <ThemeProvider theme={bubblePopTheme}>
@@ -53,8 +53,8 @@ describe('Container - maxWidth制限機能 (Requirement 3.1)', () => {
   });
 });
 
-// Requirement 3.2: center中央揃え機能のテスト
-describe('Container - center中央揃え機能 (Requirement 3.2)', () => {
+// center中央揃え機能のテスト
+describe('Container - center中央揃え機能', () => {
   it('center=trueを指定すると中央揃えされる', () => {
     const { container } = render(
       <ThemeProvider theme={bubblePopTheme}>
@@ -83,8 +83,8 @@ describe('Container - center中央揃え機能 (Requirement 3.2)', () => {
   });
 });
 
-// Requirement 3.3: padding機能のテスト
-describe('Container - padding機能 (Requirement 3.3)', () => {
+// padding機能のテスト
+describe('Container - padding機能', () => {
   it('padding="small"を指定するとパディングが適用される', () => {
     const { container } = render(
       <ThemeProvider theme={bubblePopTheme}>
@@ -128,8 +128,8 @@ describe('Container - padding機能 (Requirement 3.3)', () => {
   });
 });
 
-// Requirement 3.4: children表示機能のテスト
-describe('Container - children表示機能 (Requirement 3.4)', () => {
+// children表示機能のテスト
+describe('Container - children表示機能', () => {
   it('childrenプロパティに設定したコンテンツが表示される', () => {
     render(
       <ThemeProvider theme={bubblePopTheme}>
@@ -157,8 +157,8 @@ describe('Container - children表示機能 (Requirement 3.4)', () => {
   });
 });
 
-// Requirement 3.5: レスポンシブスペーシング機能のテスト
-describe('Container - レスポンシブスペーシング機能 (Requirement 3.5)', () => {
+// レスポンシブスペーシング機能のテスト
+describe('Container - レスポンシブスペーシング機能', () => {
   it('responsive=trueを指定すると画面サイズに応じたパディングが適用される', () => {
     const { container } = render(
       <ThemeProvider theme={bubblePopTheme}>
@@ -188,8 +188,8 @@ describe('Container - レスポンシブスペーシング機能 (Requirement 3.
   });
 });
 
-// Requirement 4.1-4.3: TypeScript型定義のテスト
-describe('Container - TypeScript型定義 (Requirements 4.1-4.3)', () => {
+// TypeScript型定義のテスト
+describe('Container - TypeScript型定義', () => {
   it('適切なpropsが型安全に渡される', () => {
     // この関数がコンパイルエラーなしで実行できることで型定義が機能していることを確認
     const validProps = {
