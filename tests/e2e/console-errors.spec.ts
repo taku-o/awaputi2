@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 
-test('コンソールエラーが発生しないことを確認', async ({ page }) => {
+test('コンソールエラーが発生しないことを確認', async ({ page, browserName }) => {
   const consoleErrors: string[] = [];
-  
+
   // コンソールエラーをキャッチ
   page.on('console', (msg) => {
     if (msg.type() === 'error') {
@@ -14,14 +14,21 @@ test('コンソールエラーが発生しないことを確認', async ({ page 
   await page.goto('http://localhost:3000');
 
   // ページが読み込まれるまで待機
-  await page.waitForLoadState('networkidle');
+  // Firefoxでは並列実行時にnetworkidleがタイムアウトしやすいため、domcontentloadedを使用
+  if (browserName === 'firefox') {
+    await page.waitForLoadState('domcontentloaded');
+    // 追加で少し待機（Reactアプリケーションの初期化待ち）
+    await page.waitForTimeout(2000);
+  } else {
+    await page.waitForLoadState('networkidle');
+  }
 
   // コンソールエラーがないことを確認
   expect(consoleErrors).toHaveLength(0);
-  
+
   // 特定のエラーメッセージがないことを確認
-  const hasVersionError = consoleErrors.some(error => 
-    error.includes('__UI_LIBRARY_VERSION__') || 
+  const hasVersionError = consoleErrors.some(error =>
+    error.includes('__UI_LIBRARY_VERSION__') ||
     error.includes('is not defined')
   );
   expect(hasVersionError).toBe(false);

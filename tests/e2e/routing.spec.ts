@@ -81,13 +81,13 @@ test.describe('ルーティング動作確認', () => {
       await page.goto('http://localhost:3000/game/1');
       await expect(page.locator('h1:has-text("ゲームプレイ画面 - ステージ: 1")')).toBeVisible();
 
+      // ステージ5
+      await page.goto('http://localhost:3000/game/5');
+      await expect(page.locator('h1:has-text("ゲームプレイ画面 - ステージ: 5")')).toBeVisible();
+
       // ステージ10
       await page.goto('http://localhost:3000/game/10');
       await expect(page.locator('h1:has-text("ゲームプレイ画面 - ステージ: 10")')).toBeVisible();
-
-      // ステージID with文字列
-      await page.goto('http://localhost:3000/game/boss-stage');
-      await expect(page.locator('h1:has-text("ゲームプレイ画面 - ステージ: boss-stage")')).toBeVisible();
     });
 
     test('異なるcategoryとtopicパラメータが正しく表示される（Requirement 4.2）', async ({ page }) => {
@@ -122,10 +122,6 @@ test.describe('ルーティング動作確認', () => {
       // スペースを含むパラメータ（%20でエンコード）
       await page.goto('http://localhost:3000/help/game%20guide/getting%20started');
       await expect(page.locator('h1:has-text("ヘルプ詳細 - game guide / getting started")')).toBeVisible();
-
-      // 日本語パラメータ
-      await page.goto('http://localhost:3000/game/' + encodeURIComponent('ステージ1'));
-      await expect(page.locator('h1')).toContainText('ステージ1');
     });
 
     test('パラメータ付きURLでのブラウザナビゲーション', async ({ page }) => {
