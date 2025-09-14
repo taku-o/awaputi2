@@ -87,67 +87,18 @@ packages/
 
 ## 詳細設計
 
-### 1. デバッグ用トップページ設計
+### 1. デバッグアプリ設計
 
-#### 1.1 メインのデバッグ用トップページ
-本番アプリ内にデバッグ用トップページを追加し、各デバッグアプリへのリンクを提供します。
+#### 1.1 各デバッグアプリへの直接アクセス
+各デバッグアプリは独立したURLで直接アクセス可能です。
 
-**ファイル**: `packages/bubblepop/src/pages/DebugTopPage.tsx`
-
-```typescript
-interface DebugAppInfo {
-  name: string;
-  description: string;
-  url: string;
-  port: number;
-  targetScreen: string;
-}
-
-const debugApps: DebugAppInfo[] = [
-  {
-    name: "ゲームプレイデバッグ",
-    description: "ゲームプレイ画面の動作確認",
-    url: "http://localhost:8001/",
-    port: 8001,
-    targetScreen: "game"
-  },
-  {
-    name: "設定画面デバッグ",
-    description: "設定機能の動作確認",
-    url: "http://localhost:8002/",
-    port: 8002,
-    targetScreen: "settings"
-  },
-  {
-    name: "ヘルプ画面デバッグ",
-    description: "ヘルプシステムの動作確認",
-    url: "http://localhost:8003/",
-    port: 8003,
-    targetScreen: "help"
-  },
-  {
-    name: "アカウント画面デバッグ",
-    description: "アカウント機能の動作確認",
-    url: "http://localhost:8004/",
-    port: 8004,
-    targetScreen: "account"
-  },
-  {
-    name: "ショップ画面デバッグ",
-    description: "ショップ機能の動作確認",
-    url: "http://localhost:8005/",
-    port: 8005,
-    targetScreen: "shop"
-  },
-  {
-    name: "通知機能デバッグ",
-    description: "通知システムの動作確認",
-    url: "http://localhost:8006/",
-    port: 8006,
-    targetScreen: "notification"
-  }
-];
-```
+**アクセス方法**:
+- ゲームプレイデバッグ: `http://localhost:8001/`
+- 設定画面デバッグ: `http://localhost:8002/`
+- ヘルプ画面デバッグ: `http://localhost:8003/`
+- アカウント画面デバッグ: `http://localhost:8004/`
+- ショップ画面デバッグ: `http://localhost:8005/`
+- 通知機能デバッグ: `http://localhost:8006/`
 
 #### 1.2 各デバッグアプリのトップページ
 各デバッグアプリは独立したトップページを持ち、対象画面への遷移を提供します。
@@ -174,26 +125,7 @@ const DebugGameTopPage: React.FC<DebugTopPageProps> = ({
 
 ### 2. ルーティング設計
 
-#### 2.1 本番アプリのルーティング拡張
-本番アプリにデバッグ用トップページのルートを追加します。
-
-**ファイル**: `packages/bubblepop/src/router/Router.tsx`
-
-```typescript
-const routes = [
-  { path: '/', element: <TitlePage /> },
-  { path: '/main', element: <MainPage /> },
-  { path: '/game', element: <GamePage /> },
-  { path: '/settings', element: <SettingsPage /> },
-  { path: '/help', element: <HelpPage /> },
-  { path: '/account', element: <AccountPage /> },
-  { path: '/shop', element: <ShopPage /> },
-  // デバッグ用ルート追加
-  { path: '/debug', element: <DebugTopPage /> },
-];
-```
-
-#### 2.2 各デバッグアプリのルーティング
+#### 2.1 各デバッグアプリのルーティング
 各デバッグアプリは独立したルーティング設定を持ちます。
 
 **共通構造**:
@@ -375,21 +307,16 @@ export default DebugTopPage;
 
 ## 実装手順
 
-### 1. 本番アプリの拡張
-1. `DebugTopPage.tsx`コンポーネントの作成
-2. ルーターにデバッグ用ルートの追加
-3. デバッグ用トップページへのアクセス方法の確認
-
-### 2. 各デバッグアプリの作成
+### 1. 各デバッグアプリの作成
 1. 各デバッグアプリのパッケージディレクトリの作成
 2. 各デバッグアプリのpackage.jsonの作成
 3. 各デバッグアプリのVite設定の作成
 4. 各デバッグアプリのルーティング設定の作成
 5. 各デバッグアプリのトップページコンポーネントの作成
 
-### 3. 統合テスト
+### 2. 統合テスト
 1. 各デバッグアプリの起動確認
-2. 本番アプリからのデバッグアプリへのリンク確認
+2. 各デバッグアプリの直接アクセス確認
 3. 各デバッグアプリの対象画面への遷移確認
 
 ## セキュリティ考慮事項
