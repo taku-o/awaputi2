@@ -204,7 +204,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: parseInt(process.env.VITE_DEBUG_PORT || '8001'),
+    port: parseInt(process.env.VITE_DEBUG_PORT),
     host: true
   },
   build: {

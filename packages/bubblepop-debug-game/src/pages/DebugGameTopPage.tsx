@@ -4,7 +4,7 @@ import { Container, Card, Button } from '@bubblepop/ui-library';
 
 export const DebugGameTopPage: React.FC = () => {
   const navigate = useNavigate();
-  const port = import.meta.env.VITE_DEBUG_PORT || 8001;
+  const port = import.meta.env.VITE_DEBUG_PORT;
 
   const handleNavigateToGame = (): void => {
     navigate('/game');

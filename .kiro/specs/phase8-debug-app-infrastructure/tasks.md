@@ -49,7 +49,7 @@ Phase 8では、開発・デバッグ・動作確認用のデバッグアプリ�
     - `/`でDebugGameTopPageが表示される
     - `/game`でGamePageが表示される
 
-- [ ] **Task 1.6**: デバッグ用トップページコンポーネントの作成
+- [x] **Task 1.6**: デバッグ用トップページコンポーネントの作成
   - ファイル: `packages/bubblepop-debug-game/src/pages/DebugGameTopPage.tsx`
   - 内容: ゲームプレイ画面への遷移を提供するトップページ
   - 要件: [2.2 デバッグ用トップページコンポーネント](requirements.md#22-デバッグ用トップページコンポーネント)
