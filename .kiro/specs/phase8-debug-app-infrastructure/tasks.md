@@ -16,7 +16,7 @@ Phase 8では、開発・デバッグ・動作確認用のデバッグアプリ�
     - 必要なディレクトリが作成されている
     - 本番アプリと独立した構造になっている
 
-- [ ] **Task 1.2**: package.jsonの作成
+- [x] **Task 1.2**: package.jsonの作成
   - ファイル: `packages/bubblepop-debug-game/package.json`
   - 内容: デバッグ用ゲームプレイアプリの依存関係とスクリプトを定義
   - 要件: [3.1 アプリケーション分離設計](requirements.md#31-アプリケーション分離設計)
