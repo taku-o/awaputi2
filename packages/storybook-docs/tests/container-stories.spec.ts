@@ -87,7 +87,10 @@ test.describe('Container Storybookストーリーの動作確認', () => {
     await expect(iframe.locator('text="Container Content"').first()).toBeVisible();
     
     // 14. MultipleCards
-    await page.click('[data-item-id="components-container--multiple-cards"]');
+    await page.locator('[data-item-id="components-container--multiple-cards"]').scrollIntoViewIfNeeded();
+    await page.waitForTimeout(1000);
+    await page.locator('[data-item-id="components-container--multiple-cards"]').click({ force: true });
+    await page.waitForTimeout(1000);
     await expect(iframe.locator('text="Card 1"').first()).toBeVisible();
     await expect(iframe.locator('text="Card 2"').first()).toBeVisible();
     await expect(iframe.locator('text="Card 3"').first()).toBeVisible();
@@ -263,9 +266,11 @@ test.describe('Container Storybookストーリーの動作確認', () => {
     // Containerグループを展開
     await page.click('[data-item-id="components-container"]');
     await page.waitForTimeout(500);
-    
+
     // MultipleCardsストーリーを選択
-    await page.click('[data-item-id="components-container--multiple-cards"]');
+    await page.locator('[data-item-id="components-container--multiple-cards"]').scrollIntoViewIfNeeded();
+    await page.waitForTimeout(1000);
+    await page.locator('[data-item-id="components-container--multiple-cards"]').click({ force: true });
     await page.waitForTimeout(500);
     
     const iframe = page.frameLocator('#storybook-preview-iframe');

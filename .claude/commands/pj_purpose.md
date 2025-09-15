@@ -71,7 +71,7 @@ tasks.mdに従って、順々に開発を進めていきます。
 ```
 cd {project_root}
 npm run test:e2e
-npm run test:storybook -- --reporter=line
+npm run test:storybook -- --reporter=list
 npm run test:bubblepop
 npm run test:debug-game
 npm run type-check
@@ -84,5 +84,6 @@ npm run build-storybook
 * ドキュメントは日本語で書いてください。
 * GitHub CLIが使用できます。
 
-think.
+この命令が指示されたら、いったん命令文を読み上げてから、作業を開始してください。
 
+think.

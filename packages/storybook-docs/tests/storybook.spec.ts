@@ -252,28 +252,34 @@ test.describe('Storybook Error and Warning Detection', () => {
 
   test('should detect React act warnings specifically', async ({ page }) => {
     await page.goto('/');
-    
+    await page.waitForTimeout(2000);
+
     // 全てのストーリーをテスト
     const stories = ['Button', 'Card', 'Container'];
-    
+
     for (const story of stories) {
-      await page.click(`text=${story}`);
-      // iframe内のコンテンツが読み込まれるのを待つ
-      const iframe = page.frameLocator('#storybook-preview-iframe');
-      await expect(iframe.locator('body')).toBeVisible();
-      
-      // Controls操作でReact状態更新をテスト
-      const controlsTab = page.locator('button[role="tab"]:has-text("Controls")');
-      if (await controlsTab.isVisible()) {
-        await controlsTab.click();
-        await page.waitForTimeout(500);
-      }
-      
-      // Actions操作
-      const actionsTab = page.locator('button[role="tab"]:has-text("Actions")');
-      if (await actionsTab.isVisible()) {
-        await actionsTab.click();
-        await page.waitForTimeout(500);
+      const storyElement = page.locator(`[data-item-id*="${story.toLowerCase()}"]`).first();
+      if (await storyElement.isVisible()) {
+        await storyElement.click();
+        await page.waitForTimeout(1000);
+
+        // iframe内のコンテンツが読み込まれるのを待つ
+        const iframe = page.frameLocator('#storybook-preview-iframe');
+        await expect(iframe.locator('body')).toBeVisible();
+
+        // Controls操作でReact状態更新をテスト
+        const controlsTab = page.locator('button[role="tab"]:has-text("Controls")');
+        if (await controlsTab.isVisible()) {
+          await controlsTab.click();
+          await page.waitForTimeout(500);
+        }
+
+        // Actions操作
+        const actionsTab = page.locator('button[role="tab"]:has-text("Actions")');
+        if (await actionsTab.isVisible()) {
+          await actionsTab.click();
+          await page.waitForTimeout(500);
+        }
       }
     }
     
