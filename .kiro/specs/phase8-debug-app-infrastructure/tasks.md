@@ -41,7 +41,7 @@ Phase 8では、開発・デバッグ・動作確認用のデバッグアプリ�
     - VITE_DEBUG_PORT=8001が設定されている
     - VITE_TARGET_SCREEN=gameが設定されている
 
-- [ ] **Task 1.5**: ルーティング設定の作成
+- [x] **Task 1.5**: ルーティング設定の作成
   - ファイル: `packages/bubblepop-debug-game/src/router/Router.tsx`
   - 内容: デバッグ用ゲームプレイアプリのルーティング設定を作成
   - 要件: [2.1 ルーティング構成](requirements.md#21-ルーティング構成)

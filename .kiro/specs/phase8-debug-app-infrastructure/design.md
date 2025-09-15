@@ -153,23 +153,28 @@ const debugSettingsRoutes = [
 {
   "name": "@bubblepop/debug-{app-name}",
   "version": "1.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite --port {port}",
     "build": "tsc && vite build",
-    "preview": "vite preview --port {port}"
+    "preview": "vite preview --port {port}",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
-    "@bubblepop/ui-library": "workspace:*",
+    "@bubblepop/ui-library": "^0.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.0"
+    "react-router-dom": "^6.8.0",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.3",
     "typescript": "^5.0.0",
-    "vite": "^4.0.0"
+    "vite": "^4.4.5"
   }
 }
 ```

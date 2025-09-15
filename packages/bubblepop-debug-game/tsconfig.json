@@ -13,6 +13,6 @@
       "@bubblepop/ui-library/*": ["../ui-library/src/*"]
     }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "../ui-library/src/**/*"],
   "exclude": ["node_modules", "dist"]
 }
