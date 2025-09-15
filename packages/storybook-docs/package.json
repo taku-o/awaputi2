@@ -6,7 +6,7 @@
     "storybook": "storybook dev -p 6006 --no-open",
     "storybook:doctor": "storybook doctor",
     "build-storybook": "storybook build",
-    "test:storybook:all": "playwright test tests/*.spec.ts --reporter=list"
+    "test:storybook:all": "playwright test tests/*.spec.ts -- --reporter=list"
   },
   "dependencies": {
     "@bubblepop/ui-library": "*"

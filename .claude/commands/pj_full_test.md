@@ -2,7 +2,7 @@
 * test:e2e, test:storybookは、Claude Codeで実行時、しばしばタイムアウトエラーする。**タイムアウト**原因の失敗ならそれほど気にしないで。
 cd {project_root}
 npm run test:e2e
-npm run test:storybook -- --reporter=list
+npm run test:storybook
 npm run test:bubblepop
 npm run test:debug-game
 npm run type-check
