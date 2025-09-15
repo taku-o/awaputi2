@@ -24,7 +24,7 @@ Phase 8では、開発・デバッグ・動作確認用のデバッグアプリ�
     - 必要な依存関係が定義されている
     - ポート8001で起動する設定になっている
 
-- [ ] **Task 1.3**: Vite設定の作成
+- [x] **Task 1.3**: Vite設定の作成
   - ファイル: `packages/bubblepop-debug-game/vite.config.ts`
   - 内容: ポート8001で起動するVite設定を作成
   - 要件: [3.2 ポート分離](requirements.md#32-ポート分離)
